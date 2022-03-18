@@ -1,0 +1,29 @@
+{
+  "name": "exam-grade-boost",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "cypress open"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookies": "^0.8.0",
+    "next": "12.1.0",
+    "pg": "^8.7.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "cypress": "^9.5.2",
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0"
+  }
+}
