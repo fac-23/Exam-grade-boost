@@ -1,16 +1,21 @@
-import React from "react";
-import { Flex, Heading } from "@chakra-ui/react";
+// import chakra UI components
+import { Container,  Heading  } from "@chakra-ui/react";
 
-export default function resources() {
+// import components
+import Navigation from "../components/Navigation.jsx";
+
+export default function Resources() {
   return (
-    <form>
-      <Flex direction="column" p={10}>
-        <Heading>Resources</Heading>
+    <>
+      <Navigation />
+      <Container>
+          <Heading>Resources</Heading>
         <p>Videos</p>
         <p>Word bank</p>
         <p>Spider diagrams</p>
         <p>Guides</p>
-      </Flex>
-    </form>
+      </Container>
+    </>
+
   );
 }

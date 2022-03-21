@@ -36,6 +36,6 @@ export default function Home() {
           </Button>
         </Link>
       </Flex>
-    </Flex>
+    </>
   );
 }
