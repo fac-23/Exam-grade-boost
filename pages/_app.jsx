@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 
 //import custom theme
-import { myNewTheme } from "../styles/themes.ts";
+import { myNewTheme } from "../styles/themes.js";
 
 function MyApp({ Component, pageProps }) {
   return (

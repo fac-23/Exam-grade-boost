@@ -1,22 +1,84 @@
 import React from "react";
 import Link from "next/link";
 
+// import chakra UI components
+import {
+  Button,
+  Flex,
+  Heading,
+  Input,
+  FormLabel,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
+
+// export default function Home() {
+
+//   return (
+//     <Flex height="100vh" alignItems="center" justifyContent="center">
+//       <Flex direction="column" background={formBackground} p={12} rounded={10}>
+//         <Heading mb={6}>Log In</Heading>
+//         <Input
+//           placeholder="Please enter your email"
+//           variant="filled"
+//           mb={3}
+//           type="email"
+//         ></Input>
+//         <Input
+//           placeholder="*****"
+//           variant="filled"
+//           mb={6}
+//           type="password"
+//         ></Input>
+//         <Button mb={6} colorScheme="teal">
+//           Log in
+//         </Button>
+//         <Button mb={6} colorScheme="teal" bg="primary">
+//           Primary color
+//         </Button>
+//         <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
+//       </Flex>
+//     </Flex>
+//   );
+// }
+
 export default function Login() {
+  const { toggleColorMode } = useColorMode();
+  const formBackground = useColorModeValue("gray.100", "gray.700");
+
   return (
     <>
       <form action="/api/log-in" method="POST">
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" />
-        <button className="button" type="submit">
-          Log in
-        </button>
-      </form>
+        <Flex height="100vh" alignItems="center" justifyContent="center">
+          <Flex
+            direction="column"
+            background={formBackground}
+            p={12}
+            rounded={10}
+          >
+            <Heading mb={10}>Exam Grade Boost</Heading>
 
-      <Link href={"/"} passHref>
-        <button className="button">Back to landing page</button>
-      </Link>
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input type="email" id="email" name="email" mb={6} />
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Input type="password" id="password" name="password" mb={6} />
+            <Button
+              mb={6}
+              colorScheme="yellow"
+              className="button"
+              type="submit"
+            >
+              Log in
+            </Button>
+
+            <Link href={"/"} passHref>
+              <Button className="button" colorScheme="teal">
+                Back to landing page
+              </Button>
+            </Link>
+          </Flex>
+        </Flex>
+      </form>
     </>
   );
 }
