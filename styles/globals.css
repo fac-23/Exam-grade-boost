@@ -14,3 +14,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* chakra classes adjustments */
+
+.chakra-container {
+  margin-top: 4rem;
+  max-width: 60rem !important;
+}
+
+.chakra-switch {
+  margin-top: 3px;
+}
