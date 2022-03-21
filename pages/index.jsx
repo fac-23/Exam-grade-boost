@@ -1,55 +1,34 @@
-// import Link from "next/link";
+import Link from "next/link";
 
+// import chakra UI components
 import {
   Button,
   Flex,
   Heading,
   Input,
+  FormLabel,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 
 export default function Home() {
-  const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   return (
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <Flex direction="column" background={formBackground} p={12} rounded={10}>
-        <Heading mb={6}>Log In</Heading>
-        <Input
-          placeholder="Please enter your email"
-          variant="filled"
-          mb={3}
-          type="email"
-        ></Input>
-        <Input
-          placeholder="*****"
-          variant="filled"
-          mb={6}
-          type="password"
-        ></Input>
-        <Button mb={6} colorScheme="teal">
-          Log in
-        </Button>
-        <Button mb={6} colorScheme="teal" bg="primary">
-          Primary color
-        </Button>
-        <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
+        <Heading mb={10}>Exam Grade Boost</Heading>
+        <Link href="/login" passHref mb={6}>
+          <Button className="button" colorScheme="yellow" mb={6}>
+            Log in
+          </Button>
+        </Link>
+        <Link href="/signup" passHref>
+          <Button className="button" colorScheme="orange">
+            Sign up
+          </Button>
+        </Link>
       </Flex>
     </Flex>
   );
 }
-
-// export default function Home() {
-//   return (
-//     <>
-//       <Link href="/login" passHref>
-//         <button className="button">Log in</button>
-//       </Link>
-//       <Link href="/signup" passHref>
-//         <button className="button">Sign up</button>
-//       </Link>
-//     </>
-//   );
-// }
