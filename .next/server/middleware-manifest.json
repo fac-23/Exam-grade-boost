@@ -1,6 +1,24 @@
 {
-  "sortedMiddleware": [],
-  "clientInfo": [],
-  "middleware": {},
+  "sortedMiddleware": [
+    "/"
+  ],
+  "clientInfo": [
+    [
+      "/",
+      false
+    ]
+  ],
+  "middleware": {
+    "/": {
+      "env": [],
+      "files": [
+        "server/middleware-runtime.js",
+        "server/pages/_middleware.js"
+      ],
+      "name": "pages/_middleware",
+      "page": "/",
+      "regexp": "^/(?!_next).*$"
+    }
+  },
   "version": 1
 }
