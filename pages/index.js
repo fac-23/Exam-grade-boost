@@ -30,6 +30,9 @@ export default function Home() {
         <Button mb={6} colorScheme="teal">
           Log in
         </Button>
+        <Button mb={6} colorScheme="teal" bg="primary">
+          Primary color
+        </Button>
         <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
       </Flex>
     </Flex>
