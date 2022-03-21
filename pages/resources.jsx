@@ -1,5 +1,5 @@
 // import chakra UI components
-import { Container } from "@chakra-ui/react";
+import { Container,  Heading  } from "@chakra-ui/react";
 
 // import components
 import Navigation from "../components/Navigation.jsx";
@@ -9,8 +9,13 @@ export default function Resources() {
     <>
       <Navigation />
       <Container>
-        <h1>Resources</h1>
+          <Heading>Resources</Heading>
+        <p>Videos</p>
+        <p>Word bank</p>
+        <p>Spider diagrams</p>
+        <p>Guides</p>
       </Container>
     </>
+
   );
 }
