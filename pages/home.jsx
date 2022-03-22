@@ -16,6 +16,8 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
+import { EditIcon, ViewIcon } from "@chakra-ui/icons";
+
 import Navigation from "../components/Navigation.jsx";
 
 export async function getServerSideProps({ req }) {
@@ -24,8 +26,6 @@ export async function getServerSideProps({ req }) {
   const contactInfo = await getContactInfo(user_id);
   const username = contactInfo.username;
   const allEssays = await getAllEssays(user_id);
-
-  console.log(allEssays);
 
   return {
     props: {
@@ -66,10 +66,13 @@ export default function Home({ username, allEssays }) {
                     w="100%"
                     p={1}
                     borderColor="black"
-                    borderWidth="1px"
+                    borderWidth="1.5px"
+                    borderRadius="5px"
                     key={essay.id}
                   >
                     {essay.question}
+                    <EditIcon />
+                    <ViewIcon />
                   </ListItem>
                 );
               })}
