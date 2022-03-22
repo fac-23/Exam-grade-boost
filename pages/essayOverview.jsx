@@ -5,10 +5,7 @@ import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 
 export async function getServerSideProps({ req }) {
-  if (typeof window !== "undefined") {
-    const result = localStorage.getItem("currEssayId");
-    console.log(result);
-  }
+  //hardcoded for now
   const essayId = 1;
   const essayInfo = await getEssayInfo(essayId);
   const question = essayInfo.question;
