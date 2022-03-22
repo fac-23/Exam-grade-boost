@@ -2,14 +2,28 @@ import React from "react";
 import Link from "next/link";
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import Navigation from "../components/Navigation.jsx";
+import { getEssayInfo } from "../database/model.js";
 
-export default function essayOverview() {
+export async function getServerSideProps({ req }) {
+  const essayId = req.cookies.currEssay;
+  const essayInfo = await getEssayInfo(essayId);
+  const question = essayInfo.question;
+  console.log(essayInfo);
+
+  return {
+    props: {
+      question,
+    },
+  };
+}
+
+export default function essayOverview({ question }) {
   return (
     <>
       <Navigation />
       <form>
-        <Flex direction="column" p={10}>
-          <Heading>Essay overview</Heading>
+        <Flex mt={4} direction="column" p={10}>
+          <Heading>Essay overview: {question}</Heading>
           <Link href="/spiderDiagram" passHref>
             <Button>Planning</Button>
           </Link>
