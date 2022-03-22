@@ -1,4 +1,5 @@
 import { getSessionInfo, getContactInfo } from "../database/model";
+import Navigation from "../components/Navigation.jsx";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -20,15 +21,18 @@ export async function getServerSideProps({ req }) {
 
 export default function Home({ user_id, username, email, cookie }) {
   return (
-    <div>
-      <p>Logged in as: {username} </p>
-      <p>User id is: {user_id}</p>
-      <p>Email is: {email}</p>
-      <p>SID cookie is: {cookie}</p>
+    <>
+      <Navigation />
+      <div>
+        <p>Logged in as: {username} </p>
+        <p>User id is: {user_id}</p>
+        <p>Email is: {email}</p>
+        <p>SID cookie is: {cookie}</p>
 
-      <form method="POST" action="/api/log-out">
-        <button id="logout">Log out</button>
-      </form>
-    </div>
+        <form method="POST" action="/api/log-out">
+          <button id="logout">Log out</button>
+        </form>
+      </div>
+    </>
   );
 }
