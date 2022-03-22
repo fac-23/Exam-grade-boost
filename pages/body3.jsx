@@ -16,10 +16,10 @@ export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
-  const storedIntro = essayInfo.body_3;
+  const storedBody3 = essayInfo.body_3;
   const question = essayInfo.question;
 
-  if (!storedIntro) {
+  if (!storedBody3) {
     return {
       props: {
         question,
@@ -27,7 +27,7 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  const splitSections = storedIntro.split("\n");
+  const splitSections = storedBody3.split("\n");
   const storedPoint = splitSections[0];
   const storedIdentify = splitSections[1];
   const storedOutline = splitSections[2];
@@ -100,7 +100,7 @@ export default function body({
               defaultValue={storedRelate ? storedRelate : ""}
               mb={5}
             ></Textarea>
-            <Button type="submit">Save introduction</Button>
+            <Button type="submit">Save and continue</Button>
           </form>
         </Flex>
 

@@ -6,20 +6,82 @@ import {
   Grid,
   Container,
   Box,
+  Button,
 } from "@chakra-ui/react";
 import Navigation from "../components/Navigation";
+import { getEssayInfo } from "../database/model.js";
 
-export default function conclusion() {
+export async function getServerSideProps({ req }) {
+  const essayId = req.cookies.currEssay;
+  const essayInfo = await getEssayInfo(essayId);
+
+  const storedConclusion = essayInfo.conclusion;
+  const question = essayInfo.question;
+
+  if (!storedConclusion) {
+    return {
+      props: {
+        question,
+      },
+    };
+  }
+
+  const splitSections = storedConclusion.split("\n");
+  const storedMain = splitSections[0];
+  const storedEvidence = splitSections[1];
+  const storedPriority = splitSections[2];
+  const storedRelate = splitSections[3];
+
+  return {
+    props: {
+      question,
+      storedMain,
+      storedEvidence,
+      storedPriority,
+      storedRelate,
+    },
+  };
+}
+
+export default function conclusion({
+  storedMain,
+  storedEvidence,
+  storedPriority,
+  storedRelate,
+}) {
   return (
     <>
       <Navigation />
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <Heading>Conclusion</Heading>
-          <Textarea placeholder="Main argument" mb={5}></Textarea>
-          <Textarea placeholder="Evidence" mb={5}></Textarea>
-          <Textarea placeholder="Priority Evidence" mb={5}></Textarea>
-          <Textarea placeholder="Relate" mb={5}></Textarea>
+          <form method="POST" action="/api/save-conclusion">
+            <Heading>Conclusion</Heading>
+            <Textarea
+              name="main"
+              placeholder="Main argument"
+              defaultValue={storedMain ? storedMain : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="evidence"
+              placeholder="Evidence"
+              defaultValue={storedEvidence ? storedEvidence : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="priority"
+              placeholder="Priority Evidence"
+              defaultValue={storedPriority ? storedPriority : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="relate"
+              placeholder="Relate"
+              defaultValue={storedRelate ? storedRelate : ""}
+              mb={5}
+            ></Textarea>
+            <Button type="submit">Save and continue</Button>
+          </form>
         </Flex>
 
         <Container padding="5" maxW="2xl" bg="white.600" centerContent>

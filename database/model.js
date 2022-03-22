@@ -96,3 +96,10 @@ export function saveBody3(body1Text, essayId) {
     return result.rows[0];
   });
 }
+
+export function saveConclusion(conclusionText, essayId) {
+  const UPDATE_INTRO = `UPDATE essays SET conclusion = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_INTRO, [conclusionText, essayId]).then((result) => {
+    return result.rows[0];
+  });
+}
