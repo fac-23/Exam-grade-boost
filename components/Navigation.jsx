@@ -25,6 +25,11 @@ export default function Navigation() {
             <ul style={{ listStyleType: "none", fontWeight: "700" }}>
               <Flex gap="2rem">
                 <li>
+                  <Link href="/home">
+                    <a>Home</a>
+                  </Link>
+                </li>
+                <li>
                   <Link href="/myprofile">
                     <a>My Profile</a>
                   </Link>
