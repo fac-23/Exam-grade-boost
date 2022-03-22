@@ -14,7 +14,7 @@ export default function body() {
   return (
     <>
       <Navigation />
-      <Grid templateColumns="repeat(2, 0.5fr)" gap={6}>
+      <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
           <Heading>Body paragraph</Heading>
           <Textarea placeholder="Point" mb={5}></Textarea>

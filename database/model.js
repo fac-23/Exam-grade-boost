@@ -54,3 +54,17 @@ export function getSessionInfo(sid) {
     })
     .catch((error) => console.log(error));
 }
+
+export function createNewEssay(user_id, question) {
+  const INSERT_ESSAY = `INSERT INTO essays (user_id, question) VALUES ($1, $2) RETURNING id`;
+  return db.query(INSERT_ESSAY, [user_id, question]).then((result) => {
+    return result.rows[0];
+  });
+}
+
+export function getEssayInfo(essayId) {
+  const GET_ESSAY = `SELECT * FROM essays WHERE id = $1`;
+  return db.query(GET_ESSAY, [essayId]).then((result) => {
+    return result.rows[0];
+  });
+}
