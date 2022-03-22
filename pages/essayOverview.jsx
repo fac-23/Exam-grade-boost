@@ -5,8 +5,7 @@ import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 
 export async function getServerSideProps({ req }) {
-  //hardcoded for now
-  const essayId = 1;
+  const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
   const question = essayInfo.question;
   console.log(essayInfo);
