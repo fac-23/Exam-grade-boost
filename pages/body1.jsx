@@ -9,17 +9,17 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation.jsx";
+import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
-  const storedIntro = essayInfo.introduction;
+  const storedBody1 = essayInfo.body_1;
   const question = essayInfo.question;
 
-  if (!storedIntro) {
+  if (!storedBody1) {
     return {
       props: {
         question,
@@ -27,59 +27,77 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  const splitSections = storedIntro.split("\n");
-  const storedSummary = splitSections[0];
-  const storedMain = splitSections[1];
-  const storedOpposite = splitSections[2];
-  const storedKey = splitSections[3];
+  const splitSections = storedBody1.split("\n");
+  const storedPoint = splitSections[0];
+  const storedIdentify = splitSections[1];
+  const storedOutline = splitSections[2];
+  const storedExplain1 = splitSections[3];
+  const storedExplain2 = splitSections[4];
+  const storedRelate = splitSections[5];
 
   return {
     props: {
       question,
-      storedSummary,
-      storedMain,
-      storedOpposite,
-      storedKey,
+      storedPoint,
+      storedIdentify,
+      storedOutline,
+      storedExplain1,
+      storedExplain2,
+      storedRelate,
     },
   };
 }
 
-export default function introduction({
+export default function body({
   question,
-  storedSummary,
-  storedMain,
-  storedOpposite,
-  storedKey,
+  storedPoint,
+  storedIdentify,
+  storedOutline,
+  storedExplain1,
+  storedExplain2,
+  storedRelate,
 }) {
   return (
     <>
       <Navigation />
-      <Grid templateColumns="repeat(2, 0.5fr)" gap={6}>
+      <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <form method="POST" action="/api/save-introduction">
-            <Heading mt={10}>Introduction: {question}</Heading>
+          <form method="POST" action="/api/save-body1">
+            <Heading mt={10}>Body paragraph: {question}</Heading>
             <Textarea
-              name="summary"
-              placeholder="summary"
-              defaultValue={storedSummary ? storedSummary : ""}
+              name="point"
+              placeholder="Point"
+              defaultValue={storedPoint ? storedPoint : ""}
               mb={5}
             ></Textarea>
             <Textarea
-              name="main"
-              placeholder="main argument"
-              defaultValue={storedMain ? storedMain : ""}
+              name="identify"
+              placeholder="Identify"
+              defaultValue={storedIdentify ? storedIdentify : ""}
               mb={5}
             ></Textarea>
             <Textarea
-              name="opposite"
-              placeholder="opposite argument"
-              defaultValue={storedOpposite ? storedOpposite : ""}
+              name="outline"
+              placeholder="Outline"
+              defaultValue={storedOutline ? storedOutline : ""}
               mb={5}
             ></Textarea>
             <Textarea
-              name="key"
-              placeholder="key themes"
-              defaultValue={storedKey ? storedKey : ""}
+              name="explain1"
+              placeholder="Explain 1"
+              defaultValue={storedExplain1 ? storedExplain1 : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="explain2"
+              placeholder="Explain 2"
+              defaultValue={storedExplain2 ? storedExplain2 : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="relate"
+              placeholder="Relate"
+              defaultValue={storedRelate ? storedRelate : ""}
               mb={5}
             ></Textarea>
             <Button type="submit">Save and continue</Button>
@@ -88,7 +106,7 @@ export default function introduction({
 
         <Container padding="5" maxW="2xl" bg="white.600" centerContent>
           <Heading w="100%" h="10" mb={4}>
-            How to write an introduction
+            How to write your main body
           </Heading>
           <Box color="black">
             Lorem Ipsum is simply dummy text of the printing and typesetting
