@@ -14,7 +14,13 @@ import { getEssayInfo } from "../database/model.js";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
-  const essayInfo = await getEssayInfo(essayId);
+  // const essayInfo = await getEssayInfo(essayId);
+
+  // hardcoded example 2
+  const essayInfo = await getEssayInfo(2);
+
+  // console.log(essayId);
+  console.log(essayInfo);
 
   const storedIntro = essayInfo.introduction;
   const question = essayInfo.question;
