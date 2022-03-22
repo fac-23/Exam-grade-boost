@@ -68,3 +68,10 @@ export function getEssayInfo(essayId) {
     return result.rows[0];
   });
 }
+
+export function saveIntro(introText, essayId) {
+  const UPDATE_INTRO = `UPDATE essays SET introduction = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_INTRO, [introText, essayId]).then((result) => {
+    return result.rows[0];
+  });
+}

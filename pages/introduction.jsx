@@ -6,21 +6,84 @@ import {
   Grid,
   Container,
   Box,
+  Button,
 } from "@chakra-ui/react";
 
 import Navigation from "../components/Navigation.jsx";
+import { getEssayInfo } from "../database/model.js";
 
-export default function introduction() {
+export async function getServerSideProps({ req }) {
+  const essayId = req.cookies.currEssay;
+  const essayInfo = await getEssayInfo(essayId);
+
+  const storedIntro = essayInfo.introduction;
+  const question = essayInfo.question;
+
+  if (!storedIntro) {
+    return {
+      props: {
+        question,
+      },
+    };
+  }
+
+  const splitSections = storedIntro.split("\n");
+  const storedSummary = splitSections[0];
+  const storedMain = splitSections[1];
+  const storedOpposite = splitSections[2];
+  const storedKey = splitSections[3];
+
+  return {
+    props: {
+      question,
+      storedSummary,
+      storedMain,
+      storedOpposite,
+      storedKey,
+    },
+  };
+}
+
+export default function introduction({
+  question,
+  storedSummary,
+  storedMain,
+  storedOpposite,
+  storedKey,
+}) {
   return (
     <>
       <Navigation />
-      <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
+      <Grid templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <Heading>Introduction</Heading>
-          <Textarea placeholder="summary" mb={5}></Textarea>
-          <Textarea placeholder="main argument" mb={5}></Textarea>
-          <Textarea placeholder="opposite argument" mb={5}></Textarea>
-          <Textarea placeholder="key themes" mb={5}></Textarea>
+          <form method="POST" action="/api/save-introduction">
+            <Heading mt={10}>Introduction: {question}</Heading>
+            <Textarea
+              name="summary"
+              placeholder="summary"
+              defaultValue={storedSummary ? storedSummary : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="main"
+              placeholder="main argument"
+              defaultValue={storedMain ? storedMain : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="opposite"
+              placeholder="opposite argument"
+              defaultValue={storedOpposite ? storedOpposite : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="key"
+              placeholder="key themes"
+              defaultValue={storedKey ? storedKey : ""}
+              mb={5}
+            ></Textarea>
+            <Button type="submit">Save introduction</Button>
+          </form>
         </Flex>
 
         <Container padding="5" maxW="2xl" bg="white.600" centerContent>
