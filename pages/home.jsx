@@ -1,4 +1,8 @@
-import { getSessionInfo, getContactInfo } from "../database/model";
+import {
+  getSessionInfo,
+  getContactInfo,
+  getAllEssays,
+} from "../database/model";
 import Link from "next/link";
 
 import {
@@ -8,6 +12,8 @@ import {
   useColorModeValue,
   Box,
   Text,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 
 import Navigation from "../components/Navigation.jsx";
@@ -17,20 +23,19 @@ export async function getServerSideProps({ req }) {
   const user_id = JSON.parse(userData.data).user_id;
   const contactInfo = await getContactInfo(user_id);
   const username = contactInfo.username;
-  const email = contactInfo.email;
-  const cookie = req.cookies.sid;
+  const allEssays = await getAllEssays(user_id);
+
+  console.log(allEssays);
 
   return {
     props: {
-      user_id,
       username,
-      email,
-      cookie,
+      allEssays,
     },
   };
 }
 
-export default function Home({ username }) {
+export default function Home({ username, allEssays }) {
   const boxBorder = useColorModeValue("gray.100", "gray.700");
 
   return (
@@ -51,41 +56,24 @@ export default function Home({ username }) {
 
           <Box m="1rem">
             <Heading mb="1rem">Completed Essays</Heading>
-            <Box
-              m={3}
-              h="7rem"
-              w="100%"
-              p={5}
-              borderColor="black"
-              borderWidth="2px"
-            >
-              <Text>How far do you agree,UK roads are easy to travel on?</Text>
-            </Box>
-            <Box
-              m={3}
-              h="7rem"
-              w="100%"
-              p={5}
-              borderColor="black"
-              borderWidth="2px"
-            >
-              <Text>
-                The representation of madness in Shakespeares text, Hamlet
-              </Text>
-            </Box>
-            <Box
-              m={3}
-              h="7rem"
-              w="100%"
-              p={5}
-              borderColor="black"
-              borderWidth="2px"
-            >
-              <Text>
-                Wildes Critique of Victorian Society in The Importance of Being
-                Earnest
-              </Text>
-            </Box>
+
+            <UnorderedList styleType="none">
+              {allEssays.map((essay) => {
+                return (
+                  <ListItem
+                    m={1}
+                    h="3rem"
+                    w="100%"
+                    p={1}
+                    borderColor="black"
+                    borderWidth="1px"
+                    key={essay.id}
+                  >
+                    {essay.question}
+                  </ListItem>
+                );
+              })}
+            </UnorderedList>
           </Box>
 
           <Box m="1rem">
