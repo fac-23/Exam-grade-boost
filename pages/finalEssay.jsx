@@ -12,6 +12,9 @@ import {
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 
+// import jsPDF
+import { jsPDF } from "jspdf";
+
 export async function getServerSideProps({ req }) {
   // gets the essay id from the cookie
   const essayId = req.cookies.currEssay;
@@ -19,7 +22,7 @@ export async function getServerSideProps({ req }) {
   // retrieves all essay data from the db
   // const essayInfo = await getEssayInfo(essayId);
 
-  // hardcoded example 2
+  // hardcoded example passing 2 as essayID
   const essayInfo = await getEssayInfo(2);
 
   const storedIntro = essayInfo.introduction;
@@ -56,6 +59,21 @@ export default function finalEssay({
   storedOpposite,
   storedKey,
 }) {
+  // jsPDF
+
+  const finalEssayCopy = `${storedSummary}\n\n${storedMain}\n\n${storedOpposite}\n\n${storedKey}`;
+
+  const doc = new jsPDF();
+
+  doc.text(finalEssayCopy, 10, 10);
+
+  // callback function to pass onClick event on export to PDF button
+  function downloadPDF() {
+    doc.save(`${question.split(",")}`);
+  }
+
+  // console.log("FINAL ESSAY", finalEssayCopy);
+
   return (
     <>
       <Navigation />
@@ -75,7 +93,7 @@ export default function finalEssay({
             <Button className="button" colorScheme="teal">
               Export to Word docx
             </Button>
-            <Button className="button" colorScheme="teal">
+            <Button className="button" colorScheme="teal" onClick={downloadPDF}>
               Export to PDF
             </Button>
           </Flex>

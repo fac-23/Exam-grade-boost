@@ -16,7 +16,7 @@ export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   // const essayInfo = await getEssayInfo(essayId);
 
-  // hardcoded example 2
+  // hardcoded example passing 2 as essayID
   const essayInfo = await getEssayInfo(2);
 
   // console.log(essayId);
