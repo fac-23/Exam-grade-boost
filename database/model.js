@@ -75,3 +75,24 @@ export function saveIntro(introText, essayId) {
     return result.rows[0];
   });
 }
+
+export function saveBody1(body1Text, essayId) {
+  const UPDATE_INTRO = `UPDATE essays SET body_1 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+    return result.rows[0];
+  });
+}
+
+export function saveBody2(body1Text, essayId) {
+  const UPDATE_INTRO = `UPDATE essays SET body_2 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+    return result.rows[0];
+  });
+}
+
+export function saveBody3(body1Text, essayId) {
+  const UPDATE_INTRO = `UPDATE essays SET body_3 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+    return result.rows[0];
+  });
+}

@@ -30,8 +30,14 @@ export default function essayOverview({ question }) {
           <Link href="/introduction" passHref>
             <Button>Introduction</Button>
           </Link>
-          <Link href="/body" passHref>
+          <Link href="/body1" passHref>
             <Button>Body paragraph 1</Button>
+          </Link>
+          <Link href="/body2" passHref>
+            <Button>Body paragraph 2</Button>
+          </Link>
+          <Link href="/body3" passHref>
+            <Button>Body paragraph 3</Button>
           </Link>
           <Link href="/conclusion" passHref>
             <Button>Conclusion</Button>
