@@ -16,12 +16,6 @@ export const ListItemStyles = {
         bg: mode(darken("primary", 15), whiten("primary", 15))(props),
       },
     }),
-    secondary: (props) => ({
-      bg: "secondary",
-      _hover: {
-        bg: mode(darken("secondary", 15), whiten("secondary", 15))(props),
-      },
-    }),
   },
   // The default `size` or `variant` values
   defaultProps: {},
