@@ -70,8 +70,8 @@ export function getEssayInfo(essayId) {
 }
 
 export function getAllEssays(user_id) {
-  const UPDATE_INTRO = `SELECT * FROM essays WHERE user_id = $1`;
-  return db.query(UPDATE_INTRO, [user_id]).then((result) => {
+  const SELECT_ESSAY_INFO = `SELECT * FROM essays WHERE user_id = $1`;
+  return db.query(SELECT_ESSAY_INFO, [user_id]).then((result) => {
     return result.rows;
   });
 }
@@ -84,29 +84,31 @@ export function saveIntro(introText, essayId) {
 }
 
 export function saveBody1(body1Text, essayId) {
-  const UPDATE_INTRO = `UPDATE essays SET body_1 = $1 WHERE id = $2 RETURNING id`;
-  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+  const UPDATE_BODY1 = `UPDATE essays SET body_1 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_BODY1, [body1Text, essayId]).then((result) => {
     return result.rows[0];
   });
 }
 
 export function saveBody2(body1Text, essayId) {
-  const UPDATE_INTRO = `UPDATE essays SET body_2 = $1 WHERE id = $2 RETURNING id`;
-  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+  const UPDATE_BODY2 = `UPDATE essays SET body_2 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_BODY2, [body1Text, essayId]).then((result) => {
     return result.rows[0];
   });
 }
 
 export function saveBody3(body1Text, essayId) {
-  const UPDATE_INTRO = `UPDATE essays SET body_3 = $1 WHERE id = $2 RETURNING id`;
-  return db.query(UPDATE_INTRO, [body1Text, essayId]).then((result) => {
+  const UPDATE_BODY3 = `UPDATE essays SET body_3 = $1 WHERE id = $2 RETURNING id`;
+  return db.query(UPDATE_BODY3, [body1Text, essayId]).then((result) => {
     return result.rows[0];
   });
 }
 
 export function saveConclusion(conclusionText, essayId) {
-  const UPDATE_INTRO = `UPDATE essays SET conclusion = $1 WHERE id = $2 RETURNING id`;
-  return db.query(UPDATE_INTRO, [conclusionText, essayId]).then((result) => {
-    return result.rows[0];
-  });
+  const UPDATE_CONCLUSION = `UPDATE essays SET conclusion = $1 WHERE id = $2 RETURNING id`;
+  return db
+    .query(UPDATE_CONCLUSION, [conclusionText, essayId])
+    .then((result) => {
+      return result.rows[0];
+    });
 }
