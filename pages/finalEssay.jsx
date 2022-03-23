@@ -29,7 +29,7 @@ export async function getServerSideProps({ req }) {
   // const essayInfo = await getEssayInfo(essayId);
 
   // hardcoded example passing 2 as essayID
-  const essayInfo = await getEssayInfo(2);
+  const essayInfo = await getEssayInfo(1);
 
   const storedIntro = essayInfo.introduction;
   const question = essayInfo.question;
@@ -68,7 +68,7 @@ export default function finalEssay({
   // *** jsPDF functionality *** //
 
   // Create the final essay content adding all sections
-  const finalEssayCopy = `${storedSummary}\n\n${storedMain}\n\n${storedOpposite}\n\n${storedKey}`;
+  const finalEssayCopy = `${question}\n\n\n${storedSummary}\n\n${storedMain}\n\n${storedOpposite}\n\n${storedKey}`;
 
   // create new instance of a document
   const doc = new jsPDF();
