@@ -88,7 +88,7 @@ export default function introduction({
               defaultValue={storedKey ? storedKey : ""}
               mb={5}
             ></Textarea>
-            <Button type="submit">Save introduction</Button>
+            <Button type="submit">Save and continue</Button>
           </form>
         </Flex>
 

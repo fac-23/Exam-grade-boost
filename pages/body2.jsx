@@ -8,6 +8,7 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+
 import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 
@@ -15,10 +16,10 @@ export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
-  const storedConclusion = essayInfo.conclusion;
+  const storedBody2 = essayInfo.body_2;
   const question = essayInfo.question;
 
-  if (!storedConclusion) {
+  if (!storedBody2) {
     return {
       props: {
         question,
@@ -26,27 +27,34 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  const splitSections = storedConclusion.split("\n");
-  const storedMain = splitSections[0];
-  const storedEvidence = splitSections[1];
-  const storedPriority = splitSections[2];
-  const storedRelate = splitSections[3];
+  const splitSections = storedBody2.split("\n");
+  const storedPoint = splitSections[0];
+  const storedIdentify = splitSections[1];
+  const storedOutline = splitSections[2];
+  const storedExplain1 = splitSections[3];
+  const storedExplain2 = splitSections[4];
+  const storedRelate = splitSections[5];
 
   return {
     props: {
       question,
-      storedMain,
-      storedEvidence,
-      storedPriority,
+      storedPoint,
+      storedIdentify,
+      storedOutline,
+      storedExplain1,
+      storedExplain2,
       storedRelate,
     },
   };
 }
 
-export default function conclusion({
-  storedMain,
-  storedEvidence,
-  storedPriority,
+export default function body({
+  question,
+  storedPoint,
+  storedIdentify,
+  storedOutline,
+  storedExplain1,
+  storedExplain2,
   storedRelate,
 }) {
   return (
@@ -54,24 +62,36 @@ export default function conclusion({
       <Navigation />
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <form method="POST" action="/api/save-conclusion">
-            <Heading>Conclusion</Heading>
+          <form method="POST" action="/api/save-body2">
+            <Heading mt={10}>Body paragraph: {question}</Heading>
             <Textarea
-              name="main"
-              placeholder="Main argument"
-              defaultValue={storedMain ? storedMain : ""}
+              name="point"
+              placeholder="Point"
+              defaultValue={storedPoint ? storedPoint : ""}
               mb={5}
             ></Textarea>
             <Textarea
-              name="evidence"
-              placeholder="Evidence"
-              defaultValue={storedEvidence ? storedEvidence : ""}
+              name="identify"
+              placeholder="Identify"
+              defaultValue={storedIdentify ? storedIdentify : ""}
               mb={5}
             ></Textarea>
             <Textarea
-              name="priority"
-              placeholder="Priority Evidence"
-              defaultValue={storedPriority ? storedPriority : ""}
+              name="outline"
+              placeholder="Outline"
+              defaultValue={storedOutline ? storedOutline : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="explain1"
+              placeholder="Explain 1"
+              defaultValue={storedExplain1 ? storedExplain1 : ""}
+              mb={5}
+            ></Textarea>
+            <Textarea
+              name="explain2"
+              placeholder="Explain 2"
+              defaultValue={storedExplain2 ? storedExplain2 : ""}
               mb={5}
             ></Textarea>
             <Textarea
@@ -86,7 +106,7 @@ export default function conclusion({
 
         <Container padding="5" maxW="2xl" bg="white.600" centerContent>
           <Heading w="100%" h="10" mb={4}>
-            How to write your conclusion
+            How to write your main body
           </Heading>
           <Box color="black">
             Lorem Ipsum is simply dummy text of the printing and typesetting

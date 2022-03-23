@@ -1,15 +1,16 @@
-import { saveIntro } from "../../database/model";
+import { saveConclusion } from "../../database/model";
 import Cookies from "cookies";
 
-export default async function saveIntroduction(req, res) {
-  const { summary, main, opposite, key } = req.body;
+export default async function saveConclusionTxt(req, res) {
+  const { main, evidence, priority, relate } = req.body;
   const essayId = req.cookies.currEssay;
 
-  const introText = summary + "\n" + main + "\n" + opposite + "\n" + key;
+  const conclusionText =
+    main + "\n" + evidence + "\n" + priority + "\n" + relate;
 
   //use returned id to update global state,
   //enabling rest of application to know what essay is currently being edited
-  const returnedEssayId = await saveIntro(introText, essayId);
+  const returnedEssayId = await saveConclusion(conclusionText, essayId);
 
   const cookies = new Cookies(req, res);
   cookies.set("currEssay", `${returnedEssayId.id}`, {
