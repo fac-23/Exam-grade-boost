@@ -2,6 +2,8 @@
 
 A visual approach to essay writing
 
+### Installation
+
 ### Co-authoring
 
 Co-authored-by: <Oli 78092825+duckRabbitPy@users.noreply.github.com>
