@@ -7,9 +7,18 @@ import {
   Container,
   Box,
   Button,
+  Text,
+  UnorderedList,
+  ListItem,
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
+  AccordionIcon,
 } from "@chakra-ui/react";
 import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
+import VideoComponent from "../components/VideoComponent";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -53,7 +62,7 @@ export default function conclusion({
     <>
       <Navigation />
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
-        <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
+        <Flex mt={5} direction="column" p={5} w="100%" h="10" colSpan={2}>
           <form method="POST" action="/api/save-conclusion">
             <Heading>Conclusion</Heading>
             <Textarea
@@ -89,20 +98,78 @@ export default function conclusion({
             How to write your conclusion
           </Heading>
           <Box color="black">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum. Why do we use it? It is
-            a long established fact that a reader will be distracted by the
-            readable content of a page when looking at its layout. The point of
-            using Lorem will uncover many web sites still in their infancy.
-            Various versions have evolved over the years, sometimes by accident,
-            sometimes on purpose.
+            <UnorderedList styleType="none" mb={5}>
+              <ListItem p={2} background="green.100">
+                <strong>Main Argument</strong> - The main argument you believe
+                to be true in your essay – complete with the paragraph topics
+                that make that argument true. This should clearly be very
+                similar to your introduction.
+              </ListItem>
+              <ListItem p={2} background="blue.100">
+                <strong>Evidence</strong> - Give the most significant pieces of
+                evidence that make you believe your interpretation of ideas is
+                the most appropriate one.
+              </ListItem>
+              <ListItem p={2} background="yellow.100">
+                <strong>Prioritised</strong> - give the evidence in a
+                prioritised form..
+              </ListItem>
+              <ListItem p={2} background="orange.200">
+                <strong>Relate</strong> - State a brief summary that answers the
+                question using the words of the title.
+              </ListItem>
+            </UnorderedList>
+            <Accordion allowToggle>
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
+                      Worked Example
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Text as="mark" backgroundColor="green.100">
+                    This essay argued that diets can be made to be successful as
+                    long as appropriate steps are followed in making the diet
+                    work.{" "}
+                  </Text>
+                  <Text as="mark" backgroundColor="blue.100">
+                    Particularly important features include a focus on good
+                    quality low fat, lightly processed foods.{" "}
+                  </Text>
+                  <Text as="mark" backgroundColor="yellow.100">
+                    A range of social support networks is also important. A
+                    person seeking the diet would aim to keep their mood as
+                    positive as possible and they would aim to stop their
+                    attention dwelling too much on the diet – and rather focus
+                    on the positive features of the healthy food they were
+                    eating.
+                  </Text>{" "}
+                  <Text as="mark" backgroundColor="orange.200">
+                    The person could also balance their diet to work well with
+                    their genetic make-up. By reliably following ‘what works’ a
+                    person would be very likely to achieve a healthy weight. It
+                    is reasonable to conclude diets can be made to succeed.
+                  </Text>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left">
+                      Video Tutorial
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <VideoComponent></VideoComponent>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
           </Box>
         </Container>
       </Grid>

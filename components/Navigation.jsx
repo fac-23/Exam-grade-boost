@@ -5,7 +5,7 @@ import Link from "next/link";
 import Switch from "./DarkModeSwitch.jsx";
 
 // import chakra UI components
-import { Flex, Container } from "@chakra-ui/react";
+import { Flex, Container, Button } from "@chakra-ui/react";
 
 export default function Navigation() {
   return (
@@ -38,6 +38,13 @@ export default function Navigation() {
                   <Link href="/resources">
                     <a>Resources</a>
                   </Link>
+                </li>
+                <li>
+                  <form method="POST" action="/api/log-out">
+                    <Button type="submit" size="sm">
+                      Log out
+                    </Button>
+                  </form>
                 </li>
               </Flex>
             </ul>

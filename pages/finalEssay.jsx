@@ -29,7 +29,7 @@ export async function getServerSideProps({ req }) {
   // const essayInfo = await getEssayInfo(essayId);
 
   // hardcoded example passing 2 as essayID
-  const essayInfo = await getEssayInfo(1);
+  const essayInfo = await getEssayInfo(essayId);
 
   const storedIntro = essayInfo.introduction;
   const question = essayInfo.question;
