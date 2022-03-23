@@ -69,6 +69,13 @@ export function getEssayInfo(essayId) {
   });
 }
 
+export function getAllEssays(user_id) {
+  const UPDATE_INTRO = `SELECT * FROM essays WHERE user_id = $1`;
+  return db.query(UPDATE_INTRO, [user_id]).then((result) => {
+    return result.rows;
+  });
+}
+
 export function saveIntro(introText, essayId) {
   const UPDATE_INTRO = `UPDATE essays SET introduction = $1 WHERE id = $2 RETURNING id`;
   return db.query(UPDATE_INTRO, [introText, essayId]).then((result) => {
