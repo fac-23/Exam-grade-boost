@@ -58,7 +58,7 @@ export default function Home({ username, allEssays }) {
             <Heading mb="1rem">Completed Essays</Heading>
 
             <UnorderedList styleType="none">
-              {allEssays.map((essay) => {
+              {allEssays.reverse().map((essay) => {
                 return (
                   <ListItem
                     m={1}
