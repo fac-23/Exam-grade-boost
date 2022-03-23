@@ -1,6 +1,6 @@
 import Cookies from "cookies";
 
-export default async function saveIntroduction(req, res) {
+export default async function editSaved(req, res) {
   const { essayId } = req.body;
 
   const cookies = new Cookies(req, res);

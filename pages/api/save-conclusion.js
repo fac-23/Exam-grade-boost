@@ -1,7 +1,7 @@
 import { saveConclusion } from "../../database/model";
 import Cookies from "cookies";
 
-export default async function saveIntroduction(req, res) {
+export default async function saveConclusionTxt(req, res) {
   const { main, evidence, priority, relate } = req.body;
   const essayId = req.cookies.currEssay;
 
