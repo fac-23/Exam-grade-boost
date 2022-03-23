@@ -98,31 +98,32 @@ export default function finalEssay({
   }
 
   const generateDocument = () => {
-    loadFile(
-      "https://docxtemplater.com/tag-example.docx",
-      function (error, content) {
-        if (error) {
-          throw error;
-        }
-        const zip = new PizZip(content);
-        const doc = new Docxtemplater().loadZip(zip);
-        // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
-        doc.render({
-          first_name: "Mannie",
-          last_name: "Doe",
-          phone: "0652455478",
-          description: "New Website",
-        });
-        doc.render({ finalEssayCopy });
-        const out = doc.getZip().generate({
-          type: "blob",
-          mimeType:
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        });
-        // Output the document using Data-URI
-        saveAs(out, "output.docx");
+    // load "essayBody" template inside public folder
+    loadFile("/essayBody.docx", function (error, content) {
+      if (error) {
+        throw error;
       }
-    );
+      const zip = new PizZip(content);
+      const doc = new Docxtemplater().loadZip(zip);
+      // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+      doc.render({
+        // render the essay body inside the "essayBody" tag in the "essayBody" Template
+        // essayBody: finalEssayCopy,
+        question: question,
+        storedSummary: storedSummary,
+        storedMain: storedMain,
+        storedOpposite: storedOpposite,
+        storedKey: storedKey,
+      });
+      doc.render({ finalEssayCopy });
+      const out = doc.getZip().generate({
+        type: "blob",
+        mimeType:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      });
+      // Output the document using Data-URI
+      saveAs(out, `${question.split(",")}`);
+    });
   };
 
   // ***********************************************/
