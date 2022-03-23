@@ -62,7 +62,6 @@ export default function Home({ username, allEssays }) {
                 return (
                   <ListItem
                     m={1}
-                    h="3rem"
                     w="100%"
                     p={1}
                     borderColor="black"
@@ -71,8 +70,26 @@ export default function Home({ username, allEssays }) {
                     key={essay.id}
                   >
                     {essay.question}
-                    <EditIcon />
-                    <ViewIcon />
+                    <form method="POST" action="/api/editSaved" passHref>
+                      <input
+                        type="hidden"
+                        name="essayId"
+                        value={essay.id}
+                      ></input>
+                      <Button type="submit">
+                        <EditIcon />
+                      </Button>
+                    </form>
+                    <form method="POST" action="/api/viewSaved" passHref>
+                      <input
+                        type="hidden"
+                        name="essayId"
+                        value={essay.id}
+                      ></input>
+                      <Button type="submit">
+                        <ViewIcon />
+                      </Button>
+                    </form>
                   </ListItem>
                 );
               })}
