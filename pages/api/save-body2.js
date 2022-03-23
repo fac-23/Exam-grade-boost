@@ -1,7 +1,7 @@
 import { saveBody2 } from "../../database/model";
 import Cookies from "cookies";
 
-export default async function saveIntroduction(req, res) {
+export default async function saveBodyPara2(req, res) {
   const { point, identify, outline, explain1, explain2, relate } = req.body;
   const essayId = req.cookies.currEssay;
 

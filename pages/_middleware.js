@@ -17,4 +17,36 @@ export default function middleware(req) {
   if (!sid && url === "/home") {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
+
+  if (!sid && url === "/myprofile") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/essayOverview") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/resources") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/introduction") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/spiderDiagram") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/body") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/conclusion") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/finalEssay") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
 }
