@@ -144,14 +144,10 @@ export default function finalEssay({
             </section>
           </Flex>
           <Flex justifyContent="center" gap="2rem">
-            <Button
-              className="button"
-              colorScheme="teal"
-              onClick={generateDocument}
-            >
+            <Button variant="primary" onClick={generateDocument}>
               Export to Word docx
             </Button>
-            <Button className="button" colorScheme="teal" onClick={downloadPDF}>
+            <Button variant="secondary" onClick={downloadPDF}>
               Export to PDF
             </Button>
           </Flex>

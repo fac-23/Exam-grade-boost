@@ -51,7 +51,10 @@ export default function Home({ username, allEssays }) {
           <Heading m="2rem">Welcome back {username}</Heading>
 
           <Link href="/newEssay" passHref>
-            <Button mb="2rem"> Create new Essay</Button>
+            <Button variant="tertiary" mb="2rem">
+              {" "}
+              Create new Essay
+            </Button>
           </Link>
 
           <Box m="1rem">
@@ -61,12 +64,13 @@ export default function Home({ username, allEssays }) {
               {allEssays.reverse().map((essay) => {
                 return (
                   <ListItem
-                    m={1}
-                    w="100%"
-                    p={1}
-                    borderColor="black"
-                    borderWidth="1.5px"
-                    borderRadius="5px"
+                    variant="primary"
+                    // m={1}
+                    // w="100%"
+                    // p={1}
+                    // borderColor="black"
+                    // borderWidth="1.5px"
+                    // borderRadius="5px"
                     key={essay.id}
                   >
                     {essay.question}

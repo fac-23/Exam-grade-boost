@@ -15,7 +15,7 @@ export default function Navigation() {
       position="fixed"
       top="0"
       w="100%"
-      bg="primary"
+      bg="primaryLight"
       zIndex="900"
       alignItems="center"
     >
