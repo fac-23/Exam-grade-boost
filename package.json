@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.8.1",
     "bcryptjs": "^2.4.3",
     "cookies": "^0.8.0",
+    "findlogs": "^1.0.10",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
     "pg": "^8.7.3",

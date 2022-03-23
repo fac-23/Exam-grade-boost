@@ -8,7 +8,6 @@ export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
   const question = essayInfo.question;
-  console.log(essayInfo);
 
   return {
     props: {

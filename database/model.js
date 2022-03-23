@@ -76,6 +76,15 @@ export function getAllEssays(user_id) {
   });
 }
 
+export function saveSpiderDiagram(planningText, essayId) {
+  const UPDATE_SPIDER_DIAGRAM = `UPDATE essays SET spider_1 = $1 WHERE id = $2 RETURNING id`;
+  return db
+    .query(UPDATE_SPIDER_DIAGRAM, [planningText, essayId])
+    .then((result) => {
+      return result.rows[0];
+    });
+}
+
 export function saveIntro(introText, essayId) {
   const UPDATE_INTRO = `UPDATE essays SET introduction = $1 WHERE id = $2 RETURNING id`;
   return db.query(UPDATE_INTRO, [introText, essayId]).then((result) => {
