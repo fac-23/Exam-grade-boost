@@ -1,7 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 
 import { ButtonStyles as Button } from "./components/ButtonStyles";
-import { ListItemStyles as ListItem } from "./components/ListItemStyles";
 
 // this is an object, we can add the different things that we want to add to our custom theme
 export const myNewTheme = extendTheme({
@@ -15,6 +14,5 @@ export const myNewTheme = extendTheme({
   },
   components: {
     Button,
-    ListItem,
   },
 });

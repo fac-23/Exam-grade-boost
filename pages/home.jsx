@@ -14,6 +14,8 @@ import {
   Text,
   UnorderedList,
   ListItem,
+  Image,
+  Container,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
@@ -41,97 +43,99 @@ export default function Home({ username, allEssays }) {
   return (
     <>
       <Navigation />
-      <Flex
-        mt={10}
-        alignItems="flex-start"
-        justifyContent="center"
-        direction="row"
-      >
-        <Flex mr={20} direction="column">
-          <Heading m="2rem">Welcome back {username}</Heading>
+      <Container>
+        <Flex alignItems="flex-start" justifyContent="center" direction="row">
+          <Flex mr={20} direction="column">
+            <Heading as="h1" mb="2rem">
+              Welcome back {username}
+            </Heading>
 
-          <Link href="/newEssay" passHref>
-            <Button variant="tertiary" mb="2rem">
-              {" "}
-              Create new Essay
-            </Button>
-          </Link>
+            <Link href="/newEssay" passHref>
+              <Button variant="tertiary" mb="2rem">
+                {" "}
+                Create new Essay
+              </Button>
+            </Link>
 
-          <Box m="1rem">
-            <Heading mb="1rem">Completed Essays</Heading>
+            <Box>
+              <Heading as="h2" mb="2rem">
+                Completed Essays
+              </Heading>
 
-            <UnorderedList styleType="none">
-              {allEssays.reverse().map((essay) => {
-                return (
-                  <ListItem
-                    variant="primary"
-                    // m={1}
-                    // w="100%"
-                    // p={1}
-                    // borderColor="black"
-                    // borderWidth="1.5px"
-                    // borderRadius="5px"
-                    key={essay.id}
-                  >
-                    {essay.question}
-                    <form method="POST" action="/api/editSaved" passHref>
-                      <input
-                        type="hidden"
-                        name="essayId"
-                        value={essay.id}
-                      ></input>
-                      <Button type="submit">
-                        <EditIcon />
-                      </Button>
-                    </form>
-                    <form method="POST" action="/api/viewSaved" passHref>
-                      <input
-                        type="hidden"
-                        name="essayId"
-                        value={essay.id}
-                      ></input>
-                      <Button type="submit">
-                        <ViewIcon />
-                      </Button>
-                    </form>
-                  </ListItem>
-                );
-              })}
-            </UnorderedList>
-          </Box>
-
-          <Box m="1rem">
-            <Heading mb="1rem">Draft Essays</Heading>
-            <Box m={3} h="7rem" w="100%" borderColor="black" borderWidth="2px">
-              <Text>
-                How far do you agree that UK roads are easy to travel on?
-              </Text>
+              <UnorderedList m={0} styleType="none">
+                {allEssays.reverse().map((essay) => {
+                  return (
+                    <ListItem
+                      mb={"2rem"}
+                      w="100%"
+                      p={"1rem"}
+                      borderColor="primary"
+                      borderWidth="3px"
+                      borderRadius="10px"
+                      key={essay.id}
+                    >
+                      <Flex justifyContent="space-between" alignItems="center">
+                        <Heading as="h3" size="sm" fontWeight="800">
+                          {essay.question}
+                        </Heading>
+                        <Flex gap="1rem">
+                          <form method="POST" action="/api/editSaved" passHref>
+                            <input
+                              type="hidden"
+                              name="essayId"
+                              value={essay.id}
+                            ></input>
+                            <Button type="submit">
+                              <EditIcon />
+                            </Button>
+                          </form>
+                          <form method="POST" action="/api/viewSaved" passHref>
+                            <input
+                              type="hidden"
+                              name="essayId"
+                              value={essay.id}
+                            ></input>
+                            <Button type="submit">
+                              <ViewIcon />
+                            </Button>
+                          </form>
+                        </Flex>
+                      </Flex>
+                    </ListItem>
+                  );
+                })}
+              </UnorderedList>
             </Box>
-            <Box m={3} h="7rem" w="100%" borderColor="black" borderWidth="2px">
-              <Text>
-                The representation of madness in Shakespeares text, Hamlet
-              </Text>
+          </Flex>
+
+          <Flex
+            w="20%"
+            alignItems="center"
+            justifyContent="center"
+            direction="column"
+          >
+            <Heading as="h2" mb="2rem">
+              Profile
+            </Heading>
+            <Box
+              mb={"2rem"}
+              w="100%"
+              p={"1rem"}
+              borderColor="primary"
+              borderWidth="3px"
+              borderRadius="10px"
+              h="100%"
+            >
+              <Image
+                rounded="full"
+                size="50px"
+                src="https://bit.ly/sage-adebayo"
+                alt="Segun Adebayo"
+              />
             </Box>
-            <Box m={3} h="7rem" w="100%" borderColor="black" borderWidth="2px">
-              <Text>
-                Wildes Critique of Victorian Society in The Importance of Being
-                Earnest
-              </Text>
-            </Box>
-          </Box>
+          </Flex>
         </Flex>
-
-        <Flex
-          m="2rem"
-          w="20%"
-          alignItems="center"
-          justifyContent="center"
-          direction="column"
-        >
-          <Heading mb="1rem">Profile</Heading>
-          <Box h="40rem" w="100%" borderColor="black" borderWidth="2px"></Box>
-        </Flex>
-      </Flex>
+      </Container>
     </>
   );
 }
