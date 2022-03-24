@@ -1,5 +1,15 @@
 import React from "react";
-import { Flex, Textarea, Heading, Button, Box } from "@chakra-ui/react";
+import { useState } from "react";
+import {
+  Flex,
+  Textarea,
+  Heading,
+  Button,
+  Box,
+  UseControllableStateProp,
+  useControllableState,
+} from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 
 import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
@@ -37,51 +47,85 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function spiderDiagram({
+export default function SpiderDiagram({
   question,
   storedBranch1,
   storedBranch2,
   storedBranch3,
   storedBranch4,
 }) {
+  const [showBranch1, setShowBranch1] = useState("none");
+  const [showBranch2, setShowBranch2] = useState("none");
+  const [showBranch3, setShowBranch3] = useState("none");
+  const [showBranch4, setShowBranch4] = useState("none");
+
+  const [clickCount, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(clickCount + 1);
+    console.log("click count", clickCount);
+  }
+
   return (
     <>
       <Navigation />
-      <Heading mt={10}>Spider diagram for {question}</Heading>
-      <Flex p={5} w="100%" h="10">
+      <Heading mt="5rem">Spider diagram for {question}</Heading>
+      <Flex
+        justify="center"
+        alignItems="center"
+        direction="column"
+        p={5}
+        w="100%"
+        h="90vh"
+      >
         <form method="POST" action="/api/spider-diagram">
           <Flex direction="row">
             <Flex justify="center" alignItems="center" direction="column">
-              {" "}
               <Textarea
                 name="branch1"
                 placeholder="branch1"
                 defaultValue={storedBranch1 ? storedBranch1 : ""}
-                //mb={5}
+                m={10}
+                borderColor="orange.300"
+                display={clickCount > 0 ? "block" : "none"}
               ></Textarea>
             </Flex>
-            <Flex justify="center" alignItems="center" direction="column">
+            <Flex
+              m={10}
+              justify="center"
+              alignItems="center"
+              direction="column"
+            >
               <Textarea
                 name="branch2"
                 placeholder="branch2"
                 defaultValue={storedBranch2 ? storedBranch2 : ""}
-                //mb={5}
+                m={10}
+                borderColor="orange.300"
+                display={clickCount > 1 ? "block" : "none"}
               ></Textarea>
               <Box
                 h="3rem"
                 w="100%"
-                p={1}
+                //mb="1rem"
                 borderColor="black"
                 borderWidth="1.5px"
                 borderRadius="5px"
+                mb="1rem"
+                textAlign="center"
               >
                 {question}
               </Box>
+              <Button w="100%" onClick={handleClick}>
+                Add a branch for a topic <AddIcon ml="1rem" />
+              </Button>
               <Textarea
                 name="branch3"
                 placeholder="branch3"
                 defaultValue={storedBranch3 ? storedBranch3 : ""}
-                // mb={5}
+                m={10}
+                borderColor="orange.300"
+                display={clickCount > 2 ? "block" : "none"}
               ></Textarea>
             </Flex>
             <Flex justify="center" alignItems="center" direction="column">
@@ -89,7 +133,9 @@ export default function spiderDiagram({
                 name="branch4"
                 placeholder="branch4"
                 defaultValue={storedBranch4 ? storedBranch4 : ""}
-                // mb={5}
+                m={10}
+                borderColor="orange.300"
+                display={clickCount > 3 ? "block" : "none"}
               ></Textarea>
             </Flex>
           </Flex>
