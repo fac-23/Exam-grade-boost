@@ -19,7 +19,7 @@ export default function BodySidebar() {
         How to write your main body
       </Heading>
       <UnorderedList styleType="none" mb={5}>
-        <ListItem p={2} background="green.100">
+        <ListItem p={2} background="gray.100">
           <strong>Point</strong> - The paragraph focus, sometimes called ‘the
           topic sentence’.
         </ListItem>
@@ -55,7 +55,7 @@ export default function BodySidebar() {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Text as="mark" backgroundColor="green.100">
+            <Text as="mark" backgroundColor="gray.100">
               The Evolutionary Theory of Attachment takes the view that many
               behaviours in this area are innate – they are hard wired in the
               genes – shown in part by the continuity hypothesis{" "}
