@@ -30,25 +30,18 @@ export default function Navigation() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/myprofile">
-                    <a>My Profile</a>
-                  </Link>
-                </li>
-                <li>
                   <Link href="/resources">
                     <a>Resources</a>
                   </Link>
                 </li>
-                <li>
-                  <form method="POST" action="/api/log-out">
-                    <Button type="submit" size="sm">
-                      Log out
-                    </Button>
-                  </form>
-                </li>
               </Flex>
             </ul>
             <Switch />
+            <form method="POST" action="/api/log-out">
+              <Button variant="logout" type="submit" size="sm">
+                Log out
+              </Button>
+            </form>
           </Flex>
         </Flex>
       </Container>

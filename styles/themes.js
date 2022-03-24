@@ -11,6 +11,7 @@ export const myNewTheme = extendTheme({
     primary: "#4182E3",
     secondary: "#8D6BFF",
     green: "#0EA958",
+    lightGrey: "#EDF2F7",
   },
   components: {
     Button,
