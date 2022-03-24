@@ -99,8 +99,8 @@ export default function FinalEssay({
   const doc = new jsPDF();
 
   // set the document text to be the content of the finalEssayCopy variable
-  doc.setFontSize(4);
-  doc.text(finalEssayCopy, 10, 10);
+  doc.setFontSize(14);
+  doc.text(finalEssayCopy, 10, 10, { maxWidth: 180 });
 
   // callback function to pass onClick event on export to PDF button
   function downloadPDF() {
@@ -156,7 +156,7 @@ export default function FinalEssay({
   return (
     <>
       <Navigation />
-      <Container>
+      <Container mb={10}>
         <form>
           <Flex direction="column" p={10}>
             <Heading mb={10}>{question}</Heading>
