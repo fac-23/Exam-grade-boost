@@ -42,7 +42,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function body({
+export default function Body2({
   question,
   storedPoint,
   storedIdentify,

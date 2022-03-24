@@ -63,16 +63,7 @@ export default function Home({ username, allEssays }) {
             <UnorderedList styleType="none">
               {allEssays.reverse().map((essay) => {
                 return (
-                  <ListItem
-                    variant="primary"
-                    // m={1}
-                    // w="100%"
-                    // p={1}
-                    // borderColor="black"
-                    // borderWidth="1.5px"
-                    // borderRadius="5px"
-                    key={essay.id}
-                  >
+                  <ListItem variant="primary" key={essay.id}>
                     {essay.question}
                     <form method="POST" action="/api/editSaved" passHref>
                       <input

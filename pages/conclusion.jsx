@@ -52,7 +52,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function conclusion({
+export default function Conclusion({
   question,
   storedMain,
   storedEvidence,
