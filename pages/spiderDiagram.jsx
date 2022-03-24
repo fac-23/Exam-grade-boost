@@ -54,14 +54,27 @@ export default function SpiderDiagram({
   storedBranch3,
   storedBranch4,
 }) {
-  const [showBranch1, setShowBranch1] = useState("none");
-  const [showBranch2, setShowBranch2] = useState("none");
-  const [showBranch3, setShowBranch3] = useState("none");
-  const [showBranch4, setShowBranch4] = useState("none");
-
   const [clickCount, setCount] = useState(0);
+  const [falseBranches, setFalseBranches] = useState([]);
+  const topicBranches = [
+    storedBranch1,
+    storedBranch2,
+    storedBranch3,
+    storedBranch4,
+  ];
+  // //let toAdd = 0
+  // //filter to get the branches that are false
+  // //get those branches index
+  // //set toAdd to first branch index from false branches from array
+  // //when clicked ge the toAdd value and set that branch on display to show
+  // //then update toAdd to next false branch index
+  // let trueBranches = topicBranches.filter((branch, index) =>
+  //   !branch ?  : console.log(false)
+  // );
+  // console.log(trueBranches);
 
-  function handleClick() {
+  function handleClick(e) {
+    console.log(e.target);
     setCount(clickCount + 1);
     console.log("click count", clickCount);
   }
@@ -80,15 +93,20 @@ export default function SpiderDiagram({
       >
         <form method="POST" action="/api/spider-diagram">
           <Flex direction="row">
-            <Flex justify="center" alignItems="center" direction="column">
+            <Flex justify="center" alignItems="center" direction="row">
               <Textarea
                 name="branch1"
                 placeholder="branch1"
                 defaultValue={storedBranch1 ? storedBranch1 : ""}
                 m={10}
                 borderColor="orange.300"
-                display={clickCount > 0 ? "block" : "none"}
+                visibility={
+                  clickCount > 0 || storedBranch1 ? "visible" : "hidden"
+                }
               ></Textarea>
+              <Button w="100%" onClick={handleClick}>
+                <AddIcon ml="1rem" />
+              </Button>
             </Flex>
             <Flex
               m={10}
@@ -102,8 +120,13 @@ export default function SpiderDiagram({
                 defaultValue={storedBranch2 ? storedBranch2 : ""}
                 m={10}
                 borderColor="orange.300"
-                display={clickCount > 1 ? "block" : "none"}
+                visibility={
+                  clickCount > 1 || storedBranch2 ? "visible" : "hidden"
+                }
               ></Textarea>
+              <Button w="100%" onClick={handleClick}>
+                <AddIcon ml="1rem" />
+              </Button>
               <Box
                 h="3rem"
                 w="100%"
@@ -117,7 +140,7 @@ export default function SpiderDiagram({
                 {question}
               </Box>
               <Button w="100%" onClick={handleClick}>
-                Add a branch for a topic <AddIcon ml="1rem" />
+                <AddIcon ml="1rem" />
               </Button>
               <Textarea
                 name="branch3"
@@ -125,21 +148,30 @@ export default function SpiderDiagram({
                 defaultValue={storedBranch3 ? storedBranch3 : ""}
                 m={10}
                 borderColor="orange.300"
-                display={clickCount > 2 ? "block" : "none"}
+                visibility={
+                  clickCount > 2 || storedBranch3 ? "visible" : "hidden"
+                }
               ></Textarea>
             </Flex>
-            <Flex justify="center" alignItems="center" direction="column">
+            <Flex justify="center" alignItems="center" direction="row">
+              <Button w="100%" onClick={handleClick}>
+                <AddIcon ml="1rem" />
+              </Button>
               <Textarea
                 name="branch4"
                 placeholder="branch4"
                 defaultValue={storedBranch4 ? storedBranch4 : ""}
                 m={10}
                 borderColor="orange.300"
-                display={clickCount > 3 ? "block" : "none"}
+                visibility={
+                  clickCount > 3 || storedBranch4 ? "visible" : "hidden"
+                }
               ></Textarea>
             </Flex>
           </Flex>
-          <Button type="submit">Save and continue</Button>
+          <Flex alignItems="center" justifyContent="flex-end">
+            <Button type="submit">Save and continue</Button>
+          </Flex>
         </form>
       </Flex>
     </>
