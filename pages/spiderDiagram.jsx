@@ -37,7 +37,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function spiderDiagram({
+export default function SpiderDiagram({
   question,
   storedBranch1,
   storedBranch2,

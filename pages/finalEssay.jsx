@@ -21,6 +21,10 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 
+function returnSplit(str) {
+  return str ? str.split("\n") : "";
+}
+
 export async function getServerSideProps({ req }) {
   // gets the essay id from the cookie
   const essayId = req.cookies.currEssay;
@@ -30,11 +34,17 @@ export async function getServerSideProps({ req }) {
 
   // hardcoded example passing 2 as essayID
   const essayInfo = await getEssayInfo(essayId);
+  const {
+    question,
+    spider_1,
+    introduction,
+    body_1,
+    body_2,
+    body_3,
+    conclusion,
+  } = essayInfo;
 
-  const storedIntro = essayInfo.introduction;
-  const question = essayInfo.question;
-
-  if (!storedIntro) {
+  if (!essayInfo) {
     return {
       props: {
         question,
@@ -42,23 +52,32 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  const splitSections = storedIntro.split("\n");
+  const splitSpiderSections = returnSplit(spider_1);
+  const splitIntroSections = returnSplit(introduction);
+  const splitBody_1 = returnSplit(body_1);
+  const splitBody_2 = returnSplit(body_2);
+  const splitBody_3 = returnSplit(body_3);
+  const splitConclusion = returnSplit(conclusion);
+
+  console.log(splitSpiderSections);
+  console.log(splitIntroSections);
+  console.log(splitBody_1);
+  console.log(splitBody_2);
+  console.log(splitBody_3);
+  console.log(splitConclusion);
 
   // destructuring splitSections
-  const [storedSummary, storedMain, storedOpposite, storedKey] = splitSections;
+  // const [storedSummary, storedMain, storedOpposite, storedKey] =
+  //   splitIntroSections;
 
   return {
     props: {
       question,
-      storedSummary,
-      storedMain,
-      storedOpposite,
-      storedKey,
     },
   };
 }
 
-export default function finalEssay({
+export default function FinalEssay({
   question,
   storedSummary,
   storedMain,

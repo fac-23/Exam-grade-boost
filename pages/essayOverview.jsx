@@ -16,7 +16,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function essayOverview({ question }) {
+export default function EssayOverview({ question }) {
   return (
     <>
       <Navigation />

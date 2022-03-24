@@ -14,7 +14,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function newEssay(user_id) {
+export default function NewEssay(user_id) {
   return (
     <>
       <Navigation />
