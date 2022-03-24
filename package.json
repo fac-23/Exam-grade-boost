@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.8.1",
     "bcryptjs": "^2.4.3",
     "cookies": "^0.8.0",
+    "docxtemplater": "^3.29.0",
+    "file-saver": "^2.0.5",
     "findlogs": "^1.0.10",
     "framer-motion": "^6.2.8",
     "jspdf": "^2.5.1",

@@ -69,24 +69,32 @@ export default function conclusion({
               name="main"
               placeholder="Main argument"
               defaultValue={storedMain ? storedMain : ""}
+              borderColor="black.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="evidence"
               placeholder="Evidence"
               defaultValue={storedEvidence ? storedEvidence : ""}
+              borderColor="blue.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="priority"
               placeholder="Priority Evidence"
               defaultValue={storedPriority ? storedPriority : ""}
+              borderColor="yellow.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="relate"
               placeholder="Relate"
               defaultValue={storedRelate ? storedRelate : ""}
+              borderColor="orange.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Button type="submit">Save and continue</Button>
@@ -99,7 +107,7 @@ export default function conclusion({
           </Heading>
           <Box color="black">
             <UnorderedList styleType="none" mb={5}>
-              <ListItem p={2} background="green.100">
+              <ListItem p={2} background="gray.100">
                 <strong>Main Argument</strong> - The main argument you believe
                 to be true in your essay – complete with the paragraph topics
                 that make that argument true. This should clearly be very
@@ -130,7 +138,7 @@ export default function conclusion({
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <Text as="mark" backgroundColor="green.100">
+                  <Text as="mark" backgroundColor="gray.100">
                     This essay argued that diets can be made to be successful as
                     long as appropriate steps are followed in making the diet
                     work.{" "}

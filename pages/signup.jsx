@@ -25,6 +25,7 @@ export default function Signup() {
             p={12}
             rounded={10}
           >
+            <Heading mb={10}>Sign up</Heading>
             <FormLabel htmlFor="username">Username</FormLabel>
             <Input type="text" id="username" required name="username" mb={6} />
             <FormLabel htmlFor="email">Email</FormLabel>

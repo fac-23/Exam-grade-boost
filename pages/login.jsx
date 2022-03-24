@@ -12,36 +12,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-// export default function Home() {
-
-//   return (
-//     <Flex height="100vh" alignItems="center" justifyContent="center">
-//       <Flex direction="column" background={formBackground} p={12} rounded={10}>
-//         <Heading mb={6}>Log In</Heading>
-//         <Input
-//           placeholder="Please enter your email"
-//           variant="filled"
-//           mb={3}
-//           type="email"
-//         ></Input>
-//         <Input
-//           placeholder="*****"
-//           variant="filled"
-//           mb={6}
-//           type="password"
-//         ></Input>
-//         <Button mb={6} colorScheme="teal">
-//           Log in
-//         </Button>
-//         <Button mb={6} colorScheme="teal" bg="primary">
-//           Primary color
-//         </Button>
-//         <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
-//       </Flex>
-//     </Flex>
-//   );
-// }
-
 export default function Login() {
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
@@ -56,7 +26,7 @@ export default function Login() {
             p={12}
             rounded={10}
           >
-            <Heading mb={10}>Exam Grade Boost</Heading>
+            <Heading mb={10}>Log in</Heading>
 
             <FormLabel htmlFor="email">Email</FormLabel>
             <Input type="email" id="email" name="email" mb={6} />

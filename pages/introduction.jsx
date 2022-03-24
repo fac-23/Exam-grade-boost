@@ -77,24 +77,32 @@ export default function introduction({
               name="summary"
               placeholder="summary"
               defaultValue={storedSummary ? storedSummary : ""}
+              borderColor="black.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="main"
               placeholder="main argument"
               defaultValue={storedMain ? storedMain : ""}
+              borderColor="blue.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="opposite"
               placeholder="opposite argument"
               defaultValue={storedOpposite ? storedOpposite : ""}
+              borderColor="yellow.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Textarea
               name="key"
               placeholder="key themes"
               defaultValue={storedKey ? storedKey : ""}
+              borderColor="orange.300"
+              borderWidth="1.5px"
               mb={5}
             ></Textarea>
             <Button type="submit">Save and continue</Button>
@@ -107,7 +115,7 @@ export default function introduction({
           </Heading>
           <Box color="black">
             <UnorderedList styleType="none" mb={5}>
-              <ListItem p={2} background="green.100">
+              <ListItem p={2} background="gray.100">
                 <strong>Summary</strong> - in this area you give a summary of
                 your overall assignment.
               </ListItem>
@@ -136,7 +144,7 @@ export default function introduction({
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  <Text as="mark" backgroundColor="green.100">
+                  <Text as="mark" backgroundColor="gray.100">
                     There are many health benefits associated with a healthy
                     body weight.{" "}
                   </Text>

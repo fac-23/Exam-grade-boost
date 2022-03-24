@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Flex,
-  Textarea,
-  Heading,
-  Grid,
-  Container,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Grid, Container, Button } from "@chakra-ui/react";
 
 import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 import BodySidebar from "../components/BodySidebar";
+import BodyInputGrid from "../components/BodyInputGrid";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -64,43 +57,15 @@ export default function body({
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
           <form method="POST" action="/api/save-body1">
-            <Heading mt={10}>Body paragraph: {question}</Heading>
-            <Textarea
-              name="point"
-              placeholder="Point"
-              defaultValue={storedPoint ? storedPoint : ""}
-              mb={5}
-            ></Textarea>
-            <Textarea
-              name="identify"
-              placeholder="Identify"
-              defaultValue={storedIdentify ? storedIdentify : ""}
-              mb={5}
-            ></Textarea>
-            <Textarea
-              name="outline"
-              placeholder="Outline"
-              defaultValue={storedOutline ? storedOutline : ""}
-              mb={5}
-            ></Textarea>
-            <Textarea
-              name="explain1"
-              placeholder="Explain 1"
-              defaultValue={storedExplain1 ? storedExplain1 : ""}
-              mb={5}
-            ></Textarea>
-            <Textarea
-              name="explain2"
-              placeholder="Explain 2"
-              defaultValue={storedExplain2 ? storedExplain2 : ""}
-              mb={5}
-            ></Textarea>
-            <Textarea
-              name="relate"
-              placeholder="Relate"
-              defaultValue={storedRelate ? storedRelate : ""}
-              mb={5}
-            ></Textarea>
+            <BodyInputGrid
+              question={question}
+              storedPoint={storedPoint}
+              storedIdentify={storedIdentify}
+              storedOutline={storedOutline}
+              storedExplain1={storedExplain1}
+              storedExplain2={storedExplain2}
+              storedRelate={storedRelate}
+            ></BodyInputGrid>
             <Button type="submit">Save and continue</Button>
           </form>
         </Flex>
