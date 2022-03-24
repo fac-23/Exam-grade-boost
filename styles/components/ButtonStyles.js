@@ -24,6 +24,7 @@ export const ButtonStyles = {
     tertiary: (props) => ({
       color: "green",
       borderWidth: "3px",
+      borderRadius: "10px",
       borderColor: "green",
       _hover: {
         transform: "scale(1.02)",

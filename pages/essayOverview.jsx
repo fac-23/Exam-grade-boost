@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { Button, Flex, Heading, Container } from "@chakra-ui/react";
+import { Button, Flex, Heading, Container, Link } from "@chakra-ui/react";
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 
@@ -21,29 +20,45 @@ export default function EssayOverview({ question }) {
     <>
       <Navigation />
       <Container>
+        <Heading as="h1" mb="2rem">
+          Essay overview: {question}
+        </Heading>
         <form>
-          <Flex mt={4} direction="column" p={10}>
-            <Heading>Essay overview: {question}</Heading>
+          <Flex mt={4} direction="column" gap="1.5rem">
             <Link href="/spiderDiagram" passHref>
-              <Button>Planning</Button>
+              <Button width="100%" p="2rem 0">
+                Planning
+              </Button>
             </Link>
             <Link href="/introduction" passHref>
-              <Button>Introduction</Button>
+              <Button width="100%" p="2rem 0">
+                Introduction
+              </Button>
             </Link>
             <Link href="/body1" passHref>
-              <Button>Body paragraph 1</Button>
+              <Button width="100%" p="2rem 0">
+                Body paragraph 1
+              </Button>
             </Link>
             <Link href="/body2" passHref>
-              <Button>Body paragraph 2</Button>
+              <Button width="100%" p="2rem 0">
+                Body paragraph 2
+              </Button>
             </Link>
             <Link href="/body3" passHref>
-              <Button>Body paragraph 3</Button>
+              <Button width="100%" p="2rem 0">
+                Body paragraph 3
+              </Button>
             </Link>
             <Link href="/conclusion" passHref>
-              <Button>Conclusion</Button>
+              <Button width="100%" p="2rem 0">
+                Conclusion
+              </Button>
             </Link>
             <Link href="/finalEssay" passHref>
-              <Button>View final essay</Button>
+              <Button width="100%" p="2rem 0">
+                View final essay
+              </Button>
             </Link>
           </Flex>
         </form>
