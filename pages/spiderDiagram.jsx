@@ -54,32 +54,10 @@ export default function SpiderDiagram({
   storedBranch3,
   storedBranch4,
 }) {
-  const [clickCount, setCount] = useState(0);
-  const [falseBranches, setFalseBranches] = useState([]);
-  const topicBranches = [
-    storedBranch1,
-    storedBranch2,
-    storedBranch3,
-    storedBranch4,
-  ];
-  // //let toAdd = 0
-  // //filter to get the branches that are false
-  // //get those branches index
-  // //set toAdd to first branch index from false branches from array
-  // //when clicked ge the toAdd value and set that branch on display to show
-  // //then update toAdd to next false branch index
-  // let trueBranches = topicBranches.filter((branch, index) =>
-  //   !branch ?  : console.log(false)
-  // );
-  // console.log(trueBranches);
-
   const [topicBranch1, setTopicBranch1] = useState(false);
   const [topicBranch2, setTopicBranch2] = useState(false);
   const [topicBranch3, setTopicBranch3] = useState(false);
   const [topicBranch4, setTopicBranch4] = useState(false);
-
-  //toggle1
-  //setSTATEbtn1 = true
 
   return (
     <>
