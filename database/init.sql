@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, essays, sessions CASCADE;
+DROP TABLE IF EXISTS sessions, users, essays CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
