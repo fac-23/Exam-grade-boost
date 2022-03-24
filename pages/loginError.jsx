@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function loginError() {
+export default function LoginError() {
   return (
     <>
       <h1>Password or Email Incorrect!🚨</h1>

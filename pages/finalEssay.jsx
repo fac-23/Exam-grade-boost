@@ -21,6 +21,14 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 
+function printIfExists(content) {
+  return content ? content + "\n\n" : "";
+}
+
+function printIfExistsNoPad(content) {
+  return content ? content : "";
+}
+
 export async function getServerSideProps({ req }) {
   // gets the essay id from the cookie
   const essayId = req.cookies.currEssay;
@@ -28,13 +36,18 @@ export async function getServerSideProps({ req }) {
   // retrieves all essay data from the db
   // const essayInfo = await getEssayInfo(essayId);
 
-  // hardcoded example passing 2 as essayID
   const essayInfo = await getEssayInfo(essayId);
+  const {
+    question,
+    spider_1,
+    introduction,
+    body_1,
+    body_2,
+    body_3,
+    conclusion,
+  } = essayInfo;
 
-  const storedIntro = essayInfo.introduction;
-  const question = essayInfo.question;
-
-  if (!storedIntro) {
+  if (!essayInfo) {
     return {
       props: {
         question,
@@ -42,39 +55,52 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  const splitSections = storedIntro.split("\n");
-
-  // destructuring splitSections
-  const [storedSummary, storedMain, storedOpposite, storedKey] = splitSections;
+  console.log(
+    question,
+    spider_1,
+    introduction,
+    body_1,
+    body_2,
+    body_3,
+    conclusion
+  );
 
   return {
     props: {
       question,
-      storedSummary,
-      storedMain,
-      storedOpposite,
-      storedKey,
+      spider_1,
+      introduction,
+      body_1,
+      body_2,
+      body_3,
+      conclusion,
     },
   };
 }
 
-export default function finalEssay({
+export default function FinalEssay({
   question,
-  storedSummary,
-  storedMain,
-  storedOpposite,
-  storedKey,
+  introduction,
+  body_1,
+  body_2,
+  body_3,
+  conclusion,
 }) {
   // *** jsPDF functionality *** //
 
   // Create the final essay content adding all sections
-  const finalEssayCopy = `${question}\n\n\n${storedSummary}\n\n${storedMain}\n\n${storedOpposite}\n\n${storedKey}`;
+  const finalEssayCopy = `${printIfExists(question)}${printIfExists(
+    introduction
+  )}${printIfExists(body_1)}${printIfExists(body_2)}${printIfExists(
+    body_3
+  )} ${printIfExists(body_3)}${printIfExists(conclusion)}`;
 
   // create new instance of a document
   const doc = new jsPDF();
 
   // set the document text to be the content of the finalEssayCopy variable
-  doc.text(finalEssayCopy, 10, 10);
+  doc.setFontSize(14);
+  doc.text(finalEssayCopy, 10, 10, { maxWidth: 180 });
 
   // callback function to pass onClick event on export to PDF button
   function downloadPDF() {
@@ -107,13 +133,12 @@ export default function finalEssay({
       const doc = new Docxtemplater().loadZip(zip);
       // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
       doc.render({
-        // render the essay body inside the "essayBody" tag in the "essayBody" Template
-        // essayBody: finalEssayCopy,
-        question: question,
-        storedSummary: storedSummary,
-        storedMain: storedMain,
-        storedOpposite: storedOpposite,
-        storedKey: storedKey,
+        question: printIfExistsNoPad(question),
+        introduction: printIfExistsNoPad(introduction),
+        body_1: printIfExistsNoPad(body_1),
+        body_2: printIfExistsNoPad(body_2),
+        body_3: printIfExistsNoPad(body_3),
+        conclusion: printIfExistsNoPad(conclusion),
       });
       // doc.render({ finalEssayCopy });
       const out = doc.getZip().generate({
@@ -135,14 +160,19 @@ export default function finalEssay({
         <Heading as="h1" mb="2rem">
           {question}
         </Heading>
-
         <form>
           <Flex direction="column" p={10}>
             <section className="essay-overview">
-              <p>{storedSummary}</p>
-              <p>{storedMain}</p>
-              <p>{storedOpposite}</p>
-              <p>{storedKey}</p>
+              <b>Introduction:</b>
+              <p>{introduction}</p>
+              <br></br>
+              <b>Main:</b>
+              <p>{body_1}</p>
+              <p>{body_2}</p>
+              <p>{body_3}</p>
+              <br></br>
+              <b>Conclusion:</b>
+              <p>{conclusion}</p>
             </section>
           </Flex>
           <Flex justifyContent="center" gap="2rem">
