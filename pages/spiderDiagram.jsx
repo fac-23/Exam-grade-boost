@@ -73,11 +73,13 @@ export default function SpiderDiagram({
   // );
   // console.log(trueBranches);
 
-  function handleClick(e) {
-    console.log(e.target);
-    setCount(clickCount + 1);
-    console.log("click count", clickCount);
-  }
+  const [topicBranch1, setTopicBranch1] = useState(false);
+  const [topicBranch2, setTopicBranch2] = useState(false);
+  const [topicBranch3, setTopicBranch3] = useState(false);
+  const [topicBranch4, setTopicBranch4] = useState(false);
+
+  //toggle1
+  //setSTATEbtn1 = true
 
   return (
     <>
@@ -101,11 +103,13 @@ export default function SpiderDiagram({
                 m={10}
                 borderColor="orange.300"
                 visibility={
-                  clickCount > 0 || storedBranch1 ? "visible" : "hidden"
+                  topicBranch1 || storedBranch1 ? "visible" : "hidden"
                 }
               ></Textarea>
-              <Button w="100%" onClick={handleClick}>
-                <AddIcon ml="1rem" />
+              <Button w="10%" onClick={() => setTopicBranch1(true)}>
+                <Flex alignContent="center" justifyContent="center">
+                  <AddIcon />
+                </Flex>
               </Button>
             </Flex>
             <Flex
@@ -121,11 +125,13 @@ export default function SpiderDiagram({
                 m={10}
                 borderColor="orange.300"
                 visibility={
-                  clickCount > 1 || storedBranch2 ? "visible" : "hidden"
+                  topicBranch2 || storedBranch2 ? "visible" : "hidden"
                 }
               ></Textarea>
-              <Button w="100%" onClick={handleClick}>
-                <AddIcon ml="1rem" />
+              <Button w="10%" onClick={() => setTopicBranch2(true)}>
+                <Flex alignContent="center" justifyContent="center">
+                  <AddIcon />
+                </Flex>
               </Button>
               <Box
                 h="3rem"
@@ -134,13 +140,15 @@ export default function SpiderDiagram({
                 borderColor="black"
                 borderWidth="1.5px"
                 borderRadius="5px"
-                mb="1rem"
+                m="1rem"
                 textAlign="center"
               >
                 {question}
               </Box>
-              <Button w="100%" onClick={handleClick}>
-                <AddIcon ml="1rem" />
+              <Button w="10%" onClick={() => setTopicBranch3(true)}>
+                <Flex alignContent="center" justifyContent="center">
+                  <AddIcon />
+                </Flex>
               </Button>
               <Textarea
                 name="branch3"
@@ -149,13 +157,15 @@ export default function SpiderDiagram({
                 m={10}
                 borderColor="orange.300"
                 visibility={
-                  clickCount > 2 || storedBranch3 ? "visible" : "hidden"
+                  topicBranch3 || storedBranch3 ? "visible" : "hidden"
                 }
               ></Textarea>
             </Flex>
             <Flex justify="center" alignItems="center" direction="row">
-              <Button w="100%" onClick={handleClick}>
-                <AddIcon ml="1rem" />
+              <Button w="10%" onClick={() => setTopicBranch4(true)}>
+                <Flex alignContent="center" justifyContent="center">
+                  <AddIcon />
+                </Flex>
               </Button>
               <Textarea
                 name="branch4"
@@ -164,7 +174,7 @@ export default function SpiderDiagram({
                 m={10}
                 borderColor="orange.300"
                 visibility={
-                  clickCount > 3 || storedBranch4 ? "visible" : "hidden"
+                  topicBranch4 || storedBranch4 ? "visible" : "hidden"
                 }
               ></Textarea>
             </Flex>
