@@ -28,8 +28,14 @@ export const ButtonStyles = {
       _hover: {
         transform: "scale(1.02)",
       },
-      _focus: {
-        borderColor: "red",
+    }),
+    logout: (props) => ({
+      color: "black",
+      borderWidth: "3px",
+      borderColor: "primary",
+      bg: "lightGrey",
+      _hover: {
+        bg: mode(darken("lightGrey", 15), whiten("lightGrey", 20)),
       },
     }),
   },
