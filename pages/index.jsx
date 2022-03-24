@@ -24,12 +24,12 @@ export default function Home() {
           p={12}
           rounded={10}
         >
-          <Heading mb={10}>Exam Grade Boost</Heading>
+          <Heading mb={10}>Essay Boost</Heading>
           <Image
             height={200}
             width={100}
             src="/boost-logo.svg"
-            alt="exam grade boost rocket logo"
+            alt="essay boost logo"
           ></Image>
           <Link href="/login" passHref mb={6}>
             <Button className="button" colorScheme="yellow" mb={6}>

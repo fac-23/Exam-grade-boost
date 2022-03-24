@@ -10,6 +10,7 @@ export default async function log_in(req, res) {
       const cookies = new Cookies(req, res);
       //delete any existng cookie
       cookies.set("sid");
+      cookies.set("currEssay");
       res.redirect(303, "/");
       break;
     }
@@ -18,4 +19,3 @@ export default async function log_in(req, res) {
       break;
   }
 }
-
