@@ -53,6 +53,7 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function conclusion({
+  question,
   storedMain,
   storedEvidence,
   storedPriority,
@@ -64,7 +65,7 @@ export default function conclusion({
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex mt={5} direction="column" p={5} w="100%" h="10" colSpan={2}>
           <form method="POST" action="/api/save-conclusion">
-            <Heading>Conclusion</Heading>
+            <Heading>Conclusion: {question}</Heading>
             <Textarea
               name="main"
               placeholder="Main argument"
