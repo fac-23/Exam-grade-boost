@@ -38,7 +38,15 @@ export default function middleware(req) {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
-  if (!sid && url === "/body") {
+  if (!sid && url === "/body1") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/body2") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/body3") {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 

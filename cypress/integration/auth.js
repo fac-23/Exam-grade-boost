@@ -1,6 +1,6 @@
-// beforeEach(() => {
-//   cy.task("resetDb");
-// });
+beforeEach(() => {
+  cy.task("resetDb");
+});
 
 // use before instead of before each?
 
@@ -39,25 +39,20 @@ describe("Should allow the user to sign up, log in, log out and only access rout
     cy.visit("/home");
     cy.visit("/myprofile");
     cy.visit("/resources");
-    cy.visit("/spiderDiagram");
+    // cy.visit("/spiderDiagram");
     // cy.visit("/introduction");
-    cy.visit("/body");
-    cy.visit("/conclusion");
+    // cy.visit("/body1");
+    // cy.visit("/body2");
+    // cy.visit("/body3");
+    // cy.visit("/conclusion");
     // cy.visit("/essayOverview");
-    cy.visit("/finalEssay");
+    // cy.visit("/finalEssay");
 
     cy.visit("/home");
 
-    cy.get("button[id='logout']").click();
+    cy.get("button").contains("Log out").click();
     cy.url().should("eq", Cypress.config().baseUrl + "/");
   });
-
-  // it("Should allow the user to log out", () => {
-  //   cy.visit("/home");
-
-  //   cy.get("button[id='logout']").click();
-  //   cy.url().should("eq", Cypress.config().baseUrl + "/");
-  // });
 
   it("Should not allow a non-authenticated user to access protected pages", () => {
     cy.visit("/home");
@@ -75,7 +70,13 @@ describe("Should allow the user to sign up, log in, log out and only access rout
     cy.visit("/introduction");
     cy.get("h1").contains("Access denied");
 
-    cy.visit("/body");
+    cy.visit("/body1");
+    cy.get("h1").contains("Access denied");
+
+    cy.visit("/body2");
+    cy.get("h1").contains("Access denied");
+
+    cy.visit("/body3");
     cy.get("h1").contains("Access denied");
 
     cy.visit("/conclusion");
