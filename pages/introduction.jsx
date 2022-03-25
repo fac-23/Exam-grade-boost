@@ -116,7 +116,7 @@ export default function introduction({
 
           <Flex flexDirection="column" h="100%">
             <Heading as="h2" size="lg" w="100%" mb="2rem">
-              How to write your conclusion
+              How to write your Introduction
             </Heading>
             <Box color="black">
               <UnorderedList styleType="none" mb={5}>
