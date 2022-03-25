@@ -111,7 +111,7 @@ export default function introduction({
 
         <Container padding="5" maxW="2xl" bg="white.600" centerContent>
           <Heading w="100%" h="10" mb={4}>
-            How to write your conclusion
+            How to write your introduction
           </Heading>
           <Box color="black">
             <UnorderedList styleType="none" mb={5}>
