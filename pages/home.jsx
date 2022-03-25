@@ -66,9 +66,9 @@ export default function Home({ username, allEssays }) {
                 {allEssays.reverse().map((essay) => {
                   return (
                     <ListItem
-                      mb={"2rem"}
+                      mb="2rem"
                       w="100%"
-                      p={"1rem"}
+                      p="1rem"
                       borderColor="primary"
                       borderWidth="3px"
                       borderRadius="10px"
