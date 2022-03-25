@@ -56,13 +56,55 @@ Their feedback was:
 
 #### Are there any legal or regulatory requirements you should consider?
 
+Users will want their essays to remain private, product owner expressed interest in being able to delete essays to prevent malicious behaviours.
+
 ## Project learnings
+
+- Authentication.
+
+- End to end testing with Cypress.
+
+- Managing database CRUD operations.
+
+  - Supabase
+
+- Using external libraries:
+
+  - Chakra UI styling library.
+  - Docxtemplater library to export documents in MS DOC format.
+  - jsPDF library to export documents in PDF format.
+
+- Responsive design.
+
+- User research and prototype testing.
+
+- Figma wireframing.
+
+- Deployment on Vercel and managing environmental variables.
+
+- Liasing with product owner.
+
+- Documenting a project.
 
 #### Did your team work effectively?
 
+The team :
+
+- discussed project architecture during the design phase.
+- confirmed or challenged our own assumptions during user testing.
+- worked together on core features and split into role specific tasks, getting continuous feedback from the product owner.
+
 #### What would you do differently next time?
 
+Invest more time into researching the Chakra UI library, it proved itself very useful and well documented but at the same time it has been a slight learning curve, especially since we had a limited amount of time to produce an MVP.
+
 ## Research and findings
+
+the user research phase brought up key aspects of the app we should focus on, very relevant to the target user, like:
+
+- Theme Toggle Switch to offer alternative colours.
+- Accordion component to serve resorces alongside essey writing section.
+- Mobile-first, responsive, accessible design.
 
 #### What did you find out from user testing?
 
