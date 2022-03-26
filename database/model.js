@@ -55,6 +55,44 @@ export function getSessionInfo(sid) {
     .catch((error) => console.log(error));
 }
 
+export function storeResetToken(email, token) {
+  const STORE_TOKEN = `
+  INSERT INTO resetrecord (email, token) VALUES ($1,$2)
+  `;
+  return db
+    .query(STORE_TOKEN, [email, token])
+    .catch((error) => console.log(error));
+}
+
+export function retrieveResetToken(email) {
+  const RESET_TOKEN = `
+  SELECT token FROM resetrecord WHERE email = $1`;
+  return db
+    .query(RESET_TOKEN, [email])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((error) => console.log(error));
+}
+
+export function clearResetTokens() {
+  const CLEAR_TOKENS = `DELETE from resetrecord`;
+  return db.query(CLEAR_TOKENS).then((result) => {
+    return result.rows[0];
+  });
+}
+
+export function updatePassword(hashedPassword, email) {
+  const UPDATE_PASSWORD = `UPDATE users SET password = $1 WHERE email = $2 RETURNING id`;
+  return db
+    .query(UPDATE_PASSWORD, [hashedPassword, email])
+    .then(() => {
+      console.log("password updated");
+      return true;
+    })
+    .catch((error) => console.log(error));
+}
+
 export function createNewEssay(user_id, question) {
   const INSERT_ESSAY = `INSERT INTO essays (user_id, question) VALUES ($1, $2) RETURNING id`;
   return db.query(INSERT_ESSAY, [user_id, question]).then((result) => {

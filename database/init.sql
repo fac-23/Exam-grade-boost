@@ -29,6 +29,11 @@ CREATE TABLE sessions (
   data TEXT
 );
 
+CREATE TABLE resetRecord (
+  id SERIAL PRIMARY KEY,
+  email TEXT UNIQUE,
+  token TEXT
+)
 
 
 INSERT INTO users (username, email, password, avatar) VALUES 
