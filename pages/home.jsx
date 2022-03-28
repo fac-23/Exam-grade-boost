@@ -5,9 +5,12 @@ import {
 } from "../database/model";
 // import Link from "next/link";
 
+import { useState } from "react";
+
 import {
   Button,
   Flex,
+  Stack,
   Heading,
   Box,
   Link,
@@ -17,7 +20,8 @@ import {
   useColorModeValue,
   useColorMode,
   Avatar,
-  Grid,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
@@ -41,6 +45,7 @@ export async function getServerSideProps({ req }) {
 
 export default function Home({ username, allEssays }) {
   const modeColors = useColorModeValue("primary", "secondary");
+
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -131,7 +136,8 @@ export default function Home({ username, allEssays }) {
               borderWidth="3px"
               borderRadius="10px"
               h="100%"
-              justifyContent="center"
+              alignItems="center"
+              direction="column"
             >
               <Avatar
                 bg={modeColors}
@@ -139,7 +145,14 @@ export default function Home({ username, allEssays }) {
                 w="100%"
                 maxWidth="100px"
                 alt="Default user"
+                mb="2rem"
               />
+              <RadioGroup defaultValue="light" onChange={toggleColorMode}>
+                <Stack spacing={5} direction="column">
+                  <Radio value="light">Light Mode</Radio>
+                  <Radio value="dark">Dark Mode</Radio>
+                </Stack>
+              </RadioGroup>
             </Flex>
           </Flex>
         </Flex>

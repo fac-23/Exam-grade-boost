@@ -7,7 +7,7 @@ import { LinkStyles as Link } from "./components/LinkStyles";
 const styles = {
   global: (props) => ({
     body: {
-      color: mode("gray.800", "whiteAlpha.900")(props),
+      color: mode("gray.800", "white")(props),
       bg: mode("white", "#1A1F2C")(props),
     },
   }),
@@ -20,7 +20,8 @@ export const myNewTheme = extendTheme({
     primaryLight: "#84AEED",
     primary: "#4182E3",
     secondaryLight: "#cbbcff",
-    secondary: "#8D6BFF",
+    // secondary: "#8D6BFF", // not enough contrast
+    secondary: "#5633D3",
     green: "#0EA958",
     lightGrey: "#EDF2F7",
   },

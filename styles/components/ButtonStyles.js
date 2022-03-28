@@ -22,7 +22,7 @@ export const ButtonStyles = {
       },
     }),
     newEssay: (props) => ({
-      color: mode("green", whiten("secondary", 15))(props),
+      color: mode("green", "white")(props),
       borderWidth: "3px",
       borderRadius: "10px",
       borderColor: mode("green", whiten("secondary", 15))(props),
