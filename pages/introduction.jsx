@@ -67,8 +67,8 @@ export default function introduction({
           Introduction: {question}
         </Heading>
 
-        <SimpleGrid columns={[null, 1, 2]} spacing="40px">
-          <Flex direction="column" p={5} w="100%" h="100%" colSpan={2}>
+        <SimpleGrid columns={[null, 1, 2]} spacing="4rem">
+          <Flex direction="column" w="100%" h="100%" colSpan={2}>
             <form method="POST" action="/api/save-introduction">
               <Textarea
                 name="summary"
@@ -111,7 +111,7 @@ export default function introduction({
               How to write your Introduction
             </Heading>
             <Box color="black">
-              <UnorderedList styleType="none" mb={5}>
+              <UnorderedList styleType="none" m="0 0 1.5rem 0">
                 <ListItem p={2} background="gray.100">
                   <strong>Summary</strong> - in this area you give a summary of
                   your overall assignment.

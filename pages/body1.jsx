@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Grid, Container, Button } from "@chakra-ui/react";
+import { Flex, SimpleGrid, Container, Button, Heading } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
 import BodySidebar from "../components/BodySidebar";
@@ -74,5 +74,6 @@ export default function Body1({
         </Container>
       </Grid>
     </Layout>
+
   );
 }
