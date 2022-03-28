@@ -111,6 +111,65 @@ export default function BodySidebar() {
             <VideoComponent />
           </AccordionPanel>
         </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Word bank
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel p="1rem 0 1rem 0">
+            <UnorderedList styleType="none" m="0 0 1.5rem 0">
+              <ListItem p="1rem" background="gray.100">
+                <strong>Point</strong>
+                <p>There are different views on...</p>
+                <p>The relationship between... and... is uncertain.</p>
+                <p>Attitudes to... are mixed</p>
+                <p>The relationship between... and... is often debated.</p>
+                <p>The level of significance...</p>
+              </ListItem>
+              <ListItem p="1rem" background="blue.100">
+                <strong>Identify</strong>
+                <p>For example...</p>
+                <p>For instance...</p>
+                <p>Research presented by... showed...</p>
+                <p>A key reason for...</p>
+                <p>The following quotation is relevant...</p>
+              </ListItem>
+              <ListItem p="1rem" background="yellow.100">
+                <strong>Outline</strong>
+                <p>A key feature is...</p>
+                <p>A part of the... is...</p>
+                <p>An important section of... was...</p>
+                <p>A significant part is...</p>
+              </ListItem>
+              <ListItem p="1rem" background="orange.200">
+                <strong>Evidence 1</strong>
+                <p>Research has focused on around key topics...</p>
+                <p>
+                  To provide some resolution to the discussion, the following
+                  areas will be investigated….
+                </p>
+                <p>Several areas will be considered... </p>
+              </ListItem>
+              <ListItem p="1rem" background="orange.300">
+                <strong>Evidence 2</strong>
+                <p>The evidence is mixed...</p>
+                <p>Not everyone agrees...</p>
+                <p>There are, however, different views...</p>
+              </ListItem>
+              <ListItem p="1rem" background="purple.200">
+                <strong>Relate</strong>
+                <p>Overall, the evidence mostly supports...</p>
+                <p>The general trend was...</p>
+                <p>It has been shown that...</p>
+              </ListItem>
+            </UnorderedList>
+          </AccordionPanel>
+        </AccordionItem>
       </Accordion>
     </>
   );
