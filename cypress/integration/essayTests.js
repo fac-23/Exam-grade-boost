@@ -13,9 +13,9 @@ describe("It should allow the user to write sections of the essay and revisit it
     cy.getCookie("sid").should("exist");
 
     // enter the essay question and checking it is rendered on the next page
-    cy.get("button").contains("Create new Essay").click();
+    cy.get("a").contains("Create new Essay").click();
     cy.get("input[name='question']").type("My question");
     cy.get("button").contains("Save and continue").click();
-    cy.get("h2").should("contain", "My question");
+    cy.get("h1").should("contain", "My question");
   });
 });
