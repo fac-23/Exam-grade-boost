@@ -19,6 +19,8 @@ export default function middleware(req) {
     "/myprofile",
     "/essayOverview",
     "/resources",
+    "/videos",
+    "/wordBank",
     "/introduction",
     "/spiderDiagram",
     "/body1",
