@@ -1,17 +1,11 @@
 import React from "react";
 
-import {
-  Flex,
-  Textarea,
-  Heading,
-  Grid,
-  Container,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Heading, Container, Button, FormLabel } from "@chakra-ui/react";
 
+import { EditIcon } from "@chakra-ui/icons";
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
+import Layout from "../components/Layout.jsx";
 
 // import jsPDF
 import { jsPDF } from "jspdf";
@@ -154,7 +148,7 @@ export default function FinalEssay({
   // ***********************************************/
 
   return (
-    <>
+    <Layout>
       <Navigation />
       <Container>
         <Heading as="h1" mb="4rem">
@@ -182,9 +176,23 @@ export default function FinalEssay({
             <Button variant="secondary" onClick={downloadPDF}>
               Export to PDF
             </Button>
+            <form method="GET" action="/essayOverview" passHref>
+              <Button type="submit">
+                <Flex
+                  direction="column"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <EditIcon />
+                  <FormLabel m={0} textAlign="center">
+                    Edit
+                  </FormLabel>
+                </Flex>
+              </Button>
+            </form>
           </Flex>
         </form>
       </Container>
-    </>
+    </Layout>
   );
 }
