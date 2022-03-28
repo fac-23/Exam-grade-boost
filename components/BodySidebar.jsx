@@ -15,10 +15,10 @@ import VideoComponent from "./VideoComponent";
 export default function BodySidebar() {
   return (
     <>
-      <Heading w="100%" h="10" mb={4}>
+      <Heading as="h2" size="lg" w="100%" mb="2rem">
         How to write your main body
       </Heading>
-      <UnorderedList styleType="none" mb={5}>
+      <UnorderedList styleType="none" m="0 0 1.5rem 0">
         <ListItem p={2} background="gray.100">
           <strong>Point</strong> - The paragraph focus, sometimes called ‘the
           topic sentence’.
@@ -54,7 +54,7 @@ export default function BodySidebar() {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel p="1rem 0 1rem 0">
             <Text as="mark" backgroundColor="gray.100">
               The Evolutionary Theory of Attachment takes the view that many
               behaviours in this area are innate – they are hard wired in the
@@ -107,7 +107,7 @@ export default function BodySidebar() {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel p="1rem 0 1rem 0">
             <VideoComponent />
           </AccordionPanel>
         </AccordionItem>
