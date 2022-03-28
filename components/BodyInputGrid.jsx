@@ -11,7 +11,6 @@ export default function BodyInputGrid({
 }) {
   return (
     <>
-      <Heading mt={10}>Body paragraph: {question}</Heading>
       <Textarea
         name="point"
         placeholder="Point"
