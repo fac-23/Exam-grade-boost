@@ -52,28 +52,31 @@ export default function Body1({
   storedRelate,
 }) {
   return (
-    <Layout>
-      <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
-        <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <form method="POST" action="/api/save-body1">
-            <BodyInputGrid
-              question={question}
-              storedPoint={storedPoint}
-              storedIdentify={storedIdentify}
-              storedOutline={storedOutline}
-              storedExplain1={storedExplain1}
-              storedExplain2={storedExplain2}
-              storedRelate={storedRelate}
-            ></BodyInputGrid>
-            <Button type="submit">Save and continue</Button>
-          </form>
-        </Flex>
-
-        <Container padding="5" maxW="2xl" bg="white.600" centerContent>
-          <BodySidebar></BodySidebar>
-        </Container>
-      </Grid>
+      <Layout>
+      <Container>
+        <Heading as="h1" mb="2rem">
+          Body paragraph: {question}
+        </Heading>
+        <SimpleGrid columns={[null, 1, 2]} spacing="4rem">
+          <Flex direction="column" w="100%" h="100%" colSpan={2}>
+            <form method="POST" action="/api/save-body1">
+              <BodyInputGrid
+                question={question}
+                storedPoint={storedPoint}
+                storedIdentify={storedIdentify}
+                storedOutline={storedOutline}
+                storedExplain1={storedExplain1}
+                storedExplain2={storedExplain2}
+                storedRelate={storedRelate}
+              ></BodyInputGrid>
+              <Button type="submit">Save and continue</Button>
+            </form>
+          </Flex>
+          <Flex flexDirection="column" h="100%">
+            <BodySidebar></BodySidebar>
+          </Flex>
+        </SimpleGrid>
+      </Container>
     </Layout>
-
   );
 }
