@@ -4,8 +4,6 @@ import {
   getAllEssays,
 } from "../database/model";
 
-import { useState } from "react";
-
 import {
   Button,
   Flex,
