@@ -1,17 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import {
-  Flex,
-  Textarea,
-  Heading,
-  Button,
-  Box,
-  UseControllableStateProp,
-  useControllableState,
-} from "@chakra-ui/react";
+import { Flex, Textarea, Heading, Button, Box } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
-import Navigation from "../components/Navigation";
+import Layout from "../components/Layout.jsx";
 import { getEssayInfo } from "../database/model.js";
 
 export async function getServerSideProps({ req }) {
@@ -60,8 +52,7 @@ export default function SpiderDiagram({
   const [topicBranch4, setTopicBranch4] = useState(false);
 
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Heading mt="5rem">Spider diagram for {question}</Heading>
       <Flex
         justify="center"
@@ -162,6 +153,6 @@ export default function SpiderDiagram({
           </Flex>
         </form>
       </Flex>
-    </>
+    </Layout>
   );
 }

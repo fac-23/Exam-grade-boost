@@ -17,9 +17,10 @@ import {
   AccordionIcon,
   SimpleGrid,
 } from "@chakra-ui/react";
-import Navigation from "../components/Navigation";
+
 import { getEssayInfo } from "../database/model.js";
 import VideoComponent from "../components/VideoComponent";
+import Layout from "../components/Layout";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -61,8 +62,7 @@ export default function Conclusion({
   storedRelate,
 }) {
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container centerContent>
         <Heading as="h1" mb="2rem">
           Conclusion: {question}
@@ -187,6 +187,6 @@ export default function Conclusion({
           </Flex>
         </SimpleGrid>
       </Container>
-    </>
+    </Layout>
   );
 }

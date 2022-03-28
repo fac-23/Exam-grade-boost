@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import Layout from "../components/Layout";
 
 export default function Unauthorised() {
   return (
-    <div>
+    <Layout noNav>
       <h1>Access denied 🚨</h1>
       <p>
         <Link href="/">
@@ -15,6 +16,6 @@ export default function Unauthorised() {
         </Link>
         to access this page!
       </p>
-    </div>
+    </Layout>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Flex, Heading, Container, Link, Text } from "@chakra-ui/react";
-import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 import { ViewIcon } from "@chakra-ui/icons";
 import Image from "next/image";
+import Layout from "../components/Layout.jsx";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -19,8 +19,7 @@ export async function getServerSideProps({ req }) {
 
 export default function EssayOverview({ question }) {
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container>
         <Heading as="h1" mb="2rem">
           Essay overview: {question}
@@ -53,7 +52,7 @@ export default function EssayOverview({ question }) {
               <Button width="100%" p="2rem 0">
                 <Image
                   src="/body.svg"
-                  alt="intro icon"
+                  alt="body section icon"
                   height={30}
                   width={30}
                 ></Image>
@@ -64,7 +63,7 @@ export default function EssayOverview({ question }) {
               <Button width="100%" p="2rem 0">
                 <Image
                   src="/body.svg"
-                  alt="intro icon"
+                  alt="body section icon"
                   height={30}
                   width={30}
                 ></Image>
@@ -76,7 +75,7 @@ export default function EssayOverview({ question }) {
               <Button width="100%" p="2rem 0">
                 <Image
                   src="/body.svg"
-                  alt="intro icon"
+                  alt="body section icon"
                   height={30}
                   width={30}
                 ></Image>
@@ -103,6 +102,6 @@ export default function EssayOverview({ question }) {
           </Flex>
         </form>
       </Container>
-    </>
+    </Layout>
   );
 }

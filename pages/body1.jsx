@@ -1,10 +1,10 @@
 import React from "react";
 import { Flex, Grid, Container, Button } from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 import BodySidebar from "../components/BodySidebar";
 import BodyInputGrid from "../components/BodyInputGrid";
+import Layout from "../components/Layout";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -52,8 +52,7 @@ export default function Body1({
   storedRelate,
 }) {
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
         <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
           <form method="POST" action="/api/save-body1">
@@ -74,6 +73,6 @@ export default function Body1({
           <BodySidebar></BodySidebar>
         </Container>
       </Grid>
-    </>
+    </Layout>
   );
 }

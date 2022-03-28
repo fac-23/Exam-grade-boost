@@ -3,7 +3,6 @@ import {
   Flex,
   Textarea,
   Heading,
-  Grid,
   Container,
   Box,
   Button,
@@ -18,19 +17,13 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
 import VideoComponent from "../components/VideoComponent.jsx";
+import Layout from "../components/Layout.jsx";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
-  // const essayInfo = await getEssayInfo(essayId);
-
-  // hardcoded example passing 2 as essayID
   const essayInfo = await getEssayInfo(essayId);
-
-  // console.log(essayId);
-  console.log(essayInfo);
 
   const storedIntro = essayInfo.introduction;
   const question = essayInfo.question;
@@ -68,8 +61,7 @@ export default function introduction({
   storedKey,
 }) {
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container centerContent>
         <Heading as="h1" mb="2rem">
           Introduction: {question}
@@ -191,6 +183,6 @@ export default function introduction({
           </Flex>
         </SimpleGrid>
       </Container>
-    </>
+    </Layout>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import Layout from "../components/Layout";
 
 export default function Rewards() {
   return (
-    <div>
+    <Layout>
       <h1>
         Sign up error, there may be an account already registered with this
         email!🚨
@@ -11,6 +12,6 @@ export default function Rewards() {
       <Link href={"/signup"}>
         <a>Return to sign up</a>
       </Link>
-    </div>
+    </Layout>
   );
 }

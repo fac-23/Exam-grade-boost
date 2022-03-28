@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Layout from "../components/Layout";
 
 // import chakra UI components
 import { Button, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
@@ -8,7 +9,7 @@ export default function Home() {
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   return (
-    <>
+    <Layout noNav>
       <Flex height="100vh" alignItems="center" justifyContent="center">
         <Flex
           direction="column"
@@ -35,6 +36,6 @@ export default function Home() {
           </Link>
         </Flex>
       </Flex>
-    </>
+    </Layout>
   );
 }
