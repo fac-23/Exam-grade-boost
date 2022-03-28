@@ -24,7 +24,7 @@ export default async function sign_up(req, res) {
         }
       );
 
-      console.log({ user });
+      // console.log({ user });
 
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });

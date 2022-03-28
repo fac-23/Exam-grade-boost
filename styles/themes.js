@@ -1,6 +1,17 @@
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 import { ButtonStyles as Button } from "./components/ButtonStyles";
+import { LinkStyles as Link } from "./components/LinkStyles";
+
+const styles = {
+  global: (props) => ({
+    body: {
+      color: mode("gray.800", "whiteAlpha.900")(props),
+      bg: mode("white", "#1A1F2C")(props),
+    },
+  }),
+};
 
 // this is an object, we can add the different things that we want to add to our custom theme
 export const myNewTheme = extendTheme({
@@ -8,11 +19,15 @@ export const myNewTheme = extendTheme({
   colors: {
     primaryLight: "#84AEED",
     primary: "#4182E3",
+    secondaryLight: "#cbbcff",
     secondary: "#8D6BFF",
     green: "#0EA958",
     lightGrey: "#EDF2F7",
   },
+  styles,
+  // components,
   components: {
+    Link,
     Button,
   },
 });
