@@ -22,7 +22,7 @@ export default function Videos() {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             ></iframe>{" "}
-            <Heading as="h2" size="sm" p="5px 0 0 15px">
+            <Heading as="h2" size="sm" textAlign="center" pt="5px">
               Arcade fire
             </Heading>
           </Box>
@@ -35,7 +35,7 @@ export default function Videos() {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             ></iframe>{" "}
-            <Heading as="h2" size="sm" p="5px 0 0 15px">
+            <Heading as="h2" size="sm" textAlign="center" pt="5px">
               Arcade fire
             </Heading>
           </Box>{" "}
@@ -48,7 +48,7 @@ export default function Videos() {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             ></iframe>{" "}
-            <Heading as="h2" size="sm" p="5px 0 0 15px">
+            <Heading as="h2" size="sm" textAlign="center" pt="5px">
               Arcade fire
             </Heading>
           </Box>{" "}
@@ -61,7 +61,7 @@ export default function Videos() {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             ></iframe>{" "}
-            <Heading as="h2" size="sm" p="5px 0 0 15px">
+            <Heading as="h2" size="sm" textAlign="center" pt="5px">
               Arcade fire
             </Heading>
           </Box>

@@ -21,15 +21,6 @@ export const ButtonStyles = {
         bg: mode(darken("secondary", 15), whiten("secondary", 15))(props),
       },
     }),
-    newEssay: (props) => ({
-      color: mode("green", "white")(props),
-      borderWidth: "3px",
-      borderRadius: "10px",
-      borderColor: mode("green", whiten("secondary", 15))(props),
-      _hover: {
-        transform: "scale(1.02)",
-      },
-    }),
     logout: (props) => ({
       color: "black",
       bg: "lightGrey",
