@@ -157,11 +157,11 @@ export default function FinalEssay({
     <>
       <Navigation />
       <Container>
-        <Heading as="h1" mb="2rem">
+        <Heading as="h1" mb="4rem">
           {question}
         </Heading>
         <form>
-          <Flex direction="column" p={10}>
+          <Flex direction="column" mb="2.5rem">
             <section className="essay-overview">
               <b>Introduction:</b>
               <p>{introduction}</p>

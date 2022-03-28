@@ -3,19 +3,21 @@ import {
   getContactInfo,
   getAllEssays,
 } from "../database/model";
-import Link from "next/link";
+// import Link from "next/link";
 
 import {
   Button,
   Flex,
   Heading,
-  useColorModeValue,
   Box,
-  Text,
+  Link,
   UnorderedList,
   ListItem,
-  Image,
   Container,
+  useColorModeValue,
+  useColorMode,
+  Avatar,
+  Grid,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
@@ -38,26 +40,26 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function Home({ username, allEssays }) {
-  const boxBorder = useColorModeValue("gray.100", "gray.700");
+  const modeColors = useColorModeValue("primary", "secondary");
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
       <Navigation />
       <Container>
-        <Flex alignItems="flex-start" justifyContent="center" direction="row">
-          <Flex mr={20} direction="column">
-            <Heading as="h1" mb="2rem">
-              Welcome back {username}
-            </Heading>
-
-            <Link href="/newEssay" passHref>
-              <Button variant="tertiary" mb="2rem">
-                {" "}
-                Create new Essay
-              </Button>
-            </Link>
-
+        <Flex gap="40px" direction={["column", "column", "row"]}>
+          <Flex direction="column">
             <Box>
+              <Heading as="h1" mb="2rem">
+                Welcome back {username}
+              </Heading>
+
+              <Link href="/newEssay" passHref>
+                <Button variant="newEssay" mb="2rem" width="100%">
+                  Create new Essay
+                </Button>
+              </Link>
+
               <Heading as="h2" mb="2rem">
                 Completed Essays
               </Heading>
@@ -69,12 +71,16 @@ export default function Home({ username, allEssays }) {
                       mb="2rem"
                       w="100%"
                       p="1rem"
-                      borderColor="primary"
+                      borderColor={modeColors}
                       borderWidth="3px"
                       borderRadius="10px"
                       key={essay.id}
                     >
-                      <Flex justifyContent="space-between" alignItems="center">
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="center"
+                        gap="1rem"
+                      >
                         <Heading as="h3" size="sm" fontWeight="800">
                           {essay.question}
                         </Heading>
@@ -109,30 +115,32 @@ export default function Home({ username, allEssays }) {
           </Flex>
 
           <Flex
-            w="20%"
+            flexBasis="500px"
             alignItems="center"
             justifyContent="center"
             direction="column"
           >
-            <Heading as="h2" mb="2rem">
+            <Heading as="h2" mb="2rem" alignSelf="flex-start">
               Profile
             </Heading>
-            <Box
+            <Flex
               mb={"2rem"}
               w="100%"
               p={"1rem"}
-              borderColor="primary"
+              borderColor={modeColors}
               borderWidth="3px"
               borderRadius="10px"
               h="100%"
+              justifyContent="center"
             >
-              <Image
-                rounded="full"
-                size="50px"
-                src="https://bit.ly/sage-adebayo"
-                alt="Segun Adebayo"
+              <Avatar
+                bg={modeColors}
+                h="100px"
+                w="100%"
+                maxWidth="100px"
+                alt="Default user"
               />
-            </Box>
+            </Flex>
           </Flex>
         </Flex>
       </Container>

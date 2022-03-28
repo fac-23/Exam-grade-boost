@@ -2,15 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 // import chakra UI components
-import {
-  Button,
-  Flex,
-  Heading,
-  Input,
-  FormLabel,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
 
 export default function Home() {
   const formBackground = useColorModeValue("gray.100", "gray.700");
