@@ -30,21 +30,22 @@ export default function Navigation() {
       <Container mt={0}>
         <Flex justifyContent="flex-end">
           <Flex gap="2rem" alignItems="center">
-            <ul style={{ listStyleType: "none", fontWeight: "700" }}>
-              <Flex gap="2rem">
-                <li>
-                  <Link variant="navigation" href="/home">
-                    <a>Home</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link variant="navigation" href="/resources">
-                    <a>Resources</a>
-                  </Link>
-                </li>
-              </Flex>
-            </ul>
-            <Switch />
+            <Flex
+              as="ul"
+              gap="2rem"
+              style={{ listStyleType: "none", fontWeight: "700" }}
+            >
+              <li>
+                <Link variant="navigation" href="/home">
+                  <a>Home</a>
+                </Link>
+              </li>
+              <li>
+                <Link variant="navigation" href="/resources">
+                  <a>Resources</a>
+                </Link>
+              </li>
+            </Flex>
             <form method="POST" action="/api/log-out">
               <Button variant="logout" type="submit" size="sm">
                 Log out
