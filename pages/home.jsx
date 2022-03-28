@@ -48,7 +48,7 @@ export default function Home({ username, allEssays }) {
     <Layout>
       <Container>
         <Flex gap="40px" direction={["column", "column", "row"]}>
-          <Flex direction="column">
+          <Flex direction="column" width="100%">
             <Box>
               <Heading as="h1" mb="2rem">
                 Welcome back {username}
