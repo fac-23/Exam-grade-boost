@@ -11,7 +11,7 @@ export default function DarkModeSwitch() {
       colorScheme="secondary"
       isChecked={isDark}
       onChange={toggleColorMode}
-      size="lg"
+      size="md"
     />
   );
 }

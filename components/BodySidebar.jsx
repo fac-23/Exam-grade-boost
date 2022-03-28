@@ -18,7 +18,7 @@ export default function BodySidebar() {
       <Heading as="h2" size="lg" w="100%" mb="2rem">
         How to write your main body
       </Heading>
-      <UnorderedList styleType="none" m="0 0 1.5rem 0">
+      <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
         <ListItem p={2} background="gray.100">
           <strong>Point</strong> - The paragraph focus, sometimes called ‘the
           topic sentence’.

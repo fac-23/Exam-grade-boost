@@ -10,6 +10,9 @@ const styles = {
       color: mode("gray.800", "white")(props),
       bg: mode("white", "#1A1F2C")(props),
     },
+    _placeholder: {
+      color: mode("gray.800", "#9b9b9b")(props),
+    },
   }),
 };
 

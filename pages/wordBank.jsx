@@ -36,7 +36,7 @@ export default function WordBank() {
               </AccordionButton>
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
-              <UnorderedList styleType="none" m="0 0 1.5rem 0">
+              <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
                 <ListItem p="1rem" background="gray.100">
                   <strong>Summary</strong>
                   <p>This assignment discusses………</p>
@@ -80,7 +80,7 @@ export default function WordBank() {
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  Video Tutorial
+                  Other Section
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
