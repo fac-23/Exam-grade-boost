@@ -1,10 +1,10 @@
 import React from "react";
 import { Flex, SimpleGrid, Container, Button, Heading } from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 import BodySidebar from "../components/BodySidebar";
 import BodyInputGrid from "../components/BodyInputGrid";
+import Layout from "../components/Layout.jsx";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -52,8 +52,7 @@ export default function Body3({
   storedRelate,
 }) {
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container>
         <Heading as="h1" mb="2rem">
           Body paragraph: {question}
@@ -79,6 +78,6 @@ export default function Body3({
           </Flex>
         </SimpleGrid>
       </Container>
-    </>
+    </Layout>
   );
 }

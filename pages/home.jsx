@@ -3,7 +3,6 @@ import {
   getContactInfo,
   getAllEssays,
 } from "../database/model";
-// import Link from "next/link";
 
 import { useState } from "react";
 
@@ -25,8 +24,7 @@ import {
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
-
-import Navigation from "../components/Navigation.jsx";
+import Layout from "../components/Layout";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -49,8 +47,7 @@ export default function Home({ username, allEssays }) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container>
         <Flex gap="40px" direction={["column", "column", "row"]}>
           <Flex direction="column">
@@ -157,6 +154,6 @@ export default function Home({ username, allEssays }) {
           </Flex>
         </Flex>
       </Container>
-    </>
+    </Layout>
   );
 }
