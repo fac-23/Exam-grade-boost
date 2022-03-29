@@ -100,6 +100,16 @@ export function createNewEssay(user_id, question) {
   });
 }
 
+export function renameEssay(question, user_id) {
+  const RENAME_ESSAY = `UPDATE essays SET question = $1 WHERE user_id = $2 RETURNING id`;
+  return db
+    .query(RENAME_ESSAY, [question, user_id])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((error) => console.log(error));
+}
+
 export function getEssayInfo(essayId) {
   const GET_ESSAY = `SELECT * FROM essays WHERE id = $1`;
   return db.query(GET_ESSAY, [essayId]).then((result) => {

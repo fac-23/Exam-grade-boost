@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Flex,
@@ -7,11 +7,13 @@ import {
   Link,
   Text,
   useColorMode,
+  Textarea,
 } from "@chakra-ui/react";
 import { getEssayInfo } from "../database/model.js";
 import { ViewIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import Layout from "../components/Layout.jsx";
+import { EditIcon } from "@chakra-ui/icons";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -27,13 +29,32 @@ export async function getServerSideProps({ req }) {
 
 export default function EssayOverview({ question }) {
   const { colorMode, toggleColorMode } = useColorMode();
+  const [showTitleEdit, setTitleEdit] = useState(false);
 
   return (
     <Layout>
       <Container>
-        <Heading as="h1" mb="2rem">
-          Essay overview: {question}
-        </Heading>
+        {!showTitleEdit ? (
+          <Heading as="h1" mb="2rem">
+            Essay overview: {question}
+          </Heading>
+        ) : (
+          <form method="POST" action="api/rename-title">
+            <Textarea
+              name="question"
+              defaultValue={question ? question : ""}
+              borderWidth="1.5px"
+              mb={2}
+            ></Textarea>
+            <Button mb={2} type="submit">
+              Save and continue
+            </Button>
+          </form>
+        )}
+        <Button onClick={() => setTitleEdit(true)}>
+          <Text mr="10px">Edit title</Text>
+          <EditIcon />
+        </Button>
         <form>
           <Flex mt={4} direction="column" gap="1.5rem">
             <Link href="/spiderDiagram" passHref>
