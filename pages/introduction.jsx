@@ -16,6 +16,8 @@ import {
   AccordionIcon,
   SimpleGrid,
   useColorModeValue,
+  Collapse,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
@@ -77,6 +79,7 @@ export default function Introduction({
   storedBranch4,
 }) {
   const labelModeColour = useColorModeValue("black", "white");
+  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Layout>
@@ -88,14 +91,50 @@ export default function Introduction({
         <SimpleGrid columns={[null, 1, 2]} spacing="4rem">
           <Flex direction="column" w="100%" h="100%" colSpan={2}>
             <form method="POST" action="/api/save-introduction">
-              <Textarea
-                name="summary"
-                placeholder="summary"
-                defaultValue={storedSummary ? storedSummary : ""}
-                borderColor="black.300"
-                borderWidth="1.5px"
-                mb="1rem"
-              ></Textarea>
+              <Flex>
+                <Textarea
+                  name="summary"
+                  placeholder="summary"
+                  defaultValue={storedSummary ? storedSummary : ""}
+                  borderColor="black.300"
+                  borderWidth="1.5px"
+                  mb="1rem"
+                ></Textarea>
+                <Button
+                  p="2"
+                  m="2"
+                  onClick={onToggle}
+                  fontSize="sm"
+                  fontWeight="medium"
+                >
+                  suggest
+                </Button>
+              </Flex>
+              <Collapse in={isOpen} animateOpacity>
+                <Box
+                  p="10px"
+                  color="black"
+                  mt="1"
+                  mb="2"
+                  bg="gray.100"
+                  rounded="md"
+                  shadow="md"
+                >
+                  <section p="1rem" background="gray.100">
+                    <strong>Summary</strong>
+                    <p>This assignment discusses...</p>
+                    <p>
+                      If a solution to the issue of...could be found it would
+                      bring many benefits...
+                    </p>
+                    <p>Discussion exists around the topic of...</p>
+                    <p>
+                      In the last 30 years, many researchers have
+                      investigated...
+                    </p>
+                  </section>
+                </Box>
+              </Collapse>
               <Textarea
                 name="main"
                 placeholder="main argument"
