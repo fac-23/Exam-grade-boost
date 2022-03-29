@@ -55,16 +55,6 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  console.log(
-    question,
-    spider_1,
-    introduction,
-    body_1,
-    body_2,
-    body_3,
-    conclusion
-  );
-
   return {
     props: {
       question,
@@ -100,10 +90,21 @@ export default function FinalEssay({
 
   // set the document text to be the content of the finalEssayCopy variable
   doc.setFontSize(14);
-  doc.text(finalEssayCopy, 10, 10, { maxWidth: 180 });
 
   // callback function to pass onClick event on export to PDF button
   function downloadPDF() {
+    //calculate aproximate number of pages by dividing chars by 3400
+    const pageNum = finalEssayCopy.length / 3400;
+
+    //create a loop and populate each page with a page length 'chunk' of text
+    for (let i = 0, z = 0; i < pageNum; i++, z += 3400) {
+      const chunk = finalEssayCopy.slice(z, z + 3400);
+      if (i !== 0) {
+        doc.addPage();
+      }
+      doc.text(chunk, 10, 10, { maxWidth: 180 });
+      doc.setPage(i);
+    }
     // set the file name to be the question and download the file
     doc.save(`${question.split(",")}`);
   }
