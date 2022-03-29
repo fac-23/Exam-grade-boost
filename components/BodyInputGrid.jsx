@@ -1,7 +1,6 @@
 import { Textarea, Heading } from "@chakra-ui/react";
 
 export default function BodyInputGrid({
-  question,
   storedPoint,
   storedIdentify,
   storedOutline,
@@ -55,7 +54,7 @@ export default function BodyInputGrid({
         name="relate"
         placeholder="Relate"
         defaultValue={storedRelate ? storedRelate : ""}
-        borderColor="purple.300"
+        borderColor="purple.200"
         borderWidth="1.5px"
         mb={5}
       ></Textarea>
