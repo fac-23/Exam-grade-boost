@@ -20,7 +20,7 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 
-import { EditIcon, ViewIcon } from "@chakra-ui/icons";
+import { EditIcon, ViewIcon, DeleteIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
 import Switch from "../components/DarkModeSwitch";
 
@@ -90,24 +90,40 @@ export default function Home({ username, allEssays }) {
                           {essay.question}
                         </Heading>
                         <Flex gap="1rem" direction={["column", "row"]}>
+                          <form
+                            method="POST"
+                            action="/api/delete-essay"
+                            passHref
+                          >
+                            <input
+                              type="hidden"
+                              name="essayId"
+                              value={essay.id}
+                            ></input>
+                            <Button type="submit" size="sm">
+                              <Text mr="10px">Delete</Text>
+                              <DeleteIcon />
+                            </Button>
+                          </form>
                           <form method="POST" action="/api/editSaved" passHref>
                             <input
                               type="hidden"
                               name="essayId"
                               value={essay.id}
                             ></input>
-                            <Button type="submit">
+                            <Button type="submit" size="sm">
                               <Text mr="10px">Edit</Text>
                               <EditIcon />
                             </Button>
                           </form>
+
                           <form method="POST" action="/api/viewSaved" passHref>
                             <input
                               type="hidden"
                               name="essayId"
                               value={essay.id}
                             ></input>
-                            <Button type="submit">
+                            <Button type="submit" size="sm">
                               <Text mr="10px">View</Text>
 
                               <ViewIcon />

@@ -100,6 +100,12 @@ export function createNewEssay(user_id, question) {
   });
 }
 
+// Deletes current essay
+export function deleteCurrEssay(essayId, user_id) {
+  const DELETE_ESSAY = `DELETE FROM essays WHERE id = $1 AND user_id = $2`;
+  return db.query(DELETE_ESSAY, [essayId, user_id]);
+}
+
 export function getEssayInfo(essayId) {
   const GET_ESSAY = `SELECT * FROM essays WHERE id = $1`;
   return db.query(GET_ESSAY, [essayId]).then((result) => {
