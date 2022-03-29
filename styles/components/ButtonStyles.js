@@ -21,22 +21,14 @@ export const ButtonStyles = {
         bg: mode(darken("secondary", 15), whiten("secondary", 15))(props),
       },
     }),
-    tertiary: (props) => ({
-      color: "green",
-      borderWidth: "3px",
-      borderRadius: "10px",
-      borderColor: "green",
-      _hover: {
-        transform: "scale(1.02)",
-      },
-    }),
     logout: (props) => ({
       color: "black",
-      borderWidth: "3px",
-      borderColor: "primary",
       bg: "lightGrey",
+      borderWidth: "5px",
+      p: "0.5rem",
       _hover: {
-        bg: mode(darken("lightGrey", 15), whiten("lightGrey", 20)),
+        // bg: mode(whiten("lightGrey", 40), whiten("lightGrey", 20)),
+        borderColor: mode(whiten("primary", 40), whiten("primary", 20)),
       },
     }),
   },

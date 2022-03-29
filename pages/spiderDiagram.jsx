@@ -6,17 +6,16 @@ import {
   Heading,
   Button,
   Box,
-  UseControllableStateProp,
-  useControllableState,
+  Container,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
-import Navigation from "../components/Navigation";
+import Layout from "../components/Layout.jsx";
 import { getEssayInfo } from "../database/model.js";
-
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
+
 
   const storedSpiderText = essayInfo.spider_1;
   const question = essayInfo.question;
@@ -30,7 +29,6 @@ export async function getServerSideProps({ req }) {
   }
 
   const splitSections = storedSpiderText.split("\n");
-  console.log(splitSections);
   const storedBranch1 = splitSections[0];
   const storedBranch2 = splitSections[1];
   const storedBranch3 = splitSections[2];
@@ -60,8 +58,7 @@ export default function SpiderDiagram({
   const [topicBranch4, setTopicBranch4] = useState(false);
 
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Heading mt="5rem">Spider diagram for {question}</Heading>
       <Flex
         justify="center"
@@ -162,6 +159,6 @@ export default function SpiderDiagram({
           </Flex>
         </form>
       </Flex>
-    </>
+    </Layout>
   );
 }

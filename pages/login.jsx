@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Layout from "../components/Layout.jsx";
 
 // import chakra UI components
 import {
@@ -17,7 +18,7 @@ export default function Login() {
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   return (
-    <>
+    <Layout noNav>
       <form action="/api/log-in" method="POST">
         <Flex height="100vh" alignItems="center" justifyContent="center">
           <Flex
@@ -49,6 +50,6 @@ export default function Login() {
           </Flex>
         </Flex>
       </form>
-    </>
+    </Layout>
   );
 }

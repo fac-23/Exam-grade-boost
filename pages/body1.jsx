@@ -1,10 +1,10 @@
 import React from "react";
-import { Flex, Grid, Container, Button } from "@chakra-ui/react";
+import { Flex, SimpleGrid, Container, Button, Heading } from "@chakra-ui/react";
 
-import Navigation from "../components/Navigation";
 import { getEssayInfo } from "../database/model.js";
 import BodySidebar from "../components/BodySidebar";
 import BodyInputGrid from "../components/BodyInputGrid";
+import Layout from "../components/Layout";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -12,8 +12,9 @@ export async function getServerSideProps({ req }) {
 
   const storedBody1 = essayInfo.body_1;
   const question = essayInfo.question;
+  const storedSpiderText = essayInfo.spider_1;
 
-  if (!storedBody1) {
+  if (!storedBody1 || !storedSpiderText)  {
     return {
       props: {
         question,
@@ -29,6 +30,12 @@ export async function getServerSideProps({ req }) {
   const storedExplain2 = splitSections[4];
   const storedRelate = splitSections[5];
 
+  const splitBranches = storedSpiderText.split("\n");
+  const storedBranch2 = splitBranches[1];
+  const storedBranch1 = splitBranches[0];
+  const storedBranch3 = splitBranches[2];
+  const storedBranch4 = splitBranches[3];
+
   return {
     props: {
       question,
@@ -38,6 +45,10 @@ export async function getServerSideProps({ req }) {
       storedExplain1,
       storedExplain2,
       storedRelate,
+      storedBranch1,
+      storedBranch2,
+      storedBranch3,
+      storedBranch4
     },
   };
 }
@@ -50,30 +61,41 @@ export default function Body1({
   storedExplain1,
   storedExplain2,
   storedRelate,
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4
 }) {
   return (
-    <>
-      <Navigation />
-      <Grid mt={4} templateColumns="repeat(2, 0.5fr)" gap={6}>
-        <Flex direction="column" p={5} w="100%" h="10" colSpan={2}>
-          <form method="POST" action="/api/save-body1">
-            <BodyInputGrid
-              question={question}
-              storedPoint={storedPoint}
-              storedIdentify={storedIdentify}
-              storedOutline={storedOutline}
-              storedExplain1={storedExplain1}
-              storedExplain2={storedExplain2}
-              storedRelate={storedRelate}
-            ></BodyInputGrid>
-            <Button type="submit">Save and continue</Button>
-          </form>
-        </Flex>
-
-        <Container padding="5" maxW="2xl" bg="white.600" centerContent>
-          <BodySidebar></BodySidebar>
-        </Container>
-      </Grid>
-    </>
+      <Layout>
+      <Container>
+        <Heading as="h1" mb="2rem">
+          Body paragraph: {question}
+        </Heading>
+        <SimpleGrid columns={[null, 1, 2]} spacing="4rem">
+          <Flex direction="column" w="100%" h="100%" colSpan={2}>
+            <form method="POST" action="/api/save-body1">
+              <BodyInputGrid
+                storedPoint={storedPoint}
+                storedIdentify={storedIdentify}
+                storedOutline={storedOutline}
+                storedExplain1={storedExplain1}
+                storedExplain2={storedExplain2}
+                storedRelate={storedRelate}
+              ></BodyInputGrid>
+              <Button type="submit">Save and continue</Button>
+            </form>
+          </Flex>
+          <Flex flexDirection="column" h="100%">
+            <BodySidebar
+            storedBranch1={storedBranch1}
+            storedBranch2={storedBranch2}
+            storedBranch3={storedBranch3}
+            storedBranch4={storedBranch4}
+            ></BodySidebar>
+          </Flex>
+        </SimpleGrid>
+      </Container>
+    </Layout>
   );
 }

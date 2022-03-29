@@ -16,19 +16,22 @@ import {
   AccordionPanel,
   AccordionIcon,
   SimpleGrid,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import Navigation from "../components/Navigation";
+
 import { getEssayInfo } from "../database/model.js";
 import VideoComponent from "../components/VideoComponent";
+import Layout from "../components/Layout";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
   const storedConclusion = essayInfo.conclusion;
+  const storedSpiderText = essayInfo.spider_1;
   const question = essayInfo.question;
 
-  if (!storedConclusion) {
+  if (!storedConclusion || !storedSpiderText) {
     return {
       props: {
         question,
@@ -42,6 +45,12 @@ export async function getServerSideProps({ req }) {
   const storedPriority = splitSections[2];
   const storedRelate = splitSections[3];
 
+  const splitBranches = storedSpiderText.split("\n");
+  const storedBranch2 = splitBranches[1];
+  const storedBranch1 = splitBranches[0];
+  const storedBranch3 = splitBranches[2];
+  const storedBranch4 = splitBranches[3];
+
   return {
     props: {
       question,
@@ -49,6 +58,10 @@ export async function getServerSideProps({ req }) {
       storedEvidence,
       storedPriority,
       storedRelate,
+      storedBranch1,
+      storedBranch2,
+      storedBranch3,
+      storedBranch4,
     },
   };
 }
@@ -59,10 +72,15 @@ export default function Conclusion({
   storedEvidence,
   storedPriority,
   storedRelate,
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4,
 }) {
+  const labelModeColour = useColorModeValue("black", "white");
+
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container centerContent>
         <Heading as="h1" mb="2rem">
           Conclusion: {question}
@@ -135,7 +153,7 @@ export default function Conclusion({
               <Accordion allowToggle>
                 <AccordionItem>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={labelModeColour}>
                       <Box flex="1" textAlign="left">
                         Worked Example
                       </Box>
@@ -171,7 +189,7 @@ export default function Conclusion({
 
                 <AccordionItem>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={labelModeColour}>
                       <Box flex="1" textAlign="left">
                         Video Tutorial
                       </Box>
@@ -182,11 +200,112 @@ export default function Conclusion({
                     <VideoComponent></VideoComponent>
                   </AccordionPanel>
                 </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Word bank
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel p="1rem 0 1rem 0">
+                    <UnorderedList styleType="none" m="0 0 1.5rem 0">
+                      <ListItem p="1rem" background="gray.100">
+                        <strong>Main</strong>
+                        <p>This assignment discusses...</p>
+                        <p>
+                          The main claim assessed was... and it was supported by
+                          the evidence...
+                        </p>
+                        <p>
+                          The level of significance...was examined and found to
+                          be...
+                        </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="blue.100">
+                        <strong>Evidence</strong>
+                        <p>The most important evidence on the topic was...</p>
+                        <p>A consistent theme in the evidence was...</p>
+                        <p>A noticeable pattern was seen... </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="yellow.100">
+                        <strong>Priority</strong>
+                        <p>The most important evidence was...</p>
+                        <p>Some key principles were... </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="orange.200">
+                        <strong>Relate</strong>
+                        <p>Overall, the evidence suggests...</p>
+                        <p>A likely application for these findings is...</p>
+                        <p>
+                          Although the evidence is mixed, there is more...
+                          than...
+                        </p>
+                        <p>To conclude...</p>
+                      </ListItem>
+                    </UnorderedList>
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Planning text
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.100"
+                    >
+                      <h3>Topic 1:</h3>
+                      <Text>{storedBranch1 ? storedBranch1 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.200"
+                    >
+                      <h3>Topic 2:</h3>
+                      <Text>{storedBranch2 ? storedBranch2 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.300"
+                    >
+                      <h3>Topic 3:</h3>
+                      <Text>{storedBranch3 ? storedBranch3 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.400"
+                    >
+                      <h3>Topic 4:</h3>
+                      <Text>{storedBranch4 ? storedBranch4 : ""}</Text>
+                    </Box>
+                  </AccordionPanel>
+                </AccordionItem>
               </Accordion>
             </Box>
           </Flex>
         </SimpleGrid>
       </Container>
-    </>
+    </Layout>
   );
 }

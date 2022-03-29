@@ -12,13 +12,18 @@ import {
 } from "@chakra-ui/react";
 import VideoComponent from "./VideoComponent";
 
-export default function BodySidebar() {
+export default function BodySidebar({
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4
+}){
   return (
     <>
-      <Heading w="100%" h="10" mb={4}>
+      <Heading as="h2" size="lg" w="100%" mb="2rem">
         How to write your main body
       </Heading>
-      <UnorderedList styleType="none" mb={5}>
+      <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
         <ListItem p={2} background="gray.100">
           <strong>Point</strong> - The paragraph focus, sometimes called ‘the
           topic sentence’.
@@ -54,7 +59,7 @@ export default function BodySidebar() {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel p="1rem 0 1rem 0">
             <Text as="mark" backgroundColor="gray.100">
               The Evolutionary Theory of Attachment takes the view that many
               behaviours in this area are innate – they are hard wired in the
@@ -107,10 +112,127 @@ export default function BodySidebar() {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel p="1rem 0 1rem 0">
             <VideoComponent />
           </AccordionPanel>
         </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Word bank
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel p="1rem 0 1rem 0">
+            <UnorderedList styleType="none" m="0 0 1.5rem 0">
+              <ListItem p="1rem" background="gray.100">
+                <strong>Point</strong>
+                <p>There are different views on...</p>
+                <p>The relationship between... and... is uncertain.</p>
+                <p>Attitudes to... are mixed</p>
+                <p>The relationship between... and... is often debated.</p>
+                <p>The level of significance...</p>
+              </ListItem>
+              <ListItem p="1rem" background="blue.100">
+                <strong>Identify</strong>
+                <p>For example...</p>
+                <p>For instance...</p>
+                <p>Research presented by... showed...</p>
+                <p>A key reason for...</p>
+                <p>The following quotation is relevant...</p>
+              </ListItem>
+              <ListItem p="1rem" background="yellow.100">
+                <strong>Outline</strong>
+                <p>A key feature is...</p>
+                <p>A part of the... is...</p>
+                <p>An important section of... was...</p>
+                <p>A significant part is...</p>
+              </ListItem>
+              <ListItem p="1rem" background="orange.200">
+                <strong>Evidence 1</strong>
+                <p>Research has focused on around key topics...</p>
+                <p>
+                  To provide some resolution to the discussion, the following
+                  areas will be investigated….
+                </p>
+                <p>Several areas will be considered... </p>
+              </ListItem>
+              <ListItem p="1rem" background="orange.300">
+                <strong>Evidence 2</strong>
+                <p>The evidence is mixed...</p>
+                <p>Not everyone agrees...</p>
+                <p>There are, however, different views...</p>
+              </ListItem>
+              <ListItem p="1rem" background="purple.200">
+                <strong>Relate</strong>
+                <p>Overall, the evidence mostly supports...</p>
+                <p>The general trend was...</p>
+                <p>It has been shown that...</p>
+              </ListItem>
+            </UnorderedList>
+          </AccordionPanel>
+        </AccordionItem>
+
+                 <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Planning text
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                  <Box  
+                  borderColor="black"
+                  borderWidth="1px" 
+                  p={1} 
+                  textAlign="left" 
+                  backgroundColor="orange.100">
+                    <h3>Topic 1:</h3>
+                    <Text>
+                    {storedBranch1 ? storedBranch1 : ""}
+                    </Text>
+                  </Box>
+                  <Box 
+                   borderColor="black"
+                   borderWidth="1px" 
+                   p={1} 
+                   textAlign="left" 
+                   backgroundColor="orange.200">
+                    <h3>Topic 2:</h3>
+                    <Text>
+                    {storedBranch2 ? storedBranch2 : ""}
+                    </Text>
+                  </Box>
+                  <Box 
+                  borderColor="black"
+                  borderWidth="1px" 
+                  p={1} 
+                  textAlign="left" 
+                  backgroundColor="orange.300">
+                    <h3>Topic 3:</h3>
+                    <Text>
+                    {storedBranch3 ? storedBranch3 : ""}
+                    </Text>
+                  </Box>
+                  <Box
+                   borderColor="black"
+                   borderWidth="1px" 
+                   p={1} 
+                   textAlign="left" 
+                   backgroundColor="orange.400">
+                    <h3>Topic 4:</h3>
+                    <Text>
+                    {storedBranch4 ? storedBranch4 : ""}
+                    </Text>
+                  </Box>
+                  </AccordionPanel>
+                </AccordionItem>
+
       </Accordion>
     </>
   );

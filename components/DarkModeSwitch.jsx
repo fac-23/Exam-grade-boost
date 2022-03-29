@@ -5,5 +5,13 @@ export default function DarkModeSwitch() {
 
   const isDark = colorMode === "dark";
 
-  return <Switch color="green" isChecked={isDark} onChange={toggleColorMode} />;
+  return (
+    <Switch
+      ariaLabel="click to toggle dark mode"
+      colorScheme="secondary"
+      isChecked={isDark}
+      onChange={toggleColorMode}
+      size="md"
+    />
+  );
 }

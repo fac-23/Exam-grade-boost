@@ -3,24 +3,26 @@ import {
   getContactInfo,
   getAllEssays,
 } from "../database/model";
-import Link from "next/link";
 
 import {
   Button,
   Flex,
-  Heading,
-  useColorModeValue,
-  Box,
   Text,
+  Heading,
+  Box,
+  Link,
   UnorderedList,
   ListItem,
-  Image,
   Container,
+  useColorModeValue,
+  useColorMode,
+  Avatar,
+  FormLabel,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
-
-import Navigation from "../components/Navigation.jsx";
+import Layout from "../components/Layout";
+import Switch from "../components/DarkModeSwitch";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -39,28 +41,32 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function Home({ username, allEssays }) {
-  const boxBorder = useColorModeValue("gray.100", "gray.700");
+  const modeColors = useColorModeValue("primary", "secondary");
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <>
-      <Navigation />
+    <Layout>
       <Container>
-        <Flex alignItems="flex-start" justifyContent="center" direction="row">
-          <Flex mr={20} direction="column">
-            <Heading as="h1" mb="2rem">
-              Welcome back {username}
-            </Heading>
-
-            <Link href="/newEssay" passHref>
-              <Button variant="tertiary" mb="2rem">
-                {" "}
-                Create new Essay
-              </Button>
-            </Link>
-
+        <Flex gap="40px" direction={["column", "column", "row"]}>
+          <Flex direction="column" width="100%">
             <Box>
+              <Heading as="h1" mb="2rem">
+                Welcome back {username}
+              </Heading>
+
+              <Link
+                href="/newEssay"
+                variant="newEssay"
+                mb="2rem"
+                width="100%"
+                passHref
+              >
+                Create new Essay
+              </Link>
+
               <Heading as="h2" mb="2rem">
-                Completed Essays
+                My Essays
               </Heading>
 
               <UnorderedList m={0} styleType="none">
@@ -70,16 +76,20 @@ export default function Home({ username, allEssays }) {
                       mb="2rem"
                       w="100%"
                       p="1rem"
-                      borderColor="primary"
+                      borderColor={modeColors}
                       borderWidth="3px"
                       borderRadius="10px"
                       key={essay.id}
                     >
-                      <Flex justifyContent="space-between" alignItems="center">
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="center"
+                        gap="1rem"
+                      >
                         <Heading as="h3" size="sm" fontWeight="800">
                           {essay.question}
                         </Heading>
-                        <Flex gap="1rem">
+                        <Flex gap="1rem" direction={["column", "row"]}>
                           <form method="POST" action="/api/editSaved" passHref>
                             <input
                               type="hidden"
@@ -87,6 +97,7 @@ export default function Home({ username, allEssays }) {
                               value={essay.id}
                             ></input>
                             <Button type="submit">
+                              <Text mr="10px">Edit</Text>
                               <EditIcon />
                             </Button>
                           </form>
@@ -97,6 +108,8 @@ export default function Home({ username, allEssays }) {
                               value={essay.id}
                             ></input>
                             <Button type="submit">
+                              <Text mr="10px">View</Text>
+
                               <ViewIcon />
                             </Button>
                           </form>
@@ -110,33 +123,40 @@ export default function Home({ username, allEssays }) {
           </Flex>
 
           <Flex
-            w="20%"
+            flexBasis="500px"
             alignItems="center"
             justifyContent="center"
             direction="column"
           >
-            <Heading as="h2" mb="2rem">
+            <Heading as="h2" mb="2rem" alignSelf="flex-start">
               Profile
             </Heading>
-            <Box
+            <Flex
               mb={"2rem"}
               w="100%"
               p={"1rem"}
-              borderColor="primary"
+              borderColor={modeColors}
               borderWidth="3px"
               borderRadius="10px"
               h="100%"
+              alignItems="center"
+              direction="column"
             >
-              <Image
-                rounded="full"
-                size="50px"
-                src="https://bit.ly/sage-adebayo"
-                alt="Segun Adebayo"
+              <Avatar
+                bg={modeColors}
+                h="100px"
+                w="100%"
+                maxWidth="100px"
+                alt="Default user"
+                mb="2rem"
               />
-            </Box>
+              <label className="switchLabel">Toggle Dark Mode</label>
+
+              <Switch id="dark-mode-switch" />
+            </Flex>
           </Flex>
         </Flex>
       </Container>
-    </>
+    </Layout>
   );
 }

@@ -28,6 +28,7 @@ describe("Should allow the user to sign up, log in, log out and only access rout
   it("Should allow the user to log in, visit protected pages and log out", () => {
     cy.log("LOGIN randomUsername", randomUsername);
 
+    // login
     cy.visit("login");
     cy.get("input[id='email']").type(`${randomUsername}@test`);
     cy.get("input[id='password']").type(`${randomUsername}`);
@@ -37,16 +38,23 @@ describe("Should allow the user to sign up, log in, log out and only access rout
     cy.getCookie("sid").should("exist");
 
     cy.visit("/home");
-    cy.visit("/myprofile");
+
+    // create new essay
+    cy.get("a").contains("Create new Essay").click();
+    cy.get("input[name='question']").type(
+      `Test question random user ${randomUsername}`
+    );
+    cy.get("button").contains("Save and continue").click();
+
     cy.visit("/resources");
-    // cy.visit("/spiderDiagram");
-    // cy.visit("/introduction");
-    // cy.visit("/body1");
-    // cy.visit("/body2");
-    // cy.visit("/body3");
-    // cy.visit("/conclusion");
-    // cy.visit("/essayOverview");
-    // cy.visit("/finalEssay");
+    cy.visit("/spiderDiagram");
+    cy.visit("/introduction");
+    cy.visit("/body1");
+    cy.visit("/body2");
+    cy.visit("/body3");
+    cy.visit("/conclusion");
+    cy.visit("/essayOverview");
+    cy.visit("/finalEssay");
 
     cy.visit("/home");
 
@@ -62,6 +70,12 @@ describe("Should allow the user to sign up, log in, log out and only access rout
     cy.get("h1").contains("Access denied");
 
     cy.visit("/resources");
+    cy.get("h1").contains("Access denied");
+
+    cy.visit("/videos");
+    cy.get("h1").contains("Access denied");
+
+    cy.visit("/wordBank");
     cy.get("h1").contains("Access denied");
 
     cy.visit("/spiderDiagram");
