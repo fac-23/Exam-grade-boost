@@ -28,6 +28,7 @@ export async function getServerSideProps({ req }) {
 
   const storedIntro = essayInfo.introduction;
   const question = essayInfo.question;
+  const storedSpiderText = essayInfo.spider_1;
 
   if (!storedIntro) {
     return {
@@ -43,6 +44,12 @@ export async function getServerSideProps({ req }) {
   const storedOpposite = splitSections[2];
   const storedKey = splitSections[3];
 
+  const splitBranches = storedSpiderText.split("\n");
+  const storedBranch2 = splitBranches[1];
+  const storedBranch1 = splitBranches[0];
+  const storedBranch3 = splitBranches[2];
+  const storedBranch4 = splitBranches[3];
+
   return {
     props: {
       question,
@@ -50,6 +57,10 @@ export async function getServerSideProps({ req }) {
       storedMain,
       storedOpposite,
       storedKey,
+      storedBranch1,
+      storedBranch2,
+      storedBranch3,
+      storedBranch4,
     },
   };
 }
@@ -60,6 +71,10 @@ export default function Introduction({
   storedMain,
   storedOpposite,
   storedKey,
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4,
 }) {
   const labelModeColour = useColorModeValue("black", "white");
 
@@ -179,6 +194,117 @@ export default function Introduction({
                   </h2>
                   <AccordionPanel pb={4}>
                     <VideoComponent />
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Word bank
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel p="1rem 0 1rem 0">
+                    <UnorderedList styleType="none" m="0 0 1.5rem 0">
+                      <ListItem p="1rem" background="gray.100">
+                        <strong>Summary</strong>
+                        <p>This assignment discusses...</p>
+                        <p>
+                          If a solution to the issue of...could be found it
+                          would bring many benefits...
+                        </p>
+                        <p>Discussion exists around the topic of...</p>
+                        <p>
+                          In the last 30 years, many researchers have
+                          investigated...
+                        </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="blue.100">
+                        <strong>Main</strong>
+                        <p>Many experts believe that...</p>
+                        <p>One view is...</p>
+                        <p>Some research suggests... </p>
+                        <p>Some evidence indicates... </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="yellow.100">
+                        <strong>Opposite Argument</strong>
+                        <p>The evidence is mixed...</p>
+                        <p>Some evidence points in a different direction... </p>
+                        <p>However, there are different views...</p>
+                        <p>However, other experts take a different view </p>
+                      </ListItem>
+                      <ListItem p="1rem" background="orange.200">
+                        <strong>Key Theme</strong>
+                        <p>
+                          There are several reasons for this debate which will
+                          be summarised...
+                        </p>
+                        <p>
+                          Research has focused on around key topics. Some areas
+                          of the most significant areas of discussion are...
+                        </p>
+                        <p>
+                          To provide some resolution to the discussion, the
+                          following areas will be investigated. Several areas
+                          will be considered...
+                        </p>
+                      </ListItem>
+                    </UnorderedList>
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Planning text
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.100"
+                    >
+                      <h3>Topic 1:</h3>
+                      <Text>{storedBranch1 ? storedBranch1 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.200"
+                    >
+                      <h3>Topic 2:</h3>
+                      <Text>{storedBranch2 ? storedBranch2 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.300"
+                    >
+                      <h3>Topic 3:</h3>
+                      <Text>{storedBranch3 ? storedBranch3 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.400"
+                    >
+                      <h3>Topic 4:</h3>
+                      <Text>{storedBranch4 ? storedBranch4 : ""}</Text>
+                    </Box>
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
