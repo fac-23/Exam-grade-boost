@@ -54,7 +54,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default function introduction({
+export default function Introduction({
   question,
   storedSummary,
   storedMain,
