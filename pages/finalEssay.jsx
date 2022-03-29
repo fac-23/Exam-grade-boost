@@ -1,11 +1,17 @@
 import React from "react";
 
-import { Flex, Heading, Container, Button, FormLabel } from "@chakra-ui/react";
+import {
+  Flex,
+  Textarea,
+  Heading,
+  Grid,
+  Container,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
-import { EditIcon } from "@chakra-ui/icons";
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
-import Layout from "../components/Layout.jsx";
 
 // import jsPDF
 import { jsPDF } from "jspdf";
@@ -85,9 +91,9 @@ export default function FinalEssay({
   // Create the final essay content adding all sections
   const finalEssayCopy = `${printIfExists(question)}${printIfExists(
     introduction
-  )}${printIfExists(body_1)}${printIfExists(body_2)}${printIfExists(
+  )}${printIfExists(body_1)}${printIfExists(body_2)} ${printIfExists(
     body_3
-  )} ${printIfExists(body_3)}${printIfExists(conclusion)}`;
+  )}${printIfExists(conclusion)}`;
 
   // create new instance of a document
   const doc = new jsPDF();
@@ -148,14 +154,14 @@ export default function FinalEssay({
   // ***********************************************/
 
   return (
-    <Layout>
+    <>
       <Navigation />
       <Container>
-        <Heading as="h1" mb="4rem">
+        <Heading as="h1" mb="2rem">
           {question}
         </Heading>
         <form>
-          <Flex direction="column" mb="2.5rem">
+          <Flex direction="column" p={10}>
             <section className="essay-overview">
               <b>Introduction:</b>
               <p>{introduction}</p>
@@ -176,19 +182,9 @@ export default function FinalEssay({
             <Button variant="secondary" onClick={downloadPDF}>
               Export to PDF
             </Button>
-            <form method="GET" action="/essayOverview" passHref>
-              <Button type="submit" colorScheme="teal">
-                <Flex alignItems="center" justifyContent="center">
-                  <EditIcon mr="0.5rem" />
-                  <FormLabel m={0} textAlign="center">
-                    Edit
-                  </FormLabel>
-                </Flex>
-              </Button>
-            </form>
           </Flex>
         </form>
       </Container>
-    </Layout>
+    </>
   );
 }
