@@ -65,7 +65,7 @@ export default function Home({ username, allEssays }) {
               </Link>
 
               <Heading as="h2" mb="2rem">
-                Completed Essays
+                My Essays
               </Heading>
 
               <UnorderedList m={0} styleType="none">
