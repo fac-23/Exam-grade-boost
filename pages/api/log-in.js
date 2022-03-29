@@ -8,20 +8,18 @@ export default async function log_in(req, res) {
       //calls verifyUser in auth - which sends a query to db to return user with the same email
       const user = await verifyUser(email, password);
 
-      console.log({ user });
-
       if (user) {
         const cookies = new Cookies(req, res);
 
-        //if user already has session, don't save new session
-        if (!cookies.get("sid")) {
-          // in auth save session creates SID and calls createSession in model
-          const sid = await saveSession({ user_id: user[0].id });
+        //clear existing cookie and reissue a new one
+        cookies.set("sid");
 
-          cookies.set("sid", `${sid}`, {
-            maxAge: cookie_options.maxAge,
-          });
-        }
+        // in auth save session creates SID and calls createSession in model
+        const sid = await saveSession({ user_id: user[0].id });
+
+        cookies.set("sid", `${sid}`, {
+          maxAge: cookie_options.maxAge,
+        });
 
         res.redirect(303, "/home");
       } else {

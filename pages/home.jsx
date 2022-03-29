@@ -28,6 +28,7 @@ export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
   const user_id = JSON.parse(userData.data).user_id;
   const contactInfo = await getContactInfo(user_id);
+
   const username = contactInfo.username;
   const allEssays = await getAllEssays(user_id);
 
