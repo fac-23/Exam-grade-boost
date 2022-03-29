@@ -1,11 +1,17 @@
 import React from "react";
 
-import { Flex, Heading, Container, Button, FormLabel } from "@chakra-ui/react";
+import {
+  Flex,
+  Textarea,
+  Heading,
+  Grid,
+  Container,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
-import { EditIcon } from "@chakra-ui/icons";
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
-import Layout from "../components/Layout.jsx";
 
 // import jsPDF
 import { jsPDF } from "jspdf";
@@ -49,16 +55,6 @@ export async function getServerSideProps({ req }) {
     };
   }
 
-  console.log(
-    question,
-    spider_1,
-    introduction,
-    body_1,
-    body_2,
-    body_3,
-    conclusion
-  );
-
   return {
     props: {
       question,
@@ -85,19 +81,30 @@ export default function FinalEssay({
   // Create the final essay content adding all sections
   const finalEssayCopy = `${printIfExists(question)}${printIfExists(
     introduction
-  )}${printIfExists(body_1)}${printIfExists(body_2)}${printIfExists(
+  )}${printIfExists(body_1)}${printIfExists(body_2)} ${printIfExists(
     body_3
-  )} ${printIfExists(body_3)}${printIfExists(conclusion)}`;
+  )}${printIfExists(conclusion)}`;
 
   // create new instance of a document
   const doc = new jsPDF();
 
   // set the document text to be the content of the finalEssayCopy variable
   doc.setFontSize(14);
-  doc.text(finalEssayCopy, 10, 10, { maxWidth: 180 });
 
   // callback function to pass onClick event on export to PDF button
   function downloadPDF() {
+    //calculate aproximate number of pages by dividing chars by 3400
+    const pageNum = finalEssayCopy.length / 3400;
+
+    //create a loop and populate each page with a page length 'chunk' of text
+    for (let i = 0, z = 0; i < pageNum; i++, z += 3400) {
+      const chunk = finalEssayCopy.slice(z, z + 3400);
+      if (i !== 0) {
+        doc.addPage();
+      }
+      doc.text(chunk, 10, 10, { maxWidth: 180 });
+      doc.setPage(i);
+    }
     // set the file name to be the question and download the file
     doc.save(`${question.split(",")}`);
   }
@@ -148,14 +155,14 @@ export default function FinalEssay({
   // ***********************************************/
 
   return (
-    <Layout>
+    <>
       <Navigation />
       <Container>
-        <Heading as="h1" mb="4rem">
+        <Heading as="h1" mb="2rem">
           {question}
         </Heading>
         <form>
-          <Flex direction="column" mb="2.5rem">
+          <Flex direction="column" p={10}>
             <section className="essay-overview">
               <b>Introduction:</b>
               <p>{introduction}</p>
@@ -176,19 +183,9 @@ export default function FinalEssay({
             <Button variant="secondary" onClick={downloadPDF}>
               Export to PDF
             </Button>
-            <form method="GET" action="/essayOverview" passHref>
-              <Button type="submit" colorScheme="teal">
-                <Flex alignItems="center" justifyContent="center">
-                  <EditIcon mr="0.5rem" />
-                  <FormLabel m={0} textAlign="center">
-                    Edit
-                  </FormLabel>
-                </Flex>
-              </Button>
-            </form>
           </Flex>
         </form>
       </Container>
-    </Layout>
+    </>
   );
 }
