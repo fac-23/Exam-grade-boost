@@ -12,7 +12,12 @@ import {
 } from "@chakra-ui/react";
 import VideoComponent from "./VideoComponent";
 
-export default function BodySidebar() {
+export default function BodySidebar({
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4
+}){
   return (
     <>
       <Heading as="h2" size="lg" w="100%" mb="2rem">
@@ -170,6 +175,64 @@ export default function BodySidebar() {
             </UnorderedList>
           </AccordionPanel>
         </AccordionItem>
+
+                 <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Planning text
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                  <Box  
+                  borderColor="black"
+                  borderWidth="1px" 
+                  p={1} 
+                  textAlign="left" 
+                  backgroundColor="orange.100">
+                    <h3>Topic 1:</h3>
+                    <Text>
+                    {storedBranch1 ? storedBranch1 : ""}
+                    </Text>
+                  </Box>
+                  <Box 
+                   borderColor="black"
+                   borderWidth="1px" 
+                   p={1} 
+                   textAlign="left" 
+                   backgroundColor="orange.200">
+                    <h3>Topic 2:</h3>
+                    <Text>
+                    {storedBranch2 ? storedBranch2 : ""}
+                    </Text>
+                  </Box>
+                  <Box 
+                  borderColor="black"
+                  borderWidth="1px" 
+                  p={1} 
+                  textAlign="left" 
+                  backgroundColor="orange.300">
+                    <h3>Topic 3:</h3>
+                    <Text>
+                    {storedBranch3 ? storedBranch3 : ""}
+                    </Text>
+                  </Box>
+                  <Box
+                   borderColor="black"
+                   borderWidth="1px" 
+                   p={1} 
+                   textAlign="left" 
+                   backgroundColor="orange.400">
+                    <h3>Topic 4:</h3>
+                    <Text>
+                    {storedBranch4 ? storedBranch4 : ""}
+                    </Text>
+                  </Box>
+                  </AccordionPanel>
+                </AccordionItem>
+
       </Accordion>
     </>
   );

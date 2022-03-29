@@ -7,9 +7,11 @@ export default function DarkModeSwitch() {
 
   return (
     <Switch
+      ariaLabel="click to toggle dark mode"
       colorScheme="secondary"
       isChecked={isDark}
       onChange={toggleColorMode}
+      size="lg"
     />
   );
 }

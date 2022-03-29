@@ -7,7 +7,7 @@ import {
 import {
   Button,
   Flex,
-  Stack,
+  Text,
   Heading,
   Box,
   Link,
@@ -17,12 +17,12 @@ import {
   useColorModeValue,
   useColorMode,
   Avatar,
-  Radio,
-  RadioGroup,
+  FormLabel,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
+import Switch from "../components/DarkModeSwitch";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -54,10 +54,14 @@ export default function Home({ username, allEssays }) {
                 Welcome back {username}
               </Heading>
 
-              <Link href="/newEssay" passHref>
-                <Button variant="newEssay" mb="2rem" width="100%">
-                  Create new Essay
-                </Button>
+              <Link
+                href="/newEssay"
+                variant="newEssay"
+                mb="2rem"
+                width="100%"
+                passHref
+              >
+                Create new Essay
               </Link>
 
               <Heading as="h2" mb="2rem">
@@ -84,7 +88,7 @@ export default function Home({ username, allEssays }) {
                         <Heading as="h3" size="sm" fontWeight="800">
                           {essay.question}
                         </Heading>
-                        <Flex gap="1rem">
+                        <Flex gap="1rem" direction={["column", "row"]}>
                           <form method="POST" action="/api/editSaved" passHref>
                             <input
                               type="hidden"
@@ -92,6 +96,7 @@ export default function Home({ username, allEssays }) {
                               value={essay.id}
                             ></input>
                             <Button type="submit">
+                              <Text mr="10px">Edit</Text>
                               <EditIcon />
                             </Button>
                           </form>
@@ -102,6 +107,8 @@ export default function Home({ username, allEssays }) {
                               value={essay.id}
                             ></input>
                             <Button type="submit">
+                              <Text mr="10px">View</Text>
+
                               <ViewIcon />
                             </Button>
                           </form>
@@ -142,12 +149,9 @@ export default function Home({ username, allEssays }) {
                 alt="Default user"
                 mb="2rem"
               />
-              <RadioGroup defaultValue="light" onChange={toggleColorMode}>
-                <Stack spacing={5} direction="column">
-                  <Radio value="light">Light Mode</Radio>
-                  <Radio value="dark">Dark Mode</Radio>
-                </Stack>
-              </RadioGroup>
+              <label className="switchLabel">Toggle Dark Mode</label>
+
+              <Switch id="dark-mode-switch" />
             </Flex>
           </Flex>
         </Flex>
