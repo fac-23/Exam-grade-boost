@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Flex,
   Textarea,
@@ -17,12 +18,12 @@ import {
   SimpleGrid,
   useColorModeValue,
   Collapse,
-  useDisclosure,
 } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
 import VideoComponent from "../components/VideoComponent.jsx";
 import Layout from "../components/Layout.jsx";
+import { TriangleDownIcon } from "@chakra-ui/icons";
 
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
@@ -79,7 +80,7 @@ export default function Introduction({
   storedBranch4,
 }) {
   const labelModeColour = useColorModeValue("black", "white");
-  const { isOpen, onToggle } = useDisclosure();
+  const [isOpen, setIsOpen] = useState([false, false, false, false]);
 
   return (
     <Layout>
@@ -98,19 +99,20 @@ export default function Introduction({
                   defaultValue={storedSummary ? storedSummary : ""}
                   borderColor="black.300"
                   borderWidth="1.5px"
-                  mb="1rem"
                 ></Textarea>
                 <Button
                   p="2"
                   m="2"
-                  onClick={onToggle}
+                  onClick={() => {
+                    setIsOpen([!isOpen[0], false, false, false]);
+                  }}
                   fontSize="sm"
                   fontWeight="medium"
                 >
-                  suggest
+                  <TriangleDownIcon />
                 </Button>
               </Flex>
-              <Collapse in={isOpen} animateOpacity>
+              <Collapse in={isOpen[0]} animateOpacity>
                 <Box
                   p="10px"
                   color="black"
@@ -120,45 +122,154 @@ export default function Introduction({
                   rounded="md"
                   shadow="md"
                 >
-                  <section p="1rem" background="gray.100">
-                    <strong>Summary</strong>
-                    <p>This assignment discusses...</p>
-                    <p>
+                  <UnorderedList p="1rem">
+                    <strong>Summary suggestions</strong>
+                    <ListItem>This assignment discusses...</ListItem>
+                    <ListItem>
                       If a solution to the issue of...could be found it would
                       bring many benefits...
-                    </p>
-                    <p>Discussion exists around the topic of...</p>
-                    <p>
+                    </ListItem>
+                    <ListItem>
+                      Discussion exists around the topic of...
+                    </ListItem>
+                    <ListItem>
                       In the last 30 years, many researchers have
                       investigated...
-                    </p>
-                  </section>
+                    </ListItem>
+                  </UnorderedList>
                 </Box>
               </Collapse>
-              <Textarea
-                name="main"
-                placeholder="main argument"
-                defaultValue={storedMain ? storedMain : ""}
-                borderColor="blue.300"
-                borderWidth="1.5px"
-                mb="1rem"
-              ></Textarea>
-              <Textarea
-                name="opposite"
-                placeholder="opposite argument"
-                defaultValue={storedOpposite ? storedOpposite : ""}
-                borderColor="yellow.300"
-                borderWidth="1.5px"
-                mb="1rem"
-              ></Textarea>
-              <Textarea
-                name="key"
-                placeholder="key themes"
-                defaultValue={storedKey ? storedKey : ""}
-                borderColor="orange.300"
-                borderWidth="1.5px"
-                mb="1rem"
-              ></Textarea>
+              <Flex>
+                <Textarea
+                  name="main"
+                  placeholder="main argument"
+                  defaultValue={storedMain ? storedMain : ""}
+                  borderColor="blue.300"
+                  borderWidth="1.5px"
+                  mt="0.5rem"
+                ></Textarea>
+                <Button
+                  p="2"
+                  m="2"
+                  onClick={() => setIsOpen([false, !isOpen[1], false, false])}
+                  fontSize="sm"
+                  fontWeight="medium"
+                >
+                  <TriangleDownIcon />
+                </Button>
+              </Flex>
+              <Collapse in={isOpen[1]} animateOpacity>
+                <Box
+                  p="10px"
+                  color="black"
+                  mt="1"
+                  mb="2"
+                  bg="blue.100"
+                  rounded="md"
+                  shadow="md"
+                >
+                  <UnorderedList p="1rem">
+                    <strong>Main suggestions</strong>
+                    <ListItem>Many experts believe that...</ListItem>
+                    <ListItem>One view is...</ListItem>
+                    <ListItem>Some research suggests... </ListItem>
+                    <ListItem>Some evidence indicates... </ListItem>
+                  </UnorderedList>
+                </Box>
+              </Collapse>
+
+              <Flex>
+                <Textarea
+                  name="opposite"
+                  placeholder="opposite argument"
+                  defaultValue={storedOpposite ? storedOpposite : ""}
+                  borderColor="yellow.300"
+                  borderWidth="1.5px"
+                  mt="0.5rem"
+                ></Textarea>
+                <Button
+                  p="2"
+                  m="2"
+                  onClick={() => setIsOpen([false, false, !isOpen[2], false])}
+                  fontSize="sm"
+                  fontWeight="medium"
+                >
+                  <TriangleDownIcon />
+                </Button>
+              </Flex>
+              <Collapse in={isOpen[2]} animateOpacity>
+                <Box
+                  p="10px"
+                  color="black"
+                  mt="1"
+                  mb="2"
+                  bg="yellow.100"
+                  rounded="md"
+                  shadow="md"
+                >
+                  <UnorderedList p="1rem">
+                    <strong>Opposite Argument suggestions</strong>
+                    <ListItem>The evidence is mixed...</ListItem>
+                    <ListItem>
+                      Some evidence points in a different direction...
+                    </ListItem>
+                    <ListItem>However, there are different views...</ListItem>
+                    <ListItem>
+                      However, other experts take a different view
+                    </ListItem>
+                  </UnorderedList>
+                </Box>
+              </Collapse>
+
+              <Flex>
+                <Textarea
+                  name="key"
+                  placeholder="key themes"
+                  defaultValue={storedKey ? storedKey : ""}
+                  borderColor="orange.300"
+                  borderWidth="1.5px"
+                  mt="0.5rem"
+                  mb="1rem"
+                ></Textarea>
+                <Button
+                  p="2"
+                  m="2"
+                  onClick={() => setIsOpen([false, false, false, !isOpen[3]])}
+                  fontSize="sm"
+                  fontWeight="medium"
+                >
+                  <TriangleDownIcon />
+                </Button>
+              </Flex>
+              <Collapse in={isOpen[3]} animateOpacity>
+                <Box
+                  p="10px"
+                  color="black"
+                  mt="1"
+                  mb="2"
+                  bg="orange.200"
+                  rounded="md"
+                  shadow="md"
+                >
+                  <UnorderedList p="1rem">
+                    <strong p="1rem">Key Theme suggestions</strong>
+                    <ListItem>
+                      There are several reasons for this debate which will be
+                      summarised...
+                    </ListItem>
+                    <ListItem>
+                      Research has focused on around key topics. Some areas of
+                      the most significant areas of discussion are...
+                    </ListItem>
+                    <ListItem>
+                      To provide some resolution to the discussion, the
+                      following areas will be investigated. Several areas will
+                      be considered...
+                    </ListItem>
+                  </UnorderedList>
+                </Box>
+              </Collapse>
+
               <Button type="submit">Save and continue</Button>
             </form>
           </Flex>
@@ -233,64 +344,6 @@ export default function Introduction({
                   </h2>
                   <AccordionPanel pb={4}>
                     <VideoComponent />
-                  </AccordionPanel>
-                </AccordionItem>
-
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box flex="1" textAlign="left">
-                        Word bank
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel p="1rem 0 1rem 0">
-                    <UnorderedList styleType="none" m="0 0 1.5rem 0">
-                      <ListItem p="1rem" background="gray.100">
-                        <strong>Summary</strong>
-                        <p>This assignment discusses...</p>
-                        <p>
-                          If a solution to the issue of...could be found it
-                          would bring many benefits...
-                        </p>
-                        <p>Discussion exists around the topic of...</p>
-                        <p>
-                          In the last 30 years, many researchers have
-                          investigated...
-                        </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="blue.100">
-                        <strong>Main</strong>
-                        <p>Many experts believe that...</p>
-                        <p>One view is...</p>
-                        <p>Some research suggests... </p>
-                        <p>Some evidence indicates... </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="yellow.100">
-                        <strong>Opposite Argument</strong>
-                        <p>The evidence is mixed...</p>
-                        <p>Some evidence points in a different direction... </p>
-                        <p>However, there are different views...</p>
-                        <p>However, other experts take a different view </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="orange.200">
-                        <strong>Key Theme</strong>
-                        <p>
-                          There are several reasons for this debate which will
-                          be summarised...
-                        </p>
-                        <p>
-                          Research has focused on around key topics. Some areas
-                          of the most significant areas of discussion are...
-                        </p>
-                        <p>
-                          To provide some resolution to the discussion, the
-                          following areas will be investigated. Several areas
-                          will be considered...
-                        </p>
-                      </ListItem>
-                    </UnorderedList>
                   </AccordionPanel>
                 </AccordionItem>
 
