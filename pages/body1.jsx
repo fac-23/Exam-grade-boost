@@ -14,7 +14,7 @@ export async function getServerSideProps({ req }) {
   const question = essayInfo.question;
   const storedSpiderText = essayInfo.spider_1;
 
-  if (!storedBody1) {
+  if (!storedBody1 || !storedSpiderText)  {
     return {
       props: {
         question,
@@ -76,7 +76,6 @@ export default function Body1({
           <Flex direction="column" w="100%" h="100%" colSpan={2}>
             <form method="POST" action="/api/save-body1">
               <BodyInputGrid
-                question={question}
                 storedPoint={storedPoint}
                 storedIdentify={storedIdentify}
                 storedOutline={storedOutline}

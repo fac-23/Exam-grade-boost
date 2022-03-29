@@ -15,7 +15,7 @@ export async function getServerSideProps({ req }) {
   const storedSpiderText = essayInfo.spider_1;
 
 
-  if (!storedBody3) {
+  if (!storedBody3 || !storedSpiderText) {
     return {
       props: {
         question,
