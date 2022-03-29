@@ -5,10 +5,10 @@ import { AddIcon } from "@chakra-ui/icons";
 
 import Layout from "../components/Layout.jsx";
 import { getEssayInfo } from "../database/model.js";
-
 export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
+
 
   const storedSpiderText = essayInfo.spider_1;
   const question = essayInfo.question;
@@ -22,7 +22,6 @@ export async function getServerSideProps({ req }) {
   }
 
   const splitSections = storedSpiderText.split("\n");
-  console.log(splitSections);
   const storedBranch1 = splitSections[0];
   const storedBranch2 = splitSections[1];
   const storedBranch3 = splitSections[2];
