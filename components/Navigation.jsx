@@ -45,7 +45,9 @@ export default function Navigation() {
                   <a>Resources</a>
                 </Link>
               </li>
-              <Switch />
+              <li>
+                <Switch />
+              </li>
             </Flex>
             <form method="POST" action="/api/log-out">
               <Button variant="logout" type="submit" size="sm">
