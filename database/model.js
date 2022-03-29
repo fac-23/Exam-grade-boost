@@ -100,10 +100,10 @@ export function createNewEssay(user_id, question) {
   });
 }
 
-export function renameEssay(question, user_id) {
-  const RENAME_ESSAY = `UPDATE essays SET question = $1 WHERE user_id = $2 RETURNING id`;
+export function renameEssay(question, user_id, essayId) {
+  const RENAME_ESSAY = `UPDATE essays SET question = $1 WHERE user_id = $2 AND id = $3 RETURNING id`;
   return db
-    .query(RENAME_ESSAY, [question, user_id])
+    .query(RENAME_ESSAY, [question, user_id, essayId])
     .then((result) => {
       return result.rows[0];
     })
