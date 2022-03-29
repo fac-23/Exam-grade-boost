@@ -27,6 +27,7 @@ export async function getServerSideProps({ req }) {
   const essayInfo = await getEssayInfo(essayId);
 
   const storedConclusion = essayInfo.conclusion;
+  const storedSpiderText = essayInfo.spider_1;
   const question = essayInfo.question;
 
   if (!storedConclusion) {
@@ -43,6 +44,12 @@ export async function getServerSideProps({ req }) {
   const storedPriority = splitSections[2];
   const storedRelate = splitSections[3];
 
+  const splitBranches = storedSpiderText.split("\n");
+  const storedBranch2 = splitBranches[1];
+  const storedBranch1 = splitBranches[0];
+  const storedBranch3 = splitBranches[2];
+  const storedBranch4 = splitBranches[3];
+
   return {
     props: {
       question,
@@ -50,6 +57,10 @@ export async function getServerSideProps({ req }) {
       storedEvidence,
       storedPriority,
       storedRelate,
+      storedBranch1,
+      storedBranch2,
+      storedBranch3,
+      storedBranch4,
     },
   };
 }
@@ -60,6 +71,10 @@ export default function Conclusion({
   storedEvidence,
   storedPriority,
   storedRelate,
+  storedBranch1,
+  storedBranch2,
+  storedBranch3,
+  storedBranch4,
 }) {
   return (
     <Layout>
@@ -184,7 +199,6 @@ export default function Conclusion({
                 </AccordionItem>
 
                 <AccordionItem>
-                    
                   <h2>
                     <AccordionButton>
                       <Box flex="1" textAlign="left">
@@ -233,54 +247,57 @@ export default function Conclusion({
                 </AccordionItem>
 
                 <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Planning text
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
                   <AccordionPanel pb={4}>
-                  <Box  
-                  borderColor="black"
-                  borderWidth="1px" 
-                  p={1} 
-                  textAlign="left" 
-                  backgroundColor="orange.100">
-                    <h3>Topic 1:</h3>
-                    <Text>
-                    {storedBranch1 ? storedBranch1 : ""}
-                    </Text>
-                  </Box>
-                  <Box 
-                   borderColor="black"
-                   borderWidth="1px" 
-                   p={1} 
-                   textAlign="left" 
-                   backgroundColor="orange.200">
-                    <h3>Topic 2:</h3>
-                    <Text>
-                    {storedBranch2 ? storedBranch2 : ""}
-                    </Text>
-                  </Box>
-                  <Box 
-                  borderColor="black"
-                  borderWidth="1px" 
-                  p={1} 
-                  textAlign="left" 
-                  backgroundColor="orange.300">
-                    <h3>Topic 3:</h3>
-                    <Text>
-                    {storedBranch3 ? storedBranch3 : ""}
-                    </Text>
-                  </Box>
-                  <Box
-                   borderColor="black"
-                   borderWidth="1px" 
-                   p={1} 
-                   textAlign="left" 
-                   backgroundColor="orange.400">
-                    <h3>Topic 4:</h3>
-                    <Text>
-                    {storedBranch4 ? storedBranch4 : ""}
-                    </Text>
-                  </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.100"
+                    >
+                      <h3>Topic 1:</h3>
+                      <Text>{storedBranch1 ? storedBranch1 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.200"
+                    >
+                      <h3>Topic 2:</h3>
+                      <Text>{storedBranch2 ? storedBranch2 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.300"
+                    >
+                      <h3>Topic 3:</h3>
+                      <Text>{storedBranch3 ? storedBranch3 : ""}</Text>
+                    </Box>
+                    <Box
+                      borderColor="black"
+                      borderWidth="1px"
+                      p={1}
+                      textAlign="left"
+                      backgroundColor="orange.400"
+                    >
+                      <h3>Topic 4:</h3>
+                      <Text>{storedBranch4 ? storedBranch4 : ""}</Text>
+                    </Box>
                   </AccordionPanel>
                 </AccordionItem>
-
               </Accordion>
             </Box>
           </Flex>
