@@ -177,13 +177,9 @@ export default function FinalEssay({
               Export to PDF
             </Button>
             <form method="GET" action="/essayOverview" passHref>
-              <Button type="submit">
-                <Flex
-                  direction="column"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <EditIcon />
+              <Button type="submit" colorScheme="teal">
+                <Flex alignItems="center" justifyContent="center">
+                  <EditIcon mr="0.5rem" />
                   <FormLabel m={0} textAlign="center">
                     Edit
                   </FormLabel>

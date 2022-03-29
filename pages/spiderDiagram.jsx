@@ -1,6 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Flex, Textarea, Heading, Button, Box } from "@chakra-ui/react";
+import {
+  Flex,
+  Textarea,
+  Heading,
+  Button,
+  Box,
+  Container,
+} from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
 import Layout from "../components/Layout.jsx";

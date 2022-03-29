@@ -16,6 +16,7 @@ import {
   AccordionPanel,
   AccordionIcon,
   SimpleGrid,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
@@ -76,6 +77,8 @@ export default function Conclusion({
   storedBranch3,
   storedBranch4,
 }) {
+  const labelModeColour = useColorModeValue("black", "white");
+
   return (
     <Layout>
       <Container centerContent>
@@ -150,7 +153,7 @@ export default function Conclusion({
               <Accordion allowToggle>
                 <AccordionItem>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={labelModeColour}>
                       <Box flex="1" textAlign="left">
                         Worked Example
                       </Box>
@@ -186,7 +189,7 @@ export default function Conclusion({
 
                 <AccordionItem>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={labelModeColour}>
                       <Box flex="1" textAlign="left">
                         Video Tutorial
                       </Box>
