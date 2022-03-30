@@ -7,6 +7,7 @@ import {
   Link,
   Text,
   useColorMode,
+  useColorModeValue,
   Textarea,
 } from "@chakra-ui/react";
 import { getEssayInfo } from "../database/model.js";
@@ -19,17 +20,42 @@ export async function getServerSideProps({ req }) {
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
   const question = essayInfo.question;
+  const spider = essayInfo.spider_1;
+  const introduction = essayInfo.introduction;
+  const body_1 = essayInfo.body_1;
+  const body_2 = essayInfo.body_2;
+  const body_3 = essayInfo.body_3;
+  const conclusion = essayInfo.conclusion;
 
   return {
     props: {
       question,
+      spider,
+      introduction,
+      body_1,
+      body_2,
+      body_3,
+      conclusion,
     },
   };
 }
 
-export default function EssayOverview({ question }) {
+export default function EssayOverview({
+  question,
+  spider,
+  introduction,
+  body_1,
+  body_2,
+  body_3,
+  conclusion,
+}) {
+  const { colorMode } = useColorMode();
+
+  const completedSectionColor = useColorModeValue("primary", "yellow");
+  export default function EssayOverview({ question }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const [showTitleEdit, setTitleEdit] = useState(false);
+
 
   return (
     <Layout>
@@ -58,10 +84,18 @@ export default function EssayOverview({ question }) {
         <form>
           <Flex mt={4} direction="column" gap="1.5rem">
             <Link href="/spiderDiagram" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={spider ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={spider ? completedSectionColor : null}
+              >
                 <Image
                   src={
-                    colorMode === "light"
+                    spider
+                      ? `/planning-${completedSectionColor}.svg`
+                      : colorMode === "light"
                       ? "/planning.svg"
                       : "/planning-dark.svg"
                   }
@@ -74,9 +108,21 @@ export default function EssayOverview({ question }) {
               </Button>
             </Link>
             <Link href="/introduction" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={introduction ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={introduction ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/intro.svg" : "/intro-dark.svg"}
+                  src={
+                    introduction
+                      ? `/intro-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/intro.svg"
+                      : "/intro-dark.svg"
+                  }
                   alt="intro icon"
                   height={30}
                   width={30}
@@ -85,9 +131,21 @@ export default function EssayOverview({ question }) {
               </Button>
             </Link>
             <Link href="/body1" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_1 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_1 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_1
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -96,9 +154,21 @@ export default function EssayOverview({ question }) {
               </Button>
             </Link>
             <Link href="/body2" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_2 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_2 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_2
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -108,9 +178,21 @@ export default function EssayOverview({ question }) {
             </Link>
 
             <Link href="/body3" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_3 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_3 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_3
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -119,10 +201,18 @@ export default function EssayOverview({ question }) {
               </Button>
             </Link>
             <Link href="/conclusion" passHref>
-              <Button width="100%" p="2rem 0">
+              <Button
+                width="100%"
+                p="2rem 0"
+                borderWidth="4px"
+                color={conclusion ? completedSectionColor : null}
+                borderColor={conclusion ? completedSectionColor : null}
+              >
                 <Image
                   src={
-                    colorMode === "light"
+                    conclusion
+                      ? `/conclusion-${completedSectionColor}.svg`
+                      : colorMode === "light"
                       ? "/conclusion.svg"
                       : "/conclusion-dark.svg"
                   }
