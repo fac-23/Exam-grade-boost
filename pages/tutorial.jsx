@@ -54,7 +54,7 @@ export default function Tutorial() {
                 <Box>
                   <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
                     {" "}
-                    Heading 1
+                    About the app
                   </Heading>
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -71,7 +71,7 @@ export default function Tutorial() {
                 </Box>
                 <Box>
                   <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    Heading 1
+                    How to use
                   </Heading>
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -88,7 +88,7 @@ export default function Tutorial() {
                 </Box>
                 <Box>
                   <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    Heading 1
+                    Accessing Resources
                   </Heading>
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -105,7 +105,7 @@ export default function Tutorial() {
                 </Box>
                 <Box>
                   <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    Heading 1
+                    Getting Help
                   </Heading>
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
