@@ -33,12 +33,7 @@ export default function Login() {
             <Input type="email" id="email" name="email" mb={6} />
             <FormLabel htmlFor="password">Password</FormLabel>
             <Input type="password" id="password" name="password" mb={6} />
-            <Button
-              mb={6}
-              colorScheme="yellow"
-              className="button"
-              type="submit"
-            >
+            <Button mb={6} colorScheme="blue" className="button" type="submit">
               Log in
             </Button>
 
