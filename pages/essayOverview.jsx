@@ -7,6 +7,7 @@ import {
   Link,
   Text,
   useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { getEssayInfo } from "../database/model.js";
 import { ViewIcon } from "@chakra-ui/icons";
@@ -48,6 +49,8 @@ export default function EssayOverview({
 }) {
   const { colorMode } = useColorMode();
 
+  const completedSectionColor = useColorModeValue("primary", "yellow");
+
   return (
     <Layout>
       <Container>
@@ -60,12 +63,15 @@ export default function EssayOverview({
               <Button
                 width="100%"
                 p="2rem 0"
-                borderColor={spider ? "green" : null}
+                color={spider ? completedSectionColor : null}
                 borderWidth="4px"
+                borderColor={spider ? completedSectionColor : null}
               >
                 <Image
                   src={
-                    colorMode === "light"
+                    spider
+                      ? `/planning-${completedSectionColor}.svg`
+                      : colorMode === "light"
                       ? "/planning.svg"
                       : "/planning-dark.svg"
                   }
@@ -81,11 +87,18 @@ export default function EssayOverview({
               <Button
                 width="100%"
                 p="2rem 0"
+                color={introduction ? completedSectionColor : null}
                 borderWidth="4px"
-                borderColor="red"
+                borderColor={introduction ? completedSectionColor : null}
               >
                 <Image
-                  src={colorMode === "light" ? "/intro.svg" : "/intro-dark.svg"}
+                  src={
+                    introduction
+                      ? `/intro-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/intro.svg"
+                      : "/intro-dark.svg"
+                  }
                   alt="intro icon"
                   height={30}
                   width={30}
@@ -94,9 +107,21 @@ export default function EssayOverview({
               </Button>
             </Link>
             <Link href="/body1" passHref>
-              <Button width="100%" p="2rem 0" bg={body_1 ? "green" : null}>
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_1 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_1 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_1
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -105,9 +130,21 @@ export default function EssayOverview({
               </Button>
             </Link>
             <Link href="/body2" passHref>
-              <Button width="100%" p="2rem 0" bg={body_2 ? "green" : null}>
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_2 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_2 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_2
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -117,9 +154,21 @@ export default function EssayOverview({
             </Link>
 
             <Link href="/body3" passHref>
-              <Button width="100%" p="2rem 0" bg={body_3 ? "green" : null}>
+              <Button
+                width="100%"
+                p="2rem 0"
+                color={body_3 ? completedSectionColor : null}
+                borderWidth="4px"
+                borderColor={body_3 ? completedSectionColor : null}
+              >
                 <Image
-                  src={colorMode === "light" ? "/body.svg" : "/body-dark.svg"}
+                  src={
+                    body_3
+                      ? `/body-${completedSectionColor}.svg`
+                      : colorMode === "light"
+                      ? "/body.svg"
+                      : "/body-dark.svg"
+                  }
                   alt="body section icon"
                   height={30}
                   width={30}
@@ -128,10 +177,18 @@ export default function EssayOverview({
               </Button>
             </Link>
             <Link href="/conclusion" passHref>
-              <Button width="100%" p="2rem 0" bg={conclusion ? "green" : null}>
+              <Button
+                width="100%"
+                p="2rem 0"
+                borderWidth="4px"
+                color={conclusion ? completedSectionColor : null}
+                borderColor={conclusion ? completedSectionColor : null}
+              >
                 <Image
                   src={
-                    colorMode === "light"
+                    conclusion
+                      ? `/conclusion-${completedSectionColor}.svg`
+                      : colorMode === "light"
                       ? "/conclusion.svg"
                       : "/conclusion-dark.svg"
                   }

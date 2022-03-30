@@ -21,12 +21,12 @@ export const myNewTheme = extendTheme({
   // this colors are now available to use
   colors: {
     primaryLight: "#84AEED",
-    // primary: "#4182E3",
     primary: "#1B55AC",
     secondaryLight: "#cbbcff",
     secondary: "#5633D3",
     green: "#0EA958",
     lightGrey: "#EDF2F7",
+    yellow: "#ffae00",
   },
   styles,
   // components,
