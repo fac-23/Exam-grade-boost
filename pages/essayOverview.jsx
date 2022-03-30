@@ -49,13 +49,9 @@ export default function EssayOverview({
   body_3,
   conclusion,
 }) {
-  const { colorMode } = useColorMode();
-
-  const completedSectionColor = useColorModeValue("primary", "yellow");
-  export default function EssayOverview({ question }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const [showTitleEdit, setTitleEdit] = useState(false);
-
+  const completedSectionColor = useColorModeValue("primary", "yellow");
 
   return (
     <Layout>
