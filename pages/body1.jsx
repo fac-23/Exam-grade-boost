@@ -14,7 +14,7 @@ export async function getServerSideProps({ req }) {
   const question = essayInfo.question;
   const storedSpiderText = essayInfo.spider_1;
 
-  if (!storedBody1 || !storedSpiderText)  {
+  if (!storedBody1 || !storedSpiderText) {
     return {
       props: {
         question,
@@ -48,7 +48,7 @@ export async function getServerSideProps({ req }) {
       storedBranch1,
       storedBranch2,
       storedBranch3,
-      storedBranch4
+      storedBranch4,
     },
   };
 }
@@ -64,10 +64,10 @@ export default function Body1({
   storedBranch1,
   storedBranch2,
   storedBranch3,
-  storedBranch4
+  storedBranch4,
 }) {
   return (
-      <Layout>
+    <Layout>
       <Container>
         <Heading as="h1" mb="2rem">
           Body paragraph: {question}
@@ -88,10 +88,10 @@ export default function Body1({
           </Flex>
           <Flex flexDirection="column" h="100%">
             <BodySidebar
-            storedBranch1={storedBranch1}
-            storedBranch2={storedBranch2}
-            storedBranch3={storedBranch3}
-            storedBranch4={storedBranch4}
+              storedBranch1={storedBranch1}
+              storedBranch2={storedBranch2}
+              storedBranch3={storedBranch3}
+              storedBranch4={storedBranch4}
             ></BodySidebar>
           </Flex>
         </SimpleGrid>
