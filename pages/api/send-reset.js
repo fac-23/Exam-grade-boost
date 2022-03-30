@@ -12,10 +12,11 @@ export default async function sendResetEmail(req, res) {
 
       const reset = await storeResetToken(email, resetToken);
 
-      console.log(reset);
+      console.log("resetQuery", reset);
 
       const sgMail = require("@sendgrid/mail");
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
       const msg = {
         to: email,
         from: "essayboost.app@gmail.com",
@@ -23,15 +24,17 @@ export default async function sendResetEmail(req, res) {
         text: "Reset your password",
         html: `<h1>Exam Boost</h1><h2>Password reset link:</h2><p><a href=${"https://exam-grade-boost.vercel.app"}/resetPassword?email=${email}&token=${resetToken}>Reset</a>`,
       };
-      sgMail
+      const sgResult = await sgMail
         .send(msg)
         .then(() => {
           console.log("Resetmail sent");
         })
         .catch((error) => {
           console.error(error);
-        })
-        .then(res.redirect(303, "/"));
+        });
+
+      console.log("sgResult", sgResult);
+      res.redirect(303, "/");
 
       break;
     }
