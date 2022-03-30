@@ -93,7 +93,7 @@ export default function WordBank() {
               </AccordionButton>
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
-              <UnorderedList styleType="none" m="0 0 1.5rem 0">
+              <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
                 <ListItem p="1rem" background="gray.100">
                   <strong>Point</strong>
                   <p>There are different views on...</p>
@@ -152,7 +152,7 @@ export default function WordBank() {
               </AccordionButton>
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
-              <UnorderedList styleType="none" m="0 0 1.5rem 0">
+              <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
                 <ListItem p="1rem" background="gray.100">
                   <strong>Main</strong>
                   <p>This assignment discusses...</p>

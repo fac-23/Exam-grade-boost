@@ -353,7 +353,7 @@ export default function Introduction({
 
                 <AccordionItem>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={labelModeColour}>
                       <Box flex="1" textAlign="left">
                         Planning text
                       </Box>

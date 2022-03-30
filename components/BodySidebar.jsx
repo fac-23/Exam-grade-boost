@@ -126,7 +126,7 @@ export default function BodySidebar({
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
+          <AccordionPanel pb={4} color="black">
             <Box
               borderColor="black"
               borderWidth="1px"
