@@ -16,13 +16,13 @@ export default async function sendResetEmail(req, res) {
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
       const msg = {
         to: email,
-        from: "duck.rabbit.python@gmail.com", // Change to your verified sender
+        from: "essayboost.app@gmail.com",
         subject: "Exam boost password reset",
         text: "Reset your password",
         html: `<h1>Exam Boost</h1><h2>Password reset link:</h2><p><a href=${
           process.env.ON_LOCAL
             ? "http://localhost:3000"
-            : "exam-grade-boost.vercel.app"
+            : "https://exam-grade-boost.vercel.app"
         }/resetPassword?email=${email}&token=${resetToken}>Reset</a>`,
       };
       sgMail
