@@ -99,6 +99,7 @@ export default function Conclusion({
                   defaultValue={storedMain ? storedMain : ""}
                   borderColor="black.300"
                   borderWidth="1.5px"
+                  mt="2"
                 ></Textarea>
                 <Button
                   p="2"
@@ -145,6 +146,7 @@ export default function Conclusion({
                   defaultValue={storedEvidence ? storedEvidence : ""}
                   borderColor="blue.300"
                   borderWidth="1.5px"
+                  mt="2"
                 ></Textarea>
                 <Button
                   p="2"
@@ -165,7 +167,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="blue.300"
+                  bg="blue.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -185,6 +187,7 @@ export default function Conclusion({
                   defaultValue={storedPriority ? storedPriority : ""}
                   borderColor="yellow.300"
                   borderWidth="1.5px"
+                  mt="2"
                 ></Textarea>
                 <Button
                   p="2"
@@ -205,7 +208,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="blue.300"
+                  bg="yellow.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -217,14 +220,53 @@ export default function Conclusion({
                 </Box>
               </Collapse>
 
-              <Textarea
-                name="relate"
-                placeholder="Relate"
-                defaultValue={storedRelate ? storedRelate : ""}
-                borderColor="orange.300"
-                borderWidth="1.5px"
-                mb={5}
-              ></Textarea>
+              <Flex>
+                <Textarea
+                  name="relate"
+                  placeholder="Relate"
+                  defaultValue={storedRelate ? storedRelate : ""}
+                  borderColor="orange.300"
+                  borderWidth="1.5px"
+                  mt="2"
+                  mb="2"
+                ></Textarea>
+                <Button
+                  p="2"
+                  m="2"
+                  size="sm"
+                  onClick={() => {
+                    setIsOpen([false, false, false, !isOpen[3]]);
+                  }}
+                  fontSize="sm"
+                  fontWeight="medium"
+                >
+                  <TriangleDownIcon />
+                </Button>
+              </Flex>
+              <Collapse in={isOpen[3]} animateOpacity>
+                <Box
+                  p="10px"
+                  color="black"
+                  mt="1"
+                  mb="2"
+                  bg="orange.200"
+                  rounded="md"
+                  shadow="md"
+                >
+                  <UnorderedList p="1rem">
+                    <strong>Relate</strong>
+                    <ListItem>Overall, the evidence suggests...</ListItem>
+                    <ListItem>
+                      A likely application for these findings is...
+                    </ListItem>
+                    <ListItem>
+                      Although the evidence is mixed, there is more... than...
+                    </ListItem>
+                    <ListItem>To conclude...</ListItem>
+                  </UnorderedList>
+                </Box>
+              </Collapse>
+
               <Button type="submit">Save and continue</Button>
             </form>
           </Flex>
@@ -303,54 +345,6 @@ export default function Conclusion({
                   </h2>
                   <AccordionPanel pb={4}>
                     <VideoComponent></VideoComponent>
-                  </AccordionPanel>
-                </AccordionItem>
-
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box flex="1" textAlign="left">
-                        Word bank
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel p="1rem 0 1rem 0">
-                    <UnorderedList styleType="none" m="0 0 1.5rem 0">
-                      <ListItem p="1rem" background="gray.100">
-                        <strong>Main</strong>
-                        <p>This assignment discusses...</p>
-                        <p>
-                          The main claim assessed was... and it was supported by
-                          the evidence...
-                        </p>
-                        <p>
-                          The level of significance...was examined and found to
-                          be...
-                        </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="blue.100">
-                        <strong>Evidence</strong>
-                        <p>The most important evidence on the topic was...</p>
-                        <p>A consistent theme in the evidence was...</p>
-                        <p>A noticeable pattern was seen... </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="yellow.100">
-                        <strong>Priority</strong>
-                        <p>The most important evidence was...</p>
-                        <p>Some key principles were... </p>
-                      </ListItem>
-                      <ListItem p="1rem" background="orange.200">
-                        <strong>Relate</strong>
-                        <p>Overall, the evidence suggests...</p>
-                        <p>A likely application for these findings is...</p>
-                        <p>
-                          Although the evidence is mixed, there is more...
-                          than...
-                        </p>
-                        <p>To conclude...</p>
-                      </ListItem>
-                    </UnorderedList>
                   </AccordionPanel>
                 </AccordionItem>
 
