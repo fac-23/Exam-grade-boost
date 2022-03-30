@@ -100,6 +100,16 @@ export function createNewEssay(user_id, question) {
   });
 }
 
+export function renameEssay(question, user_id, essayId) {
+  const RENAME_ESSAY = `UPDATE essays SET question = $1 WHERE user_id = $2 AND id = $3 RETURNING id`;
+  return db
+    .query(RENAME_ESSAY, [question, user_id, essayId])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((error) => console.log(error));
+}
+
 // Deletes current essay
 export function deleteCurrEssay(essayId, user_id) {
   const DELETE_ESSAY = `DELETE FROM essays WHERE id = $1 AND user_id = $2`;
