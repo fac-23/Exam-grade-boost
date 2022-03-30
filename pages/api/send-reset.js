@@ -19,11 +19,7 @@ export default async function sendResetEmail(req, res) {
         from: "essayboost.app@gmail.com",
         subject: "Exam boost password reset",
         text: "Reset your password",
-        html: `<h1>Exam Boost</h1><h2>Password reset link:</h2><p><a href=${
-          process.env.ON_LOCAL
-            ? "http://localhost:3000"
-            : "https://exam-grade-boost.vercel.app"
-        }/resetPassword?email=${email}&token=${resetToken}>Reset</a>`,
+        html: `<h1>Exam Boost</h1><h2>Password reset link:</h2><p><a href=${"https://exam-grade-boost.vercel.app"}/resetPassword?email=${email}&token=${resetToken}>Reset</a>`,
       };
       sgMail
         .send(msg)
