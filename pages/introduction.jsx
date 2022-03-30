@@ -103,6 +103,7 @@ export default function Introduction({
                 <Button
                   p="2"
                   m="2"
+                  size="sm"
                   onClick={() => {
                     setIsOpen([!isOpen[0], false, false, false]);
                   }}
@@ -151,6 +152,7 @@ export default function Introduction({
                 <Button
                   p="2"
                   m="2"
+                  size="sm"
                   onClick={() => setIsOpen([false, !isOpen[1], false, false])}
                   fontSize="sm"
                   fontWeight="medium"
@@ -190,6 +192,7 @@ export default function Introduction({
                 <Button
                   p="2"
                   m="2"
+                  size="sm"
                   onClick={() => setIsOpen([false, false, !isOpen[2], false])}
                   fontSize="sm"
                   fontWeight="medium"
@@ -234,6 +237,7 @@ export default function Introduction({
                 <Button
                   p="2"
                   m="2"
+                  size="sm"
                   onClick={() => setIsOpen([false, false, false, !isOpen[3]])}
                   fontSize="sm"
                   fontWeight="medium"
