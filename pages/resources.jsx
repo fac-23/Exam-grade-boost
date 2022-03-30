@@ -1,41 +1,66 @@
-import Link from "next/link";
-
 // import chakra UI components
-import { Container, Heading, Flex } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Flex,
+  Box,
+  useColorModeValue,
+  Link,
+} from "@chakra-ui/react";
 
 // import components
 import Layout from "../components/Layout.jsx";
 
-// import icons
-import { InfoIcon } from "@chakra-ui/icons";
-
 export default function Resources() {
+  const boxBgColor = useColorModeValue("primary", "secondary");
+
   return (
     <Layout>
       <Container centerContent>
         <Heading as="h1" mb="2rem">
           Resources
         </Heading>
-        <Flex direction={["column", "column", "row"]} gap="2rem">
-          <Link href="/videos">
+        <Flex
+          direction={["column", "column", "row"]}
+          gap="2rem"
+          w="100%"
+          fontSize="1.5rem"
+          textAlign="center"
+        >
+          <Link
+            href="/videos"
+            passHref
+            w="100%"
+            bg={boxBgColor}
+            p="4rem 2rem"
+            rounded="10px"
+            color="white"
+          >
             <a>Videos</a>
           </Link>
 
-          <Link href="/wordBank">
-            <a>
-              <InfoIcon mr="1rem" />
-              Word bank
-            </a>
+          <Link
+            href="/wordBank"
+            passHref
+            w="100%"
+            bg={boxBgColor}
+            p="4rem 2rem"
+            rounded="10px"
+            color="white"
+          >
+            <a>Word bank</a>
           </Link>
 
           <Link
             href="https://drive.google.com/drive/folders/1IA7eNTex7A82rrIdz0vS5e4m20mCiPap"
             passHref
+            w="100%"
+            bg={boxBgColor}
+            p="4rem 2rem"
+            rounded="10px"
+            color="white"
           >
-            <a target="_blank">
-              <InfoIcon mr="1rem" />
-              Guides
-            </a>
+            <a target="_blank">Guides</a>
           </Link>
         </Flex>
       </Container>
