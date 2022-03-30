@@ -34,7 +34,7 @@ export default async function sign_up(req, res) {
       });
 
       //redirect to home
-      res.redirect(303, "/home");
+      res.redirect(303, "/tutorial");
       break;
     }
     default:
