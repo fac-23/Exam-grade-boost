@@ -8,10 +8,15 @@ import {
   Container,
   Box,
   Button,
+  FormLabel,
+  Link,
 } from "@chakra-ui/react";
 
 import Navigation from "../components/Navigation.jsx";
 import { getEssayInfo } from "../database/model.js";
+
+// Import icons
+import { EditIcon } from "@chakra-ui/icons";
 
 // import jsPDF
 import { jsPDF } from "jspdf";
@@ -183,6 +188,17 @@ export default function FinalEssay({
             <Button variant="secondary" onClick={downloadPDF}>
               Export to PDF
             </Button>
+
+            <Link href="/essayOverview" passHref>
+              <Button type="submit" colorScheme="teal">
+                <Flex alignItems="center" justifyContent="center">
+                  <EditIcon mr="0.5rem" />
+                  <FormLabel m={0} textAlign="center">
+                    Edit
+                  </FormLabel>
+                </Flex>
+              </Button>
+            </Link>
           </Flex>
         </form>
       </Container>
