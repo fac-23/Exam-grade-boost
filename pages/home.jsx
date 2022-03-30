@@ -43,8 +43,6 @@ export async function getServerSideProps({ req }) {
 export default function Home({ username, allEssays }) {
   const modeColors = useColorModeValue("primary", "secondary");
 
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
     <Layout>
       <Container>

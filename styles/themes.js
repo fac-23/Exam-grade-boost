@@ -28,6 +28,9 @@ export const myNewTheme = extendTheme({
     lightGrey: "#EDF2F7",
     gold: "#ffae00",
   },
+  fonts: {
+    body: "Tahoma",
+  },
   styles,
   // components,
   components: {
