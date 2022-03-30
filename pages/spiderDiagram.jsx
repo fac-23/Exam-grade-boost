@@ -135,18 +135,14 @@ export default function SpiderDiagram({
             justifyContent="center"
           >
             {/*top item in flex box*/}
-            <Flex
-              direction="row"
-              alignContent="center"
-              justifyContent="center"
-              mr="2.5rem"
-            >
+            <Flex direction="row" alignContent="center" justifyContent="center">
               <Textarea
                 name="topic2_key"
                 placeholder="key"
                 defaultValue={topic2_key ? topic2_key : ""}
                 m="0 2.5rem 0 0"
-                borderColor="orange.300"
+                borderColor="primary"
+                borderWidth="0.3rem"
                 visibility={topicBranch2 || branch2Check ? "visible" : "hidden"}
               ></Textarea>
               <Textarea
@@ -339,12 +335,7 @@ export default function SpiderDiagram({
             </Flex>
 
             {/*last item in flex box*/}
-            <Flex
-              direction="row"
-              alignContent="center"
-              justifyContent="center"
-              mr="2.5rem"
-            >
+            <Flex direction="row" alignContent="center" justifyContent="center">
               <Textarea
                 name="topic3_key"
                 placeholder="key"
