@@ -30,3 +30,20 @@ a {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
+.show {
+  display: block;
+}
+
+.justifyContent {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 550px) {
+  .show {
+    display: none;
+  }
+  .justifyContent {
+    justify-content: space-between;
+  }
+}
