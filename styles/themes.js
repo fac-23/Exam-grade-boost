@@ -26,7 +26,7 @@ export const myNewTheme = extendTheme({
     secondary: "#5633D3",
     green: "#0EA958",
     lightGrey: "#EDF2F7",
-    yellow: "#ffae00",
+    gold: "#ffae00",
   },
   styles,
   // components,
