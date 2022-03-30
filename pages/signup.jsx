@@ -29,7 +29,7 @@ export default function Signup() {
         >
           <Heading mb={10}>Sign up</Heading>
 
-          <FormLabel htmlFor="username">Username</FormLabel>
+          <FormLabel htmlFor="username">Name</FormLabel>
           <Input type="text" id="username" required name="username" mb={6} />
 
           <FormLabel htmlFor="email">Email</FormLabel>
