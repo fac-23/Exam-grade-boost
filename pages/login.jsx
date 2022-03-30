@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 
 export default function Login() {
-  const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   return (
