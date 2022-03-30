@@ -10,7 +10,9 @@ export default async function sendResetEmail(req, res) {
         .toString("base64")
         .replace(/[^a-z]+/g, "");
 
-      await storeResetToken(email, resetToken);
+      const reset = await storeResetToken(email, resetToken);
+
+      console.log(reset);
 
       const sgMail = require("@sendgrid/mail");
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -28,9 +30,8 @@ export default async function sendResetEmail(req, res) {
         })
         .catch((error) => {
           console.error(error);
-        });
-
-      res.redirect(303, "/");
+        })
+        .then(res.redirect(303, "/"));
 
       break;
     }
