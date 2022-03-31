@@ -33,100 +33,84 @@ export async function getServerSideProps({ req }) {
   const question = essayInfo.question;
   const storedSpiderText = essayInfo.spider_1;
 
+  //storedSpiderText might be null
+  //branch1 etc migh be null
+  //we want to split on branches that might not exist which causes a crash
 
-
-//storedSpiderText might be null
-//branch1 etc migh be null
-//we want to split on branches that might not exist which causes a crash
-
-  
-  // get spider-diagram text 
-  function checkSpiderObjectExists(storedSpiderText){
-    if(!storedSpiderText){
-      return false
-    }
-    else return storedSpiderText
+  // get spider-diagram text
+  function checkSpiderObjectExists(storedSpiderText) {
+    if (!storedSpiderText) {
+      return false;
+    } else return storedSpiderText;
   }
 
-  function checkBranchExists(branch){
-    if(!branch){
-      return false 
-    }
-    else return branch.split("\n");
+  function checkBranchExists(branch) {
+    if (!branch) {
+      return false;
+    } else return branch.split("\n");
   }
 
-
-  
-  
-
-    function extractTopics(storedSpiderText, branchName){
-
-    if(checkSpiderObjectExists(storedSpiderText)){
+  function extractTopics(storedSpiderText, branchName) {
+    if (checkSpiderObjectExists(storedSpiderText)) {
       //know spider exists
-       const storedBranch = checkBranchExists(storedSpiderText[branchName])
-       if(storedBranch){
-         return storedBranch
-       }
-     
+      const storedBranch = checkBranchExists(storedSpiderText[branchName]);
+      if (storedBranch) {
+        return storedBranch;
+      }
     }
-    return [null, null, null, null, null]
+    return [null, null, null, null, null];
   }
 
-    const branch1Extract = extractTopics(storedSpiderText,"branch1")  
+  const branch1Extract = extractTopics(storedSpiderText, "branch1");
 
-    const topic1 = branch1Extract[0]
-    const topic1_key = branch1Extract[1]
-    const topic1_agree = branch1Extract[2]
-    const topic1_disagree = branch1Extract[3]
+  const topic1 = branch1Extract[0];
+  const topic1_key = branch1Extract[1];
+  const topic1_agree = branch1Extract[2];
+  const topic1_disagree = branch1Extract[3];
 
+  const branch2Extract = extractTopics(storedSpiderText, "branch2");
 
-    const branch2Extract = extractTopics(storedSpiderText,"branch2")  
+  const topic2 = branch2Extract[0];
+  const topic2_key = branch2Extract[1];
+  const topic2_agree = branch2Extract[2];
+  const topic2_disagree = branch2Extract[3];
 
-    const topic2 = branch2Extract[0]
-    const topic2_key = branch2Extract[1]
-    const topic2_agree = branch2Extract[2]
-    const topic2_disagree = branch2Extract[3]
+  const branch3Extract = extractTopics(storedSpiderText, "branch3");
 
-    const branch3Extract = extractTopics(storedSpiderText,"branch3")  
+  const topic3 = branch3Extract[0];
+  const topic3_key = branch3Extract[1];
+  const topic3_agree = branch3Extract[2];
+  const topic3_disagree = branch3Extract[3];
 
-    const topic3 = branch3Extract[0]
-    const topic3_key = branch3Extract[1]
-    const topic3_agree = branch3Extract[2]
-    const topic3_disagree = branch3Extract[3]
-  
-    const branch4Extract = extractTopics(storedSpiderText,"branch4")  
-    const topic4 = branch4Extract[0];
-    const topic4_key = branch4Extract[1];
-    const topic4_agree = branch4Extract[2];
-    const topic4_disagree = branch4Extract[3];
+  const branch4Extract = extractTopics(storedSpiderText, "branch4");
+  const topic4 = branch4Extract[0];
+  const topic4_key = branch4Extract[1];
+  const topic4_agree = branch4Extract[2];
+  const topic4_disagree = branch4Extract[3];
 
-  
-   
-  
- 
   //^^^^^
-  // get spider-diagram text 
+  // get spider-diagram text
 
   if (!storedIntro) {
     return {
       props: {
         question,
         topic1,
-      topic1_key,
-      topic1_agree,
-      topic1_disagree,
-      topic2,
-      topic2_key,
-      topic2_agree,
-      topic2_disagree,
-      topic3,
-      topic3_key,
-      topic3_agree,
-      topic3_disagree,
-      topic4,
-      topic4_key,
-      topic4_agree,
-      topic4_disagree,
+        topic1_key,
+        topic1_agree,
+        topic1_disagree,
+        topic2,
+        topic2_key,
+        topic2_agree,
+        topic2_disagree,
+        topic3,
+        topic3_key,
+        topic3_agree,
+        topic3_disagree,
+        topic4,
+        topic4_key,
+        topic4_agree,
+        topic4_disagree,
       },
     };
   }
@@ -137,7 +121,7 @@ export async function getServerSideProps({ req }) {
   const storedOpposite = splitSections[2];
   const storedKey = splitSections[3];
 
-  console.log('sst',storedSpiderText)
+  console.log("sst", storedSpiderText);
 
   return {
     props: {
@@ -457,7 +441,7 @@ export default function Introduction({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <VideoComponent src="https://vimeo.com/692858328" />
+                    <VideoComponent src="https://player.vimeo.com/video/692858328?h=64df399bb4" />
                   </AccordionPanel>
                 </AccordionItem>
 
@@ -471,177 +455,191 @@ export default function Introduction({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4} color="black">
-            
-            {topic1? <div>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.100"
-            >
-              <h3>Topic 1:</h3>
-              <Text>{topic1 ? topic1 : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.200"
-            >
-              <h3>key</h3>
-              <Text>{topic1_key ? topic1_key : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.300"
-            >
-              <h3>agree:</h3>
-              <Text>{topic1_agree ? topic1_agree : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.400"
-            >
-              <h3>disagree</h3>
-              <Text>{topic1_disagree ? topic1_disagree : ""}</Text>
-            </Box>
-            </div>: <div></div>}
-            {topic2? <div>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.100"
-            >
-              <h3>Topic 2:</h3>
-              <Text>{topic2 ? topic2 : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.200"
-            >
-              <h3>Key:</h3>
-              <Text>{topic2_key ? topic2_key : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.300"
-            >
-              <h3>agree:</h3>
-              <Text>{topic2_agree ? topic2_agree : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.400"
-            >
-              <h3>disagree:</h3>
-              <Text>{topic2_disagree ? topic2_disagree : ""}</Text>
-            </Box>
-            </div>: <div></div>}
-            {topic3? <div>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.100"
-            >
-              <h3>Topic 3:</h3>
-              <Text>{topic3 ? topic3 : ""}</Text>
-            </Box>
+                    {topic1 ? (
+                      <div>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.100"
+                        >
+                          <h3>Topic 1:</h3>
+                          <Text>{topic1 ? topic1 : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.200"
+                        >
+                          <h3>key</h3>
+                          <Text>{topic1_key ? topic1_key : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.300"
+                        >
+                          <h3>agree:</h3>
+                          <Text>{topic1_agree ? topic1_agree : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.400"
+                        >
+                          <h3>disagree</h3>
+                          <Text>{topic1_disagree ? topic1_disagree : ""}</Text>
+                        </Box>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                    {topic2 ? (
+                      <div>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.100"
+                        >
+                          <h3>Topic 2:</h3>
+                          <Text>{topic2 ? topic2 : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.200"
+                        >
+                          <h3>Key:</h3>
+                          <Text>{topic2_key ? topic2_key : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.300"
+                        >
+                          <h3>agree:</h3>
+                          <Text>{topic2_agree ? topic2_agree : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.400"
+                        >
+                          <h3>disagree:</h3>
+                          <Text>{topic2_disagree ? topic2_disagree : ""}</Text>
+                        </Box>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                    {topic3 ? (
+                      <div>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.100"
+                        >
+                          <h3>Topic 3:</h3>
+                          <Text>{topic3 ? topic3 : ""}</Text>
+                        </Box>
 
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.200"
-            >
-              <h3>Key:</h3>
-              <Text>{topic3_key ? topic3_key : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.300"
-            >
-              <h3>agree:</h3>
-              <Text>{topic3_agree ? topic3_agree : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.400"
-            >
-              <h3>disagree:</h3>
-              <Text>{topic3_disagree ? topic3_disagree : ""}</Text>
-            </Box>
-            </div>: <div></div>}
-            {topic4? <div>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.100"
-            >
-              <h3>Topic 4:</h3>
-              <Text>{topic4 ? topic4 : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.200"
-            >
-              <h3>Key:</h3>
-              <Text>{topic4_key ? topic4_key : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.300"
-            >
-              <h3>agree:</h3>
-              <Text>{topic4_agree ? topic4_agree : ""}</Text>
-            </Box>
-            <Box
-              borderColor="black"
-              borderWidth="1px"
-              p={1}
-              textAlign="left"
-              backgroundColor="orange.400"
-            >
-              <h3>disagree:</h3>
-              <Text>{topic4_disagree ? topic4_disagree : ""}</Text>
-            </Box>
-            </div>: <div></div>}
-
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.200"
+                        >
+                          <h3>Key:</h3>
+                          <Text>{topic3_key ? topic3_key : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.300"
+                        >
+                          <h3>agree:</h3>
+                          <Text>{topic3_agree ? topic3_agree : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.400"
+                        >
+                          <h3>disagree:</h3>
+                          <Text>{topic3_disagree ? topic3_disagree : ""}</Text>
+                        </Box>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                    {topic4 ? (
+                      <div>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.100"
+                        >
+                          <h3>Topic 4:</h3>
+                          <Text>{topic4 ? topic4 : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.200"
+                        >
+                          <h3>Key:</h3>
+                          <Text>{topic4_key ? topic4_key : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.300"
+                        >
+                          <h3>agree:</h3>
+                          <Text>{topic4_agree ? topic4_agree : ""}</Text>
+                        </Box>
+                        <Box
+                          borderColor="black"
+                          borderWidth="1px"
+                          p={1}
+                          textAlign="left"
+                          backgroundColor="orange.400"
+                        >
+                          <h3>disagree:</h3>
+                          <Text>{topic4_disagree ? topic4_disagree : ""}</Text>
+                        </Box>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
