@@ -3,6 +3,7 @@ import { mode } from "@chakra-ui/theme-tools";
 
 import { ButtonStyles as Button } from "./components/ButtonStyles";
 import { LinkStyles as Link } from "./components/LinkStyles";
+import { FooterStyles as Footer } from "./components/ButtonStyles";
 
 const styles = {
   global: (props) => ({
@@ -36,5 +37,6 @@ export const myNewTheme = extendTheme({
   components: {
     Link,
     Button,
+    Footer,
   },
 });
