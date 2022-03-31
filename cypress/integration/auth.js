@@ -21,7 +21,7 @@ describe("Should allow the user to sign up, log in, log out and only access rout
     cy.get("input[id='password']").type(`${randomUsername}`);
     cy.get("button").contains("Sign up").click();
 
-    cy.url().should("include", "/home");
+    cy.url().should("include", "/tutorial");
     cy.getCookie("sid").should("exist");
   });
 
