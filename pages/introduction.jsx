@@ -33,35 +33,77 @@ export async function getServerSideProps({ req }) {
   const question = essayInfo.question;
   const storedSpiderText = essayInfo.spider_1;
 
+
+
+//storedSpiderText might be null
+//branch1 etc migh be null
+//we want to split on branches that might not exist which causes a crash
+
+  
   // get spider-diagram text 
-  const storedBranch1 = storedSpiderText.branch1.split("\n");
+  function checkSpiderObjectExists(storedSpiderText){
+    if(!storedSpiderText){
+      return false
+    }
+    else return storedSpiderText
+  }
+
+  function checkBranchExists(branch){
+    if(!branch){
+      return false 
+    }
+    else return branch.split("\n");
+  }
+
+
   
-  const topic1 = storedBranch1[0];
-  const topic1_key = storedBranch1[1];
-  const topic1_agree = storedBranch1[2];
-  const topic1_disagree = storedBranch1[3];
-
-  const storedBranch2 = storedSpiderText.branch2.split("\n");
-
-  const topic2 = storedBranch2[0];
-  const topic2_key = storedBranch2[1];
-  const topic2_agree = storedBranch2[2];
-  const topic2_disagree = storedBranch2[3];
-
-  const storedBranch3 = storedSpiderText.branch3.split("\n");
-
-  const topic3 = storedBranch3[0];
-  const topic3_key = storedBranch3[1];
-  const topic3_agree = storedBranch3[2];
-  const topic3_disagree = storedBranch3[3];
-
-  const storedBranch4 = storedSpiderText.branch4.split("\n");
   
-  const topic4 = storedBranch4[0];
-  const topic4_key = storedBranch4[1];
-  const topic4_agree = storedBranch4[2];
-  const topic4_disagree = storedBranch4[3];
+
+    function extractTopics(storedSpiderText, branchName){
+
+    if(checkSpiderObjectExists(storedSpiderText)){
+      //know spider exists
+       const storedBranch = checkBranchExists(storedSpiderText[branchName])
+       if(storedBranch){
+         return storedBranch
+       }
+     
+    }
+    return [null, null, null, null, null]
+  }
+
+    const branch1Extract = extractTopics(storedSpiderText,"branch1")  
+
+    const topic1 = branch1Extract[0]
+    const topic1_key = branch1Extract[1]
+    const topic1_agree = branch1Extract[2]
+    const topic1_disagree = branch1Extract[3]
+
+
+    const branch2Extract = extractTopics(storedSpiderText,"branch2")  
+
+    const topic2 = branch2Extract[0]
+    const topic2_key = branch2Extract[1]
+    const topic2_agree = branch2Extract[2]
+    const topic2_disagree = branch2Extract[3]
+
+    const branch3Extract = extractTopics(storedSpiderText,"branch3")  
+
+    const topic3 = branch3Extract[0]
+    const topic3_key = branch3Extract[1]
+    const topic3_agree = branch3Extract[2]
+    const topic3_disagree = branch3Extract[3]
   
+    const branch4Extract = extractTopics(storedSpiderText,"branch4")  
+    const topic4 = branch4Extract[0];
+    const topic4_key = branch4Extract[1];
+    const topic4_agree = branch4Extract[2];
+    const topic4_disagree = branch4Extract[3];
+
+  
+   
+  
+ 
   //^^^^^
   // get spider-diagram text 
 
@@ -429,6 +471,8 @@ export default function Introduction({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4} color="black">
+            
+            {topic1? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -469,6 +513,8 @@ export default function Introduction({
               <h3>disagree</h3>
               <Text>{topic1_disagree ? topic1_disagree : ""}</Text>
             </Box>
+            </div>: <div></div>}
+            {topic2? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -509,7 +555,8 @@ export default function Introduction({
               <h3>disagree:</h3>
               <Text>{topic2_disagree ? topic2_disagree : ""}</Text>
             </Box>
-
+            </div>: <div></div>}
+            {topic3? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -551,8 +598,8 @@ export default function Introduction({
               <h3>disagree:</h3>
               <Text>{topic3_disagree ? topic3_disagree : ""}</Text>
             </Box>
-
-
+            </div>: <div></div>}
+            {topic4? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -563,7 +610,6 @@ export default function Introduction({
               <h3>Topic 4:</h3>
               <Text>{topic4 ? topic4 : ""}</Text>
             </Box>
-
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -594,6 +640,7 @@ export default function Introduction({
               <h3>disagree:</h3>
               <Text>{topic4_disagree ? topic4_disagree : ""}</Text>
             </Box>
+            </div>: <div></div>}
 
                   </AccordionPanel>
                 </AccordionItem>
