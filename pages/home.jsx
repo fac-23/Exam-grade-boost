@@ -15,15 +15,13 @@ import {
   ListItem,
   Container,
   useColorModeValue,
-  useColorMode,
-  Avatar,
-  FormLabel,
 } from "@chakra-ui/react";
 
 import { EditIcon, ViewIcon, DeleteIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
 import Switch from "../components/DarkModeSwitch";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -138,9 +136,6 @@ export default function Home({ username, allEssays }) {
           </Flex>
 
           <Flex flexBasis="500px" alignItems="center" direction="column">
-            <Heading as="h2" mb="2rem" alignSelf="flex-start">
-              Profile
-            </Heading>
             <Flex
               mb={"2rem"}
               w="100%"
@@ -151,14 +146,12 @@ export default function Home({ username, allEssays }) {
               alignItems="center"
               direction="column"
             >
-              <Avatar
-                bg={modeColors}
-                h="100px"
-                w="100%"
-                maxWidth="100px"
-                alt="Default user"
-                mb="2rem"
-              />
+              <Image
+                src="/boost-logo.svg"
+                width="200%"
+                height="200%"
+                alt="logo"
+              ></Image>
               <label className="switchLabel">Toggle Dark Mode</label>
 
               <Switch id="dark-mode-switch" />

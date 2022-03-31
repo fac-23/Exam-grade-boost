@@ -1,8 +1,6 @@
-// import next components
-// import Link from "next/link";
-
 // import components
 import Switch from "./DarkModeSwitch.jsx";
+import Image from "next/image";
 
 // import chakra UI components
 import {
@@ -49,6 +47,7 @@ export default function Navigation() {
                 <Switch />
               </li>
             </Flex>
+
             <form method="POST" action="/api/log-out">
               <Button variant="logout" type="submit" size="sm">
                 Log out
