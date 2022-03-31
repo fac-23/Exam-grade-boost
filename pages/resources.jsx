@@ -69,7 +69,7 @@ export default function Resources() {
           </Link>
 
           <Link
-            href="https://drive.google.com/drive/folders/1IA7eNTex7A82rrIdz0vS5e4m20mCiPap"
+            href="https://drive.google.com/drive/folders/1JjEmcTz4IqsGblruoYgiKKc55HN3o_af?usp=sharing"
             passHref
             w="100%"
             bg={boxBgColor}
