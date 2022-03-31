@@ -24,22 +24,22 @@ export default function BodySidebar({
         How to write your main body
       </Heading>
       <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
-        <ListItem p={2} background="gray.100">
+        <ListItem p={2} background="orange.100">
           <strong>Point</strong> - The paragraph focus, sometimes called ‘the
           topic sentence’.
         </ListItem>
-        <ListItem p={2} background="blue.100">
+        <ListItem p={2} background="orange.300">
           <strong>Identify</strong> - Evidence base, fact, or research name.
         </ListItem>
-        <ListItem p={2} background="yellow.100">
+        <ListItem p={2} background="orange.200">
           <strong>Outline</strong> - Key features about the evidence, fact or
           source, often in the form of quantities.
         </ListItem>
-        <ListItem p={2} background="orange.200">
+        <ListItem p={2} background="yellow.100">
           <strong>Evidence1</strong> - The most important idea in the area, that
           supports the ‘main argument’ and is also linked to the evidence.
         </ListItem>
-        <ListItem p={2} background="orange.300">
+        <ListItem p={2} background="blue.100">
           <strong>Evidence2</strong> - The most important idea in the area, that
           support the ‘counter argument’.
         </ListItem>
@@ -60,23 +60,23 @@ export default function BodySidebar({
             </AccordionButton>
           </h2>
           <AccordionPanel p="1rem 0 1rem 0">
-            <Text as="mark" backgroundColor="gray.100">
+            <Text as="mark" backgroundColor="blue.100">
               The Evolutionary Theory of Attachment takes the view that many
               behaviours in this area are innate – they are hard wired in the
               genes – shown in part by the continuity hypothesis{" "}
             </Text>
-            <Text as="mark" backgroundColor="blue.100">
+            <Text as="mark" backgroundColor="orange.300">
               John Bowlby (1946) believed that attachment was continuous, which
               is often called the ‘continuity hypothesis’, based on early
               experiences with a primary caregiver.{" "}
             </Text>
-            <Text as="mark" backgroundColor="yellow.100">
+            <Text as="mark" backgroundColor="orange.200">
               By continuous he meant that early childhood experiences would have
               an effect in later life. He thought that during a sensitive
               period, children were especially affected their relationship with
               their primary caregiver.
             </Text>{" "}
-            <Text as="mark" backgroundColor="orange.100">
+            <Text as="mark" backgroundColor="blue.100">
               A strength of this theory is supporting evidence reported by Hazan
               and Shaver (1989). They conducted a love quiz on students and
               found a correlation between the reported relationship students had

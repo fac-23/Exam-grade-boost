@@ -33,7 +33,7 @@ export default function BodyInputGrid({
           name="point"
           placeholder="Point"
           defaultValue={storedPoint ? storedPoint : ""}
-          borderColor="black.300"
+          borderColor="orange.100"
           borderWidth="1.5px"
         ></Textarea>
         <Button
@@ -79,7 +79,7 @@ export default function BodyInputGrid({
           name="identify"
           placeholder="Identify"
           defaultValue={storedIdentify ? storedIdentify : ""}
-          borderColor="blue.300"
+          borderColor="orange.300"
           borderWidth="1.5px"
           mt="0.5rem"
         ></Textarea>
@@ -123,7 +123,7 @@ export default function BodyInputGrid({
           name="outline"
           placeholder="Outline"
           defaultValue={storedOutline ? storedOutline : ""}
-          borderColor="yellow.300"
+          borderColor="orange.200"
           borderWidth="1.5px"
           mt="0.5rem"
         ></Textarea>
@@ -165,7 +165,7 @@ export default function BodyInputGrid({
           name="explain1"
           placeholder="Evidence 1"
           defaultValue={storedExplain1 ? storedExplain1 : ""}
-          borderColor="orange.300"
+          borderColor="yellow.200"
           borderWidth="1.5px"
           mt="0.5rem"
         ></Textarea>
@@ -209,7 +209,7 @@ export default function BodyInputGrid({
           name="explain2"
           placeholder="Evidence 2"
           defaultValue={storedExplain2 ? storedExplain2 : ""}
-          borderColor="orange.300"
+          borderColor="blue.100"
           borderWidth="1.5px"
           mt="0.5rem"
         ></Textarea>
@@ -250,7 +250,7 @@ export default function BodyInputGrid({
           name="relate"
           placeholder="Relate"
           defaultValue={storedRelate ? storedRelate : ""}
-          borderColor="purple.200"
+          borderColor="purple.100"
           borderWidth="1.5px"
           mt="0.5rem"
           mb="0.5rem"
