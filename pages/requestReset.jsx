@@ -26,7 +26,8 @@ export default function RequestReset() {
           >
             <Heading mb={5}>Reset my password</Heading>
             <Heading mb={5} as="h2" size="sm">
-              Following reset, check your email inbox and spam/trash folder
+              Following reset wait at least 5 minutes! , check your email inbox
+              and spam/trash folder
             </Heading>
 
             <FormLabel htmlFor="email">Email</FormLabel>
