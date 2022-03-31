@@ -30,6 +30,7 @@ export const myNewTheme = extendTheme({
   },
   fonts: {
     body: "Tahoma, Geneva, Verdana, sans-serif",
+    heading: "Tahoma, Geneva, Verdana, sans-serif",
   },
   styles,
   // components,
