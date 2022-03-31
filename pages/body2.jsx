@@ -15,10 +15,56 @@ export async function getServerSideProps({ req }) {
   const storedSpiderText = essayInfo.spider_1;
 
 
-  if (!storedBody2 || !storedSpiderText) {
+    // get spider-diagram text 
+  const storedBranch1 = storedSpiderText.branch1.split("\n");
+  
+  const topic1 = storedBranch1[0];
+  const topic1_key = storedBranch1[1];
+  const topic1_agree = storedBranch1[2];
+  const topic1_disagree = storedBranch1[3];
+
+  const storedBranch2 = storedSpiderText.branch2.split("\n");
+
+  const topic2 = storedBranch2[0];
+  const topic2_key = storedBranch2[1];
+  const topic2_agree = storedBranch2[2];
+  const topic2_disagree = storedBranch2[3];
+
+  const storedBranch3 = storedSpiderText.branch3.split("\n");
+
+  const topic3 = storedBranch3[0];
+  const topic3_key = storedBranch3[1];
+  const topic3_agree = storedBranch3[2];
+  const topic3_disagree = storedBranch3[3];
+
+  const storedBranch4 = storedSpiderText.branch4.split("\n");
+  
+  const topic4 = storedBranch4[0];
+  const topic4_key = storedBranch4[1];
+  const topic4_agree = storedBranch4[2];
+  const topic4_disagree = storedBranch4[3];
+  // get spider-diagram text 
+
+  if (!storedBody2 ) {
     return {
       props: {
         question,
+        topic1,
+        topic1_key,
+        topic1_agree,
+        topic1_disagree,
+        topic2,
+        topic2_key,
+        topic2_agree,
+        topic2_disagree,
+        topic3,
+        topic3_key,
+        topic3_agree,
+        topic3_disagree,
+        topic4,
+        topic4_key,
+        topic4_agree,
+        topic4_disagree,
       },
     };
   }
@@ -31,12 +77,7 @@ export async function getServerSideProps({ req }) {
   const storedExplain2 = splitSections[4];
   const storedRelate = splitSections[5];
 
-  const splitBranches = storedSpiderText.split("\n");
-  const storedBranch2 = splitBranches[1];
-  const storedBranch1 = splitBranches[0];
-  const storedBranch3 = splitBranches[2];
-  const storedBranch4 = splitBranches[3];
-
+  
   return {
     props: {
       question,
@@ -46,10 +87,22 @@ export async function getServerSideProps({ req }) {
       storedExplain1,
       storedExplain2,
       storedRelate,
-      storedBranch1,
-      storedBranch2,
-      storedBranch3,
-      storedBranch4
+      topic1,
+      topic1_key,
+      topic1_agree,
+      topic1_disagree,
+      topic2,
+      topic2_key,
+      topic2_agree,
+      topic2_disagree,
+      topic3,
+      topic3_key,
+      topic3_agree,
+      topic3_disagree,
+      topic4,
+      topic4_key,
+      topic4_agree,
+      topic4_disagree,
     },
   };
 }
@@ -65,7 +118,22 @@ export default function Body2({
   storedBranch1,
   storedBranch2,
   storedBranch3,
-  storedBranch4
+  storedBranch4topic1,
+  topic1_key,
+  topic1_agree,
+  topic1_disagree,
+  topic2,
+  topic2_key,
+  topic2_agree,
+  topic2_disagree,
+  topic3,
+  topic3_key,
+  topic3_agree,
+  topic3_disagree,
+  topic4,
+  topic4_key,
+  topic4_agree,
+  topic4_disagree,
 }) {
   return (
       <Layout>
@@ -91,10 +159,25 @@ export default function Body2({
 
           <Flex flexDirection="column" h="100%">
             <BodySidebar
-             storedBranch1={storedBranch1}
-             storedBranch2={storedBranch2}
-             storedBranch3={storedBranch3}
-             storedBranch4={storedBranch4}
+            topic1={topic1}
+            topic1_key ={topic1_key}
+            topic1_agree = {topic1_agree}
+            topic1_disagree = {topic1_disagree}
+
+            topic2={topic2}
+            topic2_key ={topic2_key}
+            topic2_agree = {topic2_agree}
+            topic2_disagree = {topic2_disagree}
+
+            topic3={topic3}
+            topic3_key ={topic3_key}
+            topic3_agree = {topic3_agree}
+            topic3_disagree = {topic3_disagree}
+
+            topic4={topic4}
+            topic4_key ={topic4_key}
+            topic4_agree = {topic4_agree}
+            topic4_disagree = {topic4_disagree}
             ></BodySidebar>
           </Flex>
         </SimpleGrid>

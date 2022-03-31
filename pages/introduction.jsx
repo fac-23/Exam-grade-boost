@@ -33,10 +33,58 @@ export async function getServerSideProps({ req }) {
   const question = essayInfo.question;
   const storedSpiderText = essayInfo.spider_1;
 
-  if (!storedIntro || !storedSpiderText) {
+  // get spider-diagram text 
+  const storedBranch1 = storedSpiderText.branch1.split("\n");
+  
+  const topic1 = storedBranch1[0];
+  const topic1_key = storedBranch1[1];
+  const topic1_agree = storedBranch1[2];
+  const topic1_disagree = storedBranch1[3];
+
+  const storedBranch2 = storedSpiderText.branch2.split("\n");
+
+  const topic2 = storedBranch2[0];
+  const topic2_key = storedBranch2[1];
+  const topic2_agree = storedBranch2[2];
+  const topic2_disagree = storedBranch2[3];
+
+  const storedBranch3 = storedSpiderText.branch3.split("\n");
+
+  const topic3 = storedBranch3[0];
+  const topic3_key = storedBranch3[1];
+  const topic3_agree = storedBranch3[2];
+  const topic3_disagree = storedBranch3[3];
+
+  const storedBranch4 = storedSpiderText.branch4.split("\n");
+  
+  const topic4 = storedBranch4[0];
+  const topic4_key = storedBranch4[1];
+  const topic4_agree = storedBranch4[2];
+  const topic4_disagree = storedBranch4[3];
+  
+  //^^^^^
+  // get spider-diagram text 
+
+  if (!storedIntro) {
     return {
       props: {
         question,
+        topic1,
+      topic1_key,
+      topic1_agree,
+      topic1_disagree,
+      topic2,
+      topic2_key,
+      topic2_agree,
+      topic2_disagree,
+      topic3,
+      topic3_key,
+      topic3_agree,
+      topic3_disagree,
+      topic4,
+      topic4_key,
+      topic4_agree,
+      topic4_disagree,
       },
     };
   }
@@ -47,11 +95,7 @@ export async function getServerSideProps({ req }) {
   const storedOpposite = splitSections[2];
   const storedKey = splitSections[3];
 
-  const splitBranches = storedSpiderText.split("\n");
-  const storedBranch2 = splitBranches[1];
-  const storedBranch1 = splitBranches[0];
-  const storedBranch3 = splitBranches[2];
-  const storedBranch4 = splitBranches[3];
+  console.log('sst',storedSpiderText)
 
   return {
     props: {
@@ -60,10 +104,22 @@ export async function getServerSideProps({ req }) {
       storedMain,
       storedOpposite,
       storedKey,
-      storedBranch1,
-      storedBranch2,
-      storedBranch3,
-      storedBranch4,
+      topic1,
+      topic1_key,
+      topic1_agree,
+      topic1_disagree,
+      topic2,
+      topic2_key,
+      topic2_agree,
+      topic2_disagree,
+      topic3,
+      topic3_key,
+      topic3_agree,
+      topic3_disagree,
+      topic4,
+      topic4_key,
+      topic4_agree,
+      topic4_disagree,
     },
   };
 }
@@ -74,10 +130,22 @@ export default function Introduction({
   storedMain,
   storedOpposite,
   storedKey,
-  storedBranch1,
-  storedBranch2,
-  storedBranch3,
-  storedBranch4,
+  topic1,
+  topic1_key,
+  topic1_agree,
+  topic1_disagree,
+  topic2,
+  topic2_key,
+  topic2_agree,
+  topic2_disagree,
+  topic3,
+  topic3_key,
+  topic3_agree,
+  topic3_disagree,
+  topic4,
+  topic4_key,
+  topic4_agree,
+  topic4_disagree,
 }) {
   const labelModeColour = useColorModeValue("black", "white");
   const [isOpen, setIsOpen] = useState([false, false, false, false]);
@@ -360,47 +428,173 @@ export default function Introduction({
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4}>
-                    <Box
-                      borderColor="black"
-                      borderWidth="1px"
-                      p={1}
-                      textAlign="left"
-                      backgroundColor="orange.100"
-                    >
-                      <h3>Topic 1:</h3>
-                      <Text>{storedBranch1 ? storedBranch1 : ""}</Text>
-                    </Box>
-                    <Box
-                      borderColor="black"
-                      borderWidth="1px"
-                      p={1}
-                      textAlign="left"
-                      backgroundColor="orange.200"
-                    >
-                      <h3>Topic 2:</h3>
-                      <Text>{storedBranch2 ? storedBranch2 : ""}</Text>
-                    </Box>
-                    <Box
-                      borderColor="black"
-                      borderWidth="1px"
-                      p={1}
-                      textAlign="left"
-                      backgroundColor="orange.300"
-                    >
-                      <h3>Topic 3:</h3>
-                      <Text>{storedBranch3 ? storedBranch3 : ""}</Text>
-                    </Box>
-                    <Box
-                      borderColor="black"
-                      borderWidth="1px"
-                      p={1}
-                      textAlign="left"
-                      backgroundColor="orange.400"
-                    >
-                      <h3>Topic 4:</h3>
-                      <Text>{storedBranch4 ? storedBranch4 : ""}</Text>
-                    </Box>
+                  <AccordionPanel pb={4} color="black">
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.100"
+            >
+              <h3>Topic 1:</h3>
+              <Text>{topic1 ? topic1 : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.200"
+            >
+              <h3>key</h3>
+              <Text>{topic1_key ? topic1_key : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.300"
+            >
+              <h3>agree:</h3>
+              <Text>{topic1_agree ? topic1_agree : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.400"
+            >
+              <h3>disagree</h3>
+              <Text>{topic1_disagree ? topic1_disagree : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.100"
+            >
+              <h3>Topic 2:</h3>
+              <Text>{topic2 ? topic2 : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.200"
+            >
+              <h3>Key:</h3>
+              <Text>{topic2_key ? topic2_key : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.300"
+            >
+              <h3>agree:</h3>
+              <Text>{topic2_agree ? topic2_agree : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.400"
+            >
+              <h3>disagree:</h3>
+              <Text>{topic2_disagree ? topic2_disagree : ""}</Text>
+            </Box>
+
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.100"
+            >
+              <h3>Topic 3:</h3>
+              <Text>{topic3 ? topic3 : ""}</Text>
+            </Box>
+
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.200"
+            >
+              <h3>Key:</h3>
+              <Text>{topic3_key ? topic3_key : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.300"
+            >
+              <h3>agree:</h3>
+              <Text>{topic3_agree ? topic3_agree : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.400"
+            >
+              <h3>disagree:</h3>
+              <Text>{topic3_disagree ? topic3_disagree : ""}</Text>
+            </Box>
+
+
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.100"
+            >
+              <h3>Topic 4:</h3>
+              <Text>{topic4 ? topic4 : ""}</Text>
+            </Box>
+
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.200"
+            >
+              <h3>Key:</h3>
+              <Text>{topic4_key ? topic4_key : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.300"
+            >
+              <h3>agree:</h3>
+              <Text>{topic4_agree ? topic4_agree : ""}</Text>
+            </Box>
+            <Box
+              borderColor="black"
+              borderWidth="1px"
+              p={1}
+              textAlign="left"
+              backgroundColor="orange.400"
+            >
+              <h3>disagree:</h3>
+              <Text>{topic4_disagree ? topic4_disagree : ""}</Text>
+            </Box>
+
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
