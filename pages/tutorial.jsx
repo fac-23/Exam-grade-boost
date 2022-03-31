@@ -20,7 +20,7 @@ export default function Tutorial() {
   return (
     <Layout noNav>
       <Container>
-        <Flex height="100vh" alignItems="center" justifyContent="center">
+        <Flex height="100%" justifyContent="center">
           <Flex
             direction="column"
             background={formBackground}
@@ -37,7 +37,9 @@ export default function Tutorial() {
                   </Button>
                 </Link>
               </Box>
-              <Heading mb={10}>Tutorial</Heading>
+              <Heading as="h1" mb={10}>
+                Tutorial
+              </Heading>
 
               <Box>
                 <iframe

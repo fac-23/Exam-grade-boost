@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navigation from "./Navigation";
+import Footer from "./Footer";
 
 export default function Layout({ noNav, children }) {
   return (
@@ -11,7 +12,7 @@ export default function Layout({ noNav, children }) {
       </Head>
       <header>{noNav ? <div></div> : <Navigation></Navigation>}</header>
       <main>{children}</main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }
