@@ -19,13 +19,13 @@ A visual approach to essay writing
 
 ---
 
-- [ ] As a neurodiverse or international student I want to be able to develop my study and essay writing skills in an easy end efficient way.
-- [ ] As a user I would like to view and edit my own essays and keep them secure and safe.
-- [ ] As a user I want to be able to save my input text in a structured format.
-- [ ] As a user I want to be able to access virtual resources that can help me structure and write my essay.
-- [ ] As a user I want to be able to export my essay in PDF and MS docx format for examiners or screen reader software.
-- [ ] As a user I would like to have options for colours and theming to suit my needs.
-- [ ] As a user I would like to view examples and my work in progress side-by side so that I can refer to them while working.
+- [x] As a neurodiverse or international student I want to be able to develop my study and essay writing skills in an easy end efficient way.
+- [x] As a user I would like to view and edit my own essays and keep them secure and safe.
+- [x] As a user I want to be able to save my input text in a structured format.
+- [x] As a user I want to be able to access virtual resources that can help me structure and write my essay.
+- [x] As a user I want to be able to export my essay in PDF and MS docx format for examiners or screen reader software.
+- [x] As a user I would like to have options for colours and theming to suit my needs.
+- [x] As a user I would like to view examples and my work in progress side-by side so that I can refer to them while working.
 
 ## Roles 🚴🏽‍♀️🚴🚴🏾‍♂️
 
