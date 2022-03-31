@@ -29,7 +29,7 @@ export default function NewEssay(user_id) {
           <Flex mt={4} direction="column" p={10}>
             <Heading>First step</Heading>
             <FormLabel>Enter your essay question:</FormLabel>
-            <Input name="question" mb={5}></Input>
+            <Input name="question" mb={5} required></Input>
             <Button type="submit">Save and continue</Button>
           </Flex>
         </form>
