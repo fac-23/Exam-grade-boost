@@ -137,12 +137,7 @@ export default function Home({ username, allEssays }) {
             </Box>
           </Flex>
 
-          <Flex
-            flexBasis="500px"
-            alignItems="center"
-            justifyContent="center"
-            direction="column"
-          >
+          <Flex flexBasis="500px" alignItems="center" direction="column">
             <Heading as="h2" mb="2rem" alignSelf="flex-start">
               Profile
             </Heading>
@@ -153,7 +148,6 @@ export default function Home({ username, allEssays }) {
               borderColor={modeColors}
               borderWidth="3px"
               borderRadius="10px"
-              h="100%"
               alignItems="center"
               direction="column"
             >
