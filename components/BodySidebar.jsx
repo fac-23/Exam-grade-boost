@@ -113,7 +113,7 @@ export default function BodySidebar({
             </AccordionButton>
           </h2>
           <AccordionPanel p="1rem 0 1rem 0">
-            <VideoComponent />
+            <VideoComponent src="https://vimeo.com/692850134" />
           </AccordionPanel>
         </AccordionItem>
 

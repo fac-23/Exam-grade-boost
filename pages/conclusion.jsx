@@ -344,7 +344,7 @@ export default function Conclusion({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <VideoComponent></VideoComponent>
+                    <VideoComponent src="https://vimeo.com/469593113"></VideoComponent>
                   </AccordionPanel>
                 </AccordionItem>
 
