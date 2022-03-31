@@ -415,7 +415,7 @@ export default function Introduction({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <VideoComponent />
+                    <VideoComponent src="https://vimeo.com/692858328" />
                   </AccordionPanel>
                 </AccordionItem>
 
