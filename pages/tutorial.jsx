@@ -20,7 +20,7 @@ export default function Tutorial() {
   return (
     <Layout noNav>
       <Container>
-        <Flex height="100%" justifyContent="center">
+        <Flex justifyContent="center">
           <Flex
             direction="column"
             background={formBackground}
@@ -53,74 +53,39 @@ export default function Tutorial() {
               </Box>
 
               <VStack spacing="1rem">
-                <Box>
-                  <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    {" "}
-                    About the app
+                <Box width="100%">
+                  <Heading as="h2" size="sm" mb="0.5rem">
+                    Welcome Page
+                  </Heading>
+                  <Text>Edit your profile and view previously saved work.</Text>
+                </Box>
+                <Box width="100%">
+                  <Heading as="h2" size="sm" mb="0.5rem">
+                    Essay Title Editor
+                  </Heading>
+                  <Text>Complete the title to start writing your essay.</Text>
+                </Box>
+
+                <Box width="100%">
+                  <Heading as="h2" size="sm" mb="0.5rem">
+                    Writing Stages
+                  </Heading>
+                  <Text>Work on planning, paragraphs and conclusions.</Text>
+                </Box>
+                <Box width="100%">
+                  <Heading as="h2" size="sm" mb="0.5rem">
+                    Additional Help and Resources
                   </Heading>
                   <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Semper quis lectus nulla at volutpat diam ut
-                    venenatis tellus. In nisl nisi scelerisque eu. Massa sapien
-                    faucibus et molestie ac feugiat. Eget velit aliquet sagittis
-                    id consectetur purus ut. Eu non diam phasellus vestibulum.
-                    Tellus in hac habitasse platea dictumst vestibulum. Mattis
-                    aliquam faucibus purus in massa tempor. Sit amet consectetur
-                    adipiscing elit pellentesque habitant. Ac feugiat sed lectus
-                    vestibulum mattis ullamcorper velit.
+                    View additional resources, such as our word bank and ‘how
+                    to’ videos.
                   </Text>
                 </Box>
-                <Box>
-                  <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    How to use
+                <Box width="100%">
+                  <Heading as="h2" size="sm" mb="0.5rem">
+                    Output Work
                   </Heading>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Semper quis lectus nulla at volutpat diam ut
-                    venenatis tellus. In nisl nisi scelerisque eu. Massa sapien
-                    faucibus et molestie ac feugiat. Eget velit aliquet sagittis
-                    id consectetur purus ut. Eu non diam phasellus vestibulum.
-                    Tellus in hac habitasse platea dictumst vestibulum. Mattis
-                    aliquam faucibus purus in massa tempor. Sit amet consectetur
-                    adipiscing elit pellentesque habitant. Ac feugiat sed lectus
-                    vestibulum mattis ullamcorper velit.
-                  </Text>
-                </Box>
-                <Box>
-                  <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    Accessing Resources
-                  </Heading>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Semper quis lectus nulla at volutpat diam ut
-                    venenatis tellus. In nisl nisi scelerisque eu. Massa sapien
-                    faucibus et molestie ac feugiat. Eget velit aliquet sagittis
-                    id consectetur purus ut. Eu non diam phasellus vestibulum.
-                    Tellus in hac habitasse platea dictumst vestibulum. Mattis
-                    aliquam faucibus purus in massa tempor. Sit amet consectetur
-                    adipiscing elit pellentesque habitant. Ac feugiat sed lectus
-                    vestibulum mattis ullamcorper velit.
-                  </Text>
-                </Box>
-                <Box>
-                  <Heading as="h2" size="sm" alignSelf="flex-start" mb="0.5rem">
-                    Getting Help
-                  </Heading>
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Semper quis lectus nulla at volutpat diam ut
-                    venenatis tellus. In nisl nisi scelerisque eu. Massa sapien
-                    faucibus et molestie ac feugiat. Eget velit aliquet sagittis
-                    id consectetur purus ut. Eu non diam phasellus vestibulum.
-                    Tellus in hac habitasse platea dictumst vestibulum. Mattis
-                    aliquam faucibus purus in massa tempor. Sit amet consectetur
-                    adipiscing elit pellentesque habitant. Ac feugiat sed lectus
-                    vestibulum mattis ullamcorper velit.
-                  </Text>
+                  <Text>Export your work.</Text>
                 </Box>
               </VStack>
             </VStack>

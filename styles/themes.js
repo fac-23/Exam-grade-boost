@@ -29,7 +29,8 @@ export const myNewTheme = extendTheme({
     gold: "#ffae00",
   },
   fonts: {
-    body: "Tahoma",
+    body: "Tahoma, Geneva, Verdana, sans-serif",
+    heading: "Tahoma, Geneva, Verdana, sans-serif",
   },
   styles,
   // components,

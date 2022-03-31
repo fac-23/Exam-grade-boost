@@ -190,14 +190,14 @@ export default function FinalEssay({
             </Button>
 
             <Link href="/essayOverview" passHref>
-              <Button type="submit" colorScheme="teal">
-                <Flex alignItems="center" justifyContent="center">
-                  <EditIcon mr="0.5rem" />
-                  <FormLabel m={0} textAlign="center">
+              <a>
+                <Button colorScheme="teal">
+                  <Flex alignItems="center" justifyContent="center">
+                    <EditIcon mr="0.5rem" />
                     Edit
-                  </FormLabel>
-                </Flex>
-              </Button>
+                  </Flex>
+                </Button>
+              </a>
             </Link>
           </Flex>
         </form>
