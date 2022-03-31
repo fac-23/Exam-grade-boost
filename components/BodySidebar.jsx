@@ -139,6 +139,7 @@ export default function BodySidebar({
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4} color="black">
+            {topic1? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -179,6 +180,8 @@ export default function BodySidebar({
               <h3>disagree</h3>
               <Text>{topic1_disagree ? topic1_disagree : ""}</Text>
             </Box>
+            </div>: <div></div>}
+            {topic2? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -219,7 +222,8 @@ export default function BodySidebar({
               <h3>disagree:</h3>
               <Text>{topic2_disagree ? topic2_disagree : ""}</Text>
             </Box>
-
+            </div>: <div></div>}
+            {topic3? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -261,8 +265,8 @@ export default function BodySidebar({
               <h3>disagree:</h3>
               <Text>{topic3_disagree ? topic3_disagree : ""}</Text>
             </Box>
-
-
+            </div>: <div></div>}
+            {topic4? <div>
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -273,7 +277,6 @@ export default function BodySidebar({
               <h3>Topic 4:</h3>
               <Text>{topic4 ? topic4 : ""}</Text>
             </Box>
-
             <Box
               borderColor="black"
               borderWidth="1px"
@@ -304,7 +307,7 @@ export default function BodySidebar({
               <h3>disagree:</h3>
               <Text>{topic4_disagree ? topic4_disagree : ""}</Text>
             </Box>
-
+            </div>: <div></div>}
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
