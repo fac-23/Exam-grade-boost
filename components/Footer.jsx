@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <Box
       as="footer"
-      pos="fixed"
-      bottom="0"
       bg={FooterBackgroundColor}
+      position="fixed"
+      bottom="0"
       color="white"
       p="1rem"
       w="100%"

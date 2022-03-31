@@ -23,6 +23,7 @@ import {
 import { EditIcon, ViewIcon, DeleteIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
 import Switch from "../components/DarkModeSwitch";
+import Footer from "../components/Footer";
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -171,6 +172,7 @@ export default function Home({ username, allEssays }) {
           </Flex>
         </Flex>
       </Container>
+      <Footer />
     </Layout>
   );
 }
