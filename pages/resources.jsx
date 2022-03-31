@@ -10,6 +10,7 @@ import {
 
 // import components
 import Layout from "../components/Layout.jsx";
+import Image from "next/image";
 
 export default function Resources() {
   const boxBgColor = useColorModeValue("primary", "secondary");
@@ -36,7 +37,15 @@ export default function Resources() {
             rounded="10px"
             color="white"
           >
-            <a>Videos</a>
+            <Flex direction="column" centerContent>
+              <a>Videos</a>
+              <Image
+                src="/videos.svg"
+                alt="video player icon"
+                width="120px"
+                height="120px"
+              ></Image>
+            </Flex>
           </Link>
 
           <Link
@@ -48,7 +57,15 @@ export default function Resources() {
             rounded="10px"
             color="white"
           >
-            <a>Word bank</a>
+            <Flex direction="column" centerContent>
+              <a>Word bank</a>
+              <Image
+                src="/wordbank.svg"
+                alt="wordbank icon"
+                width="120px"
+                height="120px"
+              ></Image>
+            </Flex>
           </Link>
 
           <Link
@@ -60,7 +77,15 @@ export default function Resources() {
             rounded="10px"
             color="white"
           >
-            <a target="_blank">Guides</a>
+            <Flex direction="column" centerContent>
+              <a target="_blank">Guides</a>
+              <Image
+                src="/guide.svg"
+                alt="guide icon"
+                width="120px"
+                height="120px"
+              ></Image>
+            </Flex>
           </Link>
         </Flex>
       </Container>
