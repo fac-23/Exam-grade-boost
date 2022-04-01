@@ -2,7 +2,6 @@ import { saveSpiderDiagram } from "../../database/model";
 import Cookies from "cookies";
 
 export default async function getSpiderDiagram(req, res) {
-  console.log(req.body);
   const {
     topic1,
     topic1_key,
@@ -43,7 +42,6 @@ export default async function getSpiderDiagram(req, res) {
     branch4: branch4,
   };
 
-  console.log(planningText);
 
   const returnedEssayId = await saveSpiderDiagram(planningText, essayId);
 
