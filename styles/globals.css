@@ -38,15 +38,25 @@ a {
   display: block;
 }
 
-.justifyContent {
-  justify-content: center;
+.topic1_Margin {
+  margin:2.5rem;
+}
+
+.topic4_Margin {
+  margin:2.5rem;
 }
 
 @media only screen and (max-width: 550px) {
   .show {
     display: none;
   }
-  .justifyContent {
-    justify-content: space-between;
-  }
+  
+
+.topic1_Margin {
+  margin: 0;
 }
+
+.topic4_Margin {
+  margin: 0;
+}
+}        

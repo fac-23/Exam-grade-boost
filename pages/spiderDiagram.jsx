@@ -120,7 +120,7 @@ export default function SpiderDiagram({
         Spider diagram for {question}
       </Heading>
       <Flex
-        justify="center"
+        justify="flex-start"
         alignItems="center"
         direction="column"
         p={5}
@@ -145,31 +145,34 @@ export default function SpiderDiagram({
             >
               <Textarea
                 name="topic2_key"
-                placeholder="key"
+                placeholder="Key"
                 defaultValue={topic2_key ? topic2_key : ""}
                 m="0 2.5rem 0 0"
                 borderColor="primary"
+                borderWidth='.15rem'
                 visibility={topicBranch2 || branch2Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
               <Textarea
                 name="topic2_agree"
-                placeholder="agree"
+                placeholder="Agree"
                 defaultValue={topic2_agree ? topic2_agree : ""}
                 borderColor="primary"
+                borderWidth='.15rem'
                 visibility={topicBranch2 || branch2Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
               <Textarea
                 name="topic2_disagree"
-                placeholder="disagree"
+                placeholder="Disagree"
                 defaultValue={topic2_disagree ? topic2_disagree : ""}
                 m="0 0 0 2.5rem"
                 borderColor="primary"
+                borderWidth='.15rem'
                 visibility={topicBranch2 || branch2Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
-            </Flex>
+            </Flex>       
 
             {/*2nd item in flex box*/}
             <Flex direction="row">
@@ -182,10 +185,11 @@ export default function SpiderDiagram({
               >
                 <Textarea
                   name="topic1_key"
-                  placeholder="key"
+                  placeholder="Key"
                   defaultValue={topic1_key ? topic1_key : ""}
                   m="0 0 2.5rem 0"
                   borderColor="orange.300"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch1 || branch1Check ? "visible" : "hidden"
                   }
@@ -193,9 +197,10 @@ export default function SpiderDiagram({
                 ></Textarea>
                 <Textarea
                   name="topic1_agree"
-                  placeholder="agree"
+                  placeholder="Agree"
                   defaultValue={topic1_agree ? topic1_agree : ""}
                   borderColor="orange.300"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch1 || branch1Check ? "visible" : "hidden"
                   }
@@ -203,10 +208,11 @@ export default function SpiderDiagram({
                 ></Textarea>
                 <Textarea
                   name="topic1_disagree"
-                  placeholder="disagree"
+                  placeholder="Disagree"
                   defaultValue={topic1_disagree ? topic1_disagree : ""}
                   m="2.5rem 0 0 0"
                   borderColor="orange.300"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch1 || branch1Check ? "visible" : "hidden"
                   }
@@ -224,14 +230,14 @@ export default function SpiderDiagram({
               >
                 <Textarea
                   name="topic1"
-                  placeholder="topic1"
+                  placeholder="Topic 1"
                   defaultValue={topic1 ? topic1 : ""}
-                  m="0 2.5rem 0 2.5rem"
                   borderColor="orange.300"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch1 || branch1Check ? "visible" : "hidden"
                   }
-                  //className="branchWidth"
+                 className="topic1_Margin"
                 ></Textarea>
                 <Button onClick={() => setTopicBranch1(true)}>
                   <Flex alignContent="center" justifyContent="center">
@@ -244,10 +250,11 @@ export default function SpiderDiagram({
               <Flex justify="center" alignItems="center" direction="column">
                 <Textarea
                   name="topic2"
-                  placeholder="topic2"
+                  placeholder="Topic 2"
                   defaultValue={topic2 ? topic2 : ""}
                   m="2.5rem"
                   borderColor="primary"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch2 || branch2Check ? "visible" : "hidden"
                   }
@@ -260,9 +267,8 @@ export default function SpiderDiagram({
                 <Box
                   h="3rem"
                   w="100%"
-                  //mb="1rem"
                   borderColor="black"
-                  borderWidth="1.5px"
+                  borderWidth=".15rem"
                   borderRadius="5px"
                   m="1rem"
                   textAlign="center"
@@ -276,10 +282,11 @@ export default function SpiderDiagram({
                 </Button>
                 <Textarea
                   name="topic3"
-                  placeholder="topic3"
+                  placeholder="Topic 3"
                   defaultValue={topic3 ? topic3 : ""}
                   m="2.5rem"
-                  borderColor="lightGrey"
+                  borderColor="red"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch3 || branch3Check ? "visible" : "hidden"
                   }
@@ -302,13 +309,14 @@ export default function SpiderDiagram({
                 </Button>
                 <Textarea
                   name="topic4"
-                  placeholder="topic4"
+                  placeholder="Topic 4"
                   defaultValue={topic4 ? topic4 : ""}
-                  m="0 2.5rem 0 2.5rem"
                   borderColor="green"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch4 || branch4Check ? "visible" : "hidden"
                   }
+                  className="topic4_Margin"
                 ></Textarea>
               </Flex>
 
@@ -321,10 +329,11 @@ export default function SpiderDiagram({
               >
                 <Textarea
                   name="topic4_key"
-                  placeholder="key"
+                  placeholder="Key"
                   defaultValue={topic4_key ? topic4_key : ""}
                   m="0 0 2.5rem 0"
                   borderColor="green"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch4 || branch4Check ? "visible" : "hidden"
                   }
@@ -332,9 +341,10 @@ export default function SpiderDiagram({
                 ></Textarea>
                 <Textarea
                   name="topic4_agree"
-                  placeholder="agree"
+                  placeholder="Agree"
                   defaultValue={topic4_agree ? topic4_agree : ""}
                   borderColor="green"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch4 || branch4Check ? "visible" : "hidden"
                   }
@@ -342,10 +352,11 @@ export default function SpiderDiagram({
                 ></Textarea>
                 <Textarea
                   name="topic4_disagree"
-                  placeholder="disagree"
+                  placeholder="Disagree"
                   defaultValue={topic4_disagree ? topic4_disagree : ""}
                   m="2.5rem 0 0 0"
                   borderColor="green"
+                  borderWidth='.15rem'
                   visibility={
                     topicBranch4 || branch4Check ? "visible" : "hidden"
                   }
@@ -358,27 +369,30 @@ export default function SpiderDiagram({
             <Flex direction="row" alignContent="center" justifyContent="center">
               <Textarea
                 name="topic3_key"
-                placeholder="key"
+                placeholder="Key"
                 defaultValue={topic3_key ? topic3_key : ""}
                 m="0 2.5rem 0 0"
-                borderColor="lightGrey"
+                borderColor="red"
+                borderWidth='.15rem'
                 visibility={topicBranch3 || branch3Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
               <Textarea
                 name="topic3_agree"
-                placeholder="agree"
+                placeholder="Agree"
                 defaultValue={topic3_agree ? topic3_agree : ""}
-                borderColor="lightGrey"
+                borderColor="red"
+                borderWidth='.15rem'
                 visibility={topicBranch3 || branch3Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
               <Textarea
                 name="topic3_disagree"
-                placeholder="disagree"
+                placeholder="Disagree"
                 defaultValue={topic3_disagree ? topic3_disagree : ""}
                 m="0 0 0 2.5rem"
-                borderColor="lightGrey"
+                borderColor="red"
+                borderWidth='.15rem'
                 visibility={topicBranch3 || branch3Check ? "visible" : "hidden"}
                 className="show"
               ></Textarea>
