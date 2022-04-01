@@ -43,7 +43,7 @@ export default function Tutorial() {
 
               <Box>
                 <iframe
-                  src="https://vimeo.com/692854378"
+                  src="https://player.vimeo.com/video/692854378?h=1d70088608"
                   width="100%"
                   height="auto"
                   frameBorder="0"
