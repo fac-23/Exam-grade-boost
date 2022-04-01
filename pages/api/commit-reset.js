@@ -20,17 +20,22 @@ export default async function commitReset(req, res) {
       const storedRecord = await retrieveResetToken(email);
       await clearResetTokens();
 
+      console.log({ storedRecord });
+      console.log({ token });
       if (token === storedRecord.token) {
         const hashedPassword = await hashPassword(password);
+        console.log({ email });
         const updated = await updatePassword(hashedPassword, email);
-
+        console.log({ updated });
         if (updated) {
+          console.log("runs 31");
           const cookies = new Cookies(req, res);
           //clear cookies and reissue new
           cookies.set("sid");
           const user = await getUser(email);
           const sid = await saveSession({ user_id: user[0].id });
-
+          console.log(sid);
+          console.log({ user });
           cookies.set("sid", `${sid}`, {
             maxAge: cookie_options.maxAge,
           });
