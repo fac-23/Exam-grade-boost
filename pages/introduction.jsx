@@ -191,8 +191,8 @@ export default function Introduction({
                   name="summary"
                   placeholder="summary"
                   defaultValue={storedSummary ? storedSummary : ""}
-                  borderColor="black.300"
-                  borderWidth="1.5px"
+                  borderColor="orange.300"
+                  borderWidth='0.15rem'
                 ></Textarea>
                 <Button
                   p="2"
@@ -213,7 +213,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="gray.100"
+                  bg="orange.200"
                   rounded="md"
                   shadow="md"
                 >
@@ -239,9 +239,9 @@ export default function Introduction({
                   name="main"
                   placeholder="main argument"
                   defaultValue={storedMain ? storedMain : ""}
-                  borderColor="blue.300"
-                  borderWidth="1.5px"
+                  borderColor="yellow.300"
                   mt="0.5rem"
+                  borderWidth='0.15rem'
                 ></Textarea>
                 <Button
                   p="2"
@@ -260,7 +260,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="blue.100"
+                  bg="yellow.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -279,8 +279,8 @@ export default function Introduction({
                   name="opposite"
                   placeholder="opposite argument"
                   defaultValue={storedOpposite ? storedOpposite : ""}
-                  borderColor="yellow.300"
-                  borderWidth="1.5px"
+                  borderColor="gray.400"
+                  borderWidth='0.15rem'
                   mt="0.5rem"
                 ></Textarea>
                 <Button
@@ -300,7 +300,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="yellow.100"
+                  bg="gray.300"
                   rounded="md"
                   shadow="md"
                 >
@@ -323,8 +323,8 @@ export default function Introduction({
                   name="key"
                   placeholder="key themes"
                   defaultValue={storedKey ? storedKey : ""}
-                  borderColor="orange.300"
-                  borderWidth="1.5px"
+                  borderColor="pink.300"
+                  borderWidth='0.15rem'
                   mt="0.5rem"
                   mb="1rem"
                 ></Textarea>
@@ -345,7 +345,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="orange.200"
+                  bg="pink.200"
                   rounded="md"
                   shadow="md"
                 >
@@ -378,21 +378,21 @@ export default function Introduction({
             </Heading>
             <Box color="black">
               <UnorderedList styleType="none" m="0 0 1.5rem 0">
-                <ListItem p={2} background="gray.100">
+                <ListItem p={2} background="orange.200">
                   <strong>Summary</strong> - in this area you give a summary of
                   your overall assignment.
                 </ListItem>
-                <ListItem p={2} background="blue.100">
+                <ListItem p={2} background="yellow.100">
                   <strong>Main Argument</strong> - a summary of the main ‘yes’
                   position.
                 </ListItem>
-                <ListItem p={2} background="yellow.100">
+                <ListItem p={2} background="gray.300">
                   <strong>Opposite Argument</strong> - a summary of the main
                   ‘no’ position.
                 </ListItem>
-                <ListItem p={2} background="orange.200">
+                <ListItem p={2} background="pink.200">
                   <strong>Key Themes</strong> - a summary of the research areas
-                  you ListItemll use. Note, you may wish to include definitions
+                  you will use. Note, you may wish to include definitions
                   between the O and the K sections.
                 </ListItem>
               </UnorderedList>

@@ -186,7 +186,7 @@ export default function Conclusion({
                   placeholder="Main argument"
                   defaultValue={storedMain ? storedMain : ""}
                   borderColor="black.300"
-                  borderWidth="1.5px"
+                  borderWidth='0.15rem'
                   mt="2"
                 ></Textarea>
                 <Button
@@ -233,7 +233,7 @@ export default function Conclusion({
                   placeholder="Evidence"
                   defaultValue={storedEvidence ? storedEvidence : ""}
                   borderColor="blue.300"
-                  borderWidth="1.5px"
+                  borderWidth='0.15rem'
                   mt="2"
                 ></Textarea>
                 <Button
@@ -274,7 +274,7 @@ export default function Conclusion({
                   placeholder="Priority Evidence"
                   defaultValue={storedPriority ? storedPriority : ""}
                   borderColor="yellow.300"
-                  borderWidth="1.5px"
+                  borderWidth='0.15rem'
                   mt="2"
                 ></Textarea>
                 <Button
@@ -314,7 +314,7 @@ export default function Conclusion({
                   placeholder="Relate"
                   defaultValue={storedRelate ? storedRelate : ""}
                   borderColor="orange.300"
-                  borderWidth="1.5px"
+                  borderWidth='0.15rem'
                   mt="2"
                   mb="2"
                 ></Textarea>
