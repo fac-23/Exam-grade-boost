@@ -170,7 +170,7 @@ export default function WordBank() {
                   <p>A consistent theme in the evidence was...</p>
                   <p>A noticeable pattern was seen... </p>
                 </ListItem>
-                <ListItem p="1rem" background="teal.100">
+                <ListItem p="1rem" background="teal.50">
                   <strong>Priority</strong>
                   <p>The most important evidence was...</p>
                   <p>Some key principles were... </p>

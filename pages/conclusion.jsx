@@ -304,7 +304,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="teal.100"
+                  bg="teal.50"
                   rounded="md"
                   shadow="md"
                 >
@@ -384,7 +384,7 @@ export default function Conclusion({
                   of evidence that make you believe your interpretation of ideas
                   is the most appropriate one.
                 </ListItem>
-                <ListItem p={2} background="teal.100">
+                <ListItem p={2} background="teal.50">
                   <strong>Prioritised</strong> - give the evidence in a
                   prioritised form..
                 </ListItem>
@@ -413,7 +413,7 @@ export default function Conclusion({
                       Particularly important features include a focus on good
                       quality low fat, lightly processed foods.{" "}
                     </Text>
-                    <Text as="mark" backgroundColor="teal.100">
+                    <Text as="mark" backgroundColor="teal.50">
                       A range of social support networks is also important. A
                       person seeking the diet would aim to keep their mood as
                       positive as possible and they would aim to stop their
