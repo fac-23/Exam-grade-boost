@@ -15,8 +15,16 @@ import { ViewIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import Layout from "../components/Layout.jsx";
 import { EditIcon } from "@chakra-ui/icons";
+import { cookiesTampered } from "../auth.js";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res }) {
+  const suspectReq = await cookiesTampered(req, res);
+  if (suspectReq) {
+    return {
+      props: {},
+    };
+  }
+
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
   const question = essayInfo.question;

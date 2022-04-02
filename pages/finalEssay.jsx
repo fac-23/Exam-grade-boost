@@ -25,6 +25,7 @@ import { jsPDF } from "jspdf";
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
+import { cookiesTampered } from "../auth.js";
 
 function printIfExists(content) {
   return content ? content + "\n\n" : "";
@@ -34,7 +35,13 @@ function printIfExistsNoPad(content) {
   return content ? content : "";
 }
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res }) {
+  const suspectReq = await cookiesTampered(req, res);
+  if (suspectReq) {
+    return {
+      props: {},
+    };
+  }
   // gets the essay id from the cookie
   const essayId = req.cookies.currEssay;
 

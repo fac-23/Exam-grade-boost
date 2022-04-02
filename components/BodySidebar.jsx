@@ -48,12 +48,12 @@ export default function BodySidebar({
           source, often in the form of quantities.
         </ListItem>
         <ListItem p={2} background="yellow.100">
-          <strong>Evidence1</strong> - The most important idea in the area, that
-          supports the ‘main argument’ and is also linked to the evidence.
+          <strong>Explain agree</strong> - The most important idea in the area,
+          that supports the ‘main argument’ and is also linked to the evidence.
         </ListItem>
         <ListItem p={2} background="blue.100">
-          <strong>Evidence2</strong> - The most important idea in the area, that
-          support the ‘counter argument’.
+          <strong>Explain disagree</strong> - The most important idea in the
+          area, that support the ‘counter argument’.
         </ListItem>
         <ListItem p={2} background="purple.100">
           <strong>Relate</strong> - Directly link back to the question. This
@@ -72,23 +72,23 @@ export default function BodySidebar({
             </AccordionButton>
           </h2>
           <AccordionPanel p="1rem 0 1rem 0">
-            <Text as="mark" backgroundColor="blue.100">
+            <Text as="mark" backgroundColor="orange.50">
               The Evolutionary Theory of Attachment takes the view that many
               behaviours in this area are innate – they are hard wired in the
               genes – shown in part by the continuity hypothesis{" "}
             </Text>
-            <Text as="mark" backgroundColor="orange.300">
+            <Text as="mark" backgroundColor="orange.200">
               John Bowlby (1946) believed that attachment was continuous, which
               is often called the ‘continuity hypothesis’, based on early
               experiences with a primary caregiver.{" "}
             </Text>
-            <Text as="mark" backgroundColor="orange.200">
+            <Text as="mark" backgroundColor="orange.100">
               By continuous he meant that early childhood experiences would have
               an effect in later life. He thought that during a sensitive
               period, children were especially affected their relationship with
               their primary caregiver.
             </Text>{" "}
-            <Text as="mark" backgroundColor="blue.100">
+            <Text as="mark" backgroundColor="yellow.100">
               A strength of this theory is supporting evidence reported by Hazan
               and Shaver (1989). They conducted a love quiz on students and
               found a correlation between the reported relationship students had
@@ -96,7 +96,7 @@ export default function BodySidebar({
               were currently involved. This suggests that Bowlby was right,
               attachment seemed to be similar across the life-cycle.
             </Text>
-            <Text as="mark" backgroundColor="orange.200">
+            <Text as="mark" backgroundColor="blue.100">
               However, there are weaknesses in the theory too. Rutter (1995)
               reported multiple attachments as being highly important on child
               develop in his research. This study believed that Bowlby had

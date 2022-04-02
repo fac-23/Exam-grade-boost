@@ -37,7 +37,7 @@ export default function WordBank() {
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
               <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
-                <ListItem p="1rem" background="gray.100">
+                <ListItem p="1rem" background="orange.200">
                   <strong>Summary</strong>
                   <p>This assignment discusses...</p>
                   <p>
@@ -49,21 +49,21 @@ export default function WordBank() {
                     In the last 30 years, many researchers have investigated...
                   </p>
                 </ListItem>
-                <ListItem p="1rem" background="blue.100">
+                <ListItem p="1rem" background="yellow.100">
                   <strong>Main</strong>
                   <p>Many experts believe that...</p>
                   <p>One view is...</p>
                   <p>Some research suggests... </p>
                   <p>Some evidence indicates... </p>
                 </ListItem>
-                <ListItem p="1rem" background="yellow.100">
+                <ListItem p="1rem" background="gray.100">
                   <strong>Opposite Argument</strong>
                   <p>The evidence is mixed...</p>
                   <p>Some evidence points in a different direction... </p>
                   <p>However, there are different views...</p>
                   <p>However, other experts take a different view </p>
                 </ListItem>
-                <ListItem p="1rem" background="orange.200">
+                <ListItem p="1rem" background="pink.200">
                   <strong>Key Theme</strong>
                   <p>
                     There are several reasons for this debate which will be
@@ -94,7 +94,7 @@ export default function WordBank() {
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
               <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
-                <ListItem p="1rem" background="gray.100">
+                <ListItem p="1rem" background="orange.50">
                   <strong>Point</strong>
                   <p>There are different views on...</p>
                   <p>The relationship between... and... is uncertain.</p>
@@ -102,7 +102,7 @@ export default function WordBank() {
                   <p>The relationship between... and... is often debated.</p>
                   <p>The level of significance...</p>
                 </ListItem>
-                <ListItem p="1rem" background="blue.100">
+                <ListItem p="1rem" background="orange.200">
                   <strong>Identify</strong>
                   <p>For example...</p>
                   <p>For instance...</p>
@@ -110,15 +110,15 @@ export default function WordBank() {
                   <p>A key reason for...</p>
                   <p>The following quotation is relevant...</p>
                 </ListItem>
-                <ListItem p="1rem" background="yellow.100">
+                <ListItem p="1rem" background="orange.100">
                   <strong>Outline</strong>
                   <p>A key feature is...</p>
                   <p>A part of the... is...</p>
                   <p>An important section of... was...</p>
                   <p>A significant part is...</p>
                 </ListItem>
-                <ListItem p="1rem" background="orange.200">
-                  <strong>Evidence 1</strong>
+                <ListItem p="1rem" background="yellow.100">
+                  <strong>Explain agree</strong>
                   <p>Research has focused on around key topics...</p>
                   <p>
                     To provide some resolution to the discussion, the following
@@ -126,13 +126,13 @@ export default function WordBank() {
                   </p>
                   <p>Several areas will be considered... </p>
                 </ListItem>
-                <ListItem p="1rem" background="orange.300">
-                  <strong>Evidence 2</strong>
+                <ListItem p="1rem" background="blue.100">
+                  <strong>Explain disagree</strong>
                   <p>The evidence is mixed...</p>
                   <p>Not everyone agrees...</p>
                   <p>There are, however, different views...</p>
                 </ListItem>
-                <ListItem p="1rem" background="purple.200">
+                <ListItem p="1rem" background="purple.100">
                   <strong>Relate</strong>
                   <p>Overall, the evidence mostly supports...</p>
                   <p>The general trend was...</p>
@@ -153,7 +153,7 @@ export default function WordBank() {
             </h2>
             <AccordionPanel p="1rem 0 1rem 0">
               <UnorderedList styleType="none" m="0 0 1.5rem 0" color="black">
-                <ListItem p="1rem" background="gray.100">
+                <ListItem p="1rem" background="pink.100">
                   <strong>Main</strong>
                   <p>This assignment discusses...</p>
                   <p>
@@ -164,18 +164,18 @@ export default function WordBank() {
                     The level of significance...was examined and found to be...
                   </p>
                 </ListItem>
-                <ListItem p="1rem" background="blue.100">
+                <ListItem p="1rem" background="yellow.100">
                   <strong>Evidence</strong>
                   <p>The most important evidence on the topic was...</p>
                   <p>A consistent theme in the evidence was...</p>
                   <p>A noticeable pattern was seen... </p>
                 </ListItem>
-                <ListItem p="1rem" background="yellow.100">
+                <ListItem p="1rem" background="teal.50">
                   <strong>Priority</strong>
                   <p>The most important evidence was...</p>
                   <p>Some key principles were... </p>
                 </ListItem>
-                <ListItem p="1rem" background="orange.200">
+                <ListItem p="1rem" background="pink.200">
                   <strong>Relate</strong>
                   <p>Overall, the evidence suggests...</p>
                   <p>A likely application for these findings is...</p>

@@ -21,11 +21,19 @@ import {
 } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
+import { cookiesTampered } from "../auth.js";
 import VideoComponent from "../components/VideoComponent.jsx";
 import Layout from "../components/Layout.jsx";
 import { TriangleDownIcon } from "@chakra-ui/icons";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res }) {
+  const suspectReq = await cookiesTampered(req, res);
+  if (suspectReq) {
+    return {
+      props: {},
+    };
+  }
+
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
@@ -121,8 +129,6 @@ export async function getServerSideProps({ req }) {
   const storedOpposite = splitSections[2];
   const storedKey = splitSections[3];
 
-  console.log("sst", storedSpiderText);
-
   return {
     props: {
       question,
@@ -192,7 +198,7 @@ export default function Introduction({
                   placeholder="summary"
                   defaultValue={storedSummary ? storedSummary : ""}
                   borderColor="orange.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                 ></Textarea>
                 <Button
                   p="2"
@@ -241,7 +247,7 @@ export default function Introduction({
                   defaultValue={storedMain ? storedMain : ""}
                   borderColor="yellow.300"
                   mt="0.5rem"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                 ></Textarea>
                 <Button
                   p="2"
@@ -280,7 +286,7 @@ export default function Introduction({
                   placeholder="opposite argument"
                   defaultValue={storedOpposite ? storedOpposite : ""}
                   borderColor="gray.400"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="0.5rem"
                 ></Textarea>
                 <Button
@@ -300,7 +306,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="gray.300"
+                  bg="gray.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -324,7 +330,7 @@ export default function Introduction({
                   placeholder="key themes"
                   defaultValue={storedKey ? storedKey : ""}
                   borderColor="pink.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="0.5rem"
                   mb="1rem"
                 ></Textarea>
@@ -345,7 +351,7 @@ export default function Introduction({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="pink.200"
+                  bg="pink.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -386,11 +392,11 @@ export default function Introduction({
                   <strong>Main Argument</strong> - a summary of the main ‘yes’
                   position.
                 </ListItem>
-                <ListItem p={2} background="gray.300">
+                <ListItem p={2} background="gray.100">
                   <strong>Opposite Argument</strong> - a summary of the main
                   ‘no’ position.
                 </ListItem>
-                <ListItem p={2} background="pink.200">
+                <ListItem p={2} background="pink.100">
                   <strong>Key Themes</strong> - a summary of the research areas
                   you will use. Note, you may wish to include definitions
                   between the O and the K sections.
@@ -407,22 +413,22 @@ export default function Introduction({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <Text as="mark" backgroundColor="gray.100">
+                    <Text as="mark" backgroundColor="orange.200">
                       There are many health benefits associated with a healthy
                       body weight.{" "}
                     </Text>
-                    <Text as="mark" backgroundColor="blue.100">
+                    <Text as="mark" backgroundColor="yellow.100">
                       Therefore the ability to create successful dieting
                       strategies holds the potential for longer life expectancy.
                       Some researchers believe that diets can be made to
                       succeed, as long as the necessary steps are taken.{" "}
                     </Text>
-                    <Text as="mark" backgroundColor="yellow.100">
+                    <Text as="mark" backgroundColor="gray.100">
                       However, other experts disagree, arguing essentially that
                       diets succeed more by luck than the particular principles
                       being applied.
                     </Text>{" "}
-                    <Text as="mark" backgroundColor="orange.200">
+                    <Text as="mark" backgroundColor="pink.100">
                       To decide which view is more valid, several factors will
                       be examined: the ways in which attention is focused, the
                       use of appropriate foods and the presence of social
