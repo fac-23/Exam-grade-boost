@@ -21,11 +21,19 @@ import {
 } from "@chakra-ui/react";
 
 import { getEssayInfo } from "../database/model.js";
+import { cookiesTampered } from "../auth.js";
 import VideoComponent from "../components/VideoComponent.jsx";
 import Layout from "../components/Layout.jsx";
 import { TriangleDownIcon } from "@chakra-ui/icons";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res }) {
+  const suspectReq = await cookiesTampered(req, res);
+  if (suspectReq) {
+    return {
+      props: {},
+    };
+  }
+
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
@@ -192,7 +200,7 @@ export default function Introduction({
                   placeholder="summary"
                   defaultValue={storedSummary ? storedSummary : ""}
                   borderColor="orange.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                 ></Textarea>
                 <Button
                   p="2"
@@ -241,7 +249,7 @@ export default function Introduction({
                   defaultValue={storedMain ? storedMain : ""}
                   borderColor="yellow.300"
                   mt="0.5rem"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                 ></Textarea>
                 <Button
                   p="2"
@@ -280,7 +288,7 @@ export default function Introduction({
                   placeholder="opposite argument"
                   defaultValue={storedOpposite ? storedOpposite : ""}
                   borderColor="gray.400"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="0.5rem"
                 ></Textarea>
                 <Button
@@ -324,7 +332,7 @@ export default function Introduction({
                   placeholder="key themes"
                   defaultValue={storedKey ? storedKey : ""}
                   borderColor="pink.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="0.5rem"
                   mb="1rem"
                 ></Textarea>

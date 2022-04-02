@@ -25,8 +25,16 @@ import { getEssayInfo } from "../database/model.js";
 import VideoComponent from "../components/VideoComponent";
 import Layout from "../components/Layout";
 import { TriangleDownIcon } from "@chakra-ui/icons";
+import { cookiesTampered } from "../auth.js";
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res }) {
+  const suspectReq = await cookiesTampered(req, res);
+  if (suspectReq) {
+    return {
+      props: {},
+    };
+  }
+
   const essayId = req.cookies.currEssay;
   const essayInfo = await getEssayInfo(essayId);
 
@@ -186,7 +194,7 @@ export default function Conclusion({
                   placeholder="Main argument"
                   defaultValue={storedMain ? storedMain : ""}
                   borderColor="black.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
                 <Button
@@ -233,7 +241,7 @@ export default function Conclusion({
                   placeholder="Evidence"
                   defaultValue={storedEvidence ? storedEvidence : ""}
                   borderColor="blue.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
                 <Button
@@ -274,7 +282,7 @@ export default function Conclusion({
                   placeholder="Priority Evidence"
                   defaultValue={storedPriority ? storedPriority : ""}
                   borderColor="yellow.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
                 <Button
@@ -314,7 +322,7 @@ export default function Conclusion({
                   placeholder="Relate"
                   defaultValue={storedRelate ? storedRelate : ""}
                   borderColor="orange.300"
-                  borderWidth='0.15rem'
+                  borderWidth="0.15rem"
                   mt="2"
                   mb="2"
                 ></Textarea>

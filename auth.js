@@ -1,6 +1,13 @@
-import { createSession, getUser } from "./database/model";
+import {
+  createSession,
+  getUser,
+  getSessionInfo,
+  getEssayInfo,
+} from "./database/model";
 const crypto = require("crypto");
 import bcrypt from "bcryptjs";
+
+import Cookies from "cookies";
 
 export const cookie_options = {
   httpOnly: true,
@@ -29,5 +36,27 @@ export async function verifyUser(email, password) {
         return savedUser;
       }
     });
+  }
+}
+
+export async function cookiesTampered(req, res) {
+  const sid = req.cookies.sid;
+  const essayId = req.cookies.currEssay;
+  const cookies = new Cookies(req, res);
+
+  if (!sid || !essayId) {
+    cookies.set("currEssay");
+    return true;
+  }
+
+  const essayInfo = await getEssayInfo(essayId);
+  const userData = await getSessionInfo(sid);
+  const user_id = JSON.parse(userData.data).user_id;
+
+  if (user_id === essayInfo.user_id) {
+    return false;
+  } else {
+    cookies.set("currEssay");
+    return true;
   }
 }
