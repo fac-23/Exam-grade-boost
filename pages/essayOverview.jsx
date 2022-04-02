@@ -51,7 +51,9 @@ export default function EssayOverview({
 }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const [showTitleEdit, setTitleEdit] = useState(false);
+
   const completedSectionColor = useColorModeValue("primary", "gold");
+
   return (
     <Layout>
       <Container>

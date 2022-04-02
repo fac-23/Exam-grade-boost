@@ -11,13 +11,15 @@ describe("It should allow the user to write sections of the essay and revisit it
     //generate random string
     let randomString = Math.random().toString(16).slice(8);
 
-    let txtAreasArr = cy.get("textarea");
-    txtAreasArr.each((el) => cy.wrap(el).clear().type(randomString));
+    let txtAreas = cy.get("textarea");
+
+    txtAreas.each((el) => cy.wrap(el).clear().type(randomString));
 
     cy.get("button").contains("Save and continue").click();
 
     cy.get("button").contains(section).click();
 
+    // check textareas get populated
     let filledTxtAreasArray = cy.get("textarea");
     filledTxtAreasArray.each((el) =>
       cy.wrap(el).should("have.text", randomString)
