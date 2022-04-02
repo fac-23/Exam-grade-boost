@@ -34,7 +34,7 @@ export default function BodyInputGrid({
           placeholder="Point"
           defaultValue={storedPoint ? storedPoint : ""}
           borderColor="orange.200"
-          borderWidth='0.15rem'
+          borderWidth="0.15rem"
         ></Textarea>
         <Button
           p="2"
@@ -55,7 +55,7 @@ export default function BodyInputGrid({
           color="black"
           mt="1"
           mb="2"
-          bg="gray.100"
+          bg="orange.100"
           rounded="md"
           shadow="md"
         >
@@ -80,7 +80,7 @@ export default function BodyInputGrid({
           placeholder="Identify"
           defaultValue={storedIdentify ? storedIdentify : ""}
           borderColor="orange.300"
-          borderWidth='0.15rem'
+          borderWidth="0.15rem"
           mt="0.5rem"
         ></Textarea>
         <Button
@@ -102,13 +102,12 @@ export default function BodyInputGrid({
           color="black"
           mt="1"
           mb="2"
-          bg="blue.100"
+          bg="orange.300"
           rounded="md"
           shadow="md"
         >
           <UnorderedList p="1rem">
-            <strong>Point suggestions</strong>
-            <strong>Identify</strong>
+            <strong>Identify suggestions</strong>
             <ListItem>For example...</ListItem>
             <ListItem>For instance...</ListItem>
             <ListItem>Research presented by... showed...</ListItem>
@@ -123,8 +122,8 @@ export default function BodyInputGrid({
           name="outline"
           placeholder="Outline"
           defaultValue={storedOutline ? storedOutline : ""}
-          borderColor="yellow.300"
-          borderWidth='0.15rem'
+          borderColor="orange.200"
+          borderWidth="0.15rem"
           mt="0.5rem"
         ></Textarea>
         <Button
@@ -146,7 +145,7 @@ export default function BodyInputGrid({
           color="black"
           mt="1"
           mb="2"
-          bg="yellow.200"
+          bg="orange.200"
           rounded="md"
           shadow="md"
         >
@@ -163,10 +162,10 @@ export default function BodyInputGrid({
       <Flex>
         <Textarea
           name="explain1"
-          placeholder="Evidence 1"
+          placeholder="Explain agree"
           defaultValue={storedExplain1 ? storedExplain1 : ""}
           borderColor="yellow.200"
-          borderWidth='0.15rem'
+          borderWidth="0.15rem"
           mt="0.5rem"
         ></Textarea>
         <Button
@@ -193,7 +192,7 @@ export default function BodyInputGrid({
           shadow="md"
         >
           <UnorderedList p="1rem">
-            <strong>Evidence 1 suggestions</strong>
+            <strong>Explain agree suggestions</strong>
             <ListItem>Research has focused on around key topics...</ListItem>
             <ListItem>
               To provide some resolution to the discussion, the following areas
@@ -207,10 +206,10 @@ export default function BodyInputGrid({
       <Flex>
         <Textarea
           name="explain2"
-          placeholder="Evidence 2"
+          placeholder="Explain disagree"
           defaultValue={storedExplain2 ? storedExplain2 : ""}
           borderColor="blue.300"
-          borderWidth='0.15rem'
+          borderWidth="0.15rem"
           mt="0.5rem"
         ></Textarea>
         <Button
@@ -232,12 +231,12 @@ export default function BodyInputGrid({
           color="black"
           mt="1"
           mb="2"
-          bg="orange.200"
+          bg="blue.100"
           rounded="md"
           shadow="md"
         >
           <UnorderedList p="1rem">
-            <strong>Evidence 2 suggestions</strong>
+            <strong>Explain disagree suggestions</strong>
             <ListItem>The evidence is mixed...</ListItem>
             <ListItem>Not everyone agrees...</ListItem>
             <ListItem>There are, however, different views...</ListItem>
@@ -251,7 +250,7 @@ export default function BodyInputGrid({
           placeholder="Relate"
           defaultValue={storedRelate ? storedRelate : ""}
           borderColor="purple.300"
-          borderWidth='0.15rem'
+          borderWidth="0.15rem"
           mt="0.5rem"
           mb="0.5rem"
         ></Textarea>

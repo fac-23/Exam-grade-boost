@@ -52,6 +52,13 @@ export default function Videos() {
           </Box>
 
           <Box>
+            <VideoComponent src="https://player.vimeo.com/video/692870402?h=cdbc739303" />
+            <Heading as="h2" size="sm" textAlign="center" pt="10px">
+              Conclusion MEPR
+            </Heading>
+          </Box>
+
+          <Box>
             <VideoComponent src="https://player.vimeo.com/video/693139800?h=6ff5b678c5" />
             <Heading as="h2" size="sm" textAlign="center" pt="10px">
               Instruction Words

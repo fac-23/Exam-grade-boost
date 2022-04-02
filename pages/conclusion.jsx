@@ -193,7 +193,7 @@ export default function Conclusion({
                   name="main"
                   placeholder="Main argument"
                   defaultValue={storedMain ? storedMain : ""}
-                  borderColor="black.300"
+                  borderColor="pink.200"
                   borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
@@ -216,7 +216,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="gray.100"
+                  bg="pink.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -240,7 +240,7 @@ export default function Conclusion({
                   name="evidence"
                   placeholder="Evidence"
                   defaultValue={storedEvidence ? storedEvidence : ""}
-                  borderColor="blue.300"
+                  borderColor="yellow.200"
                   borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
@@ -263,7 +263,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="blue.100"
+                  bg="yellow.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -281,7 +281,7 @@ export default function Conclusion({
                   name="priority"
                   placeholder="Priority Evidence"
                   defaultValue={storedPriority ? storedPriority : ""}
-                  borderColor="yellow.300"
+                  borderColor="teal.200"
                   borderWidth="0.15rem"
                   mt="2"
                 ></Textarea>
@@ -304,7 +304,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="yellow.100"
+                  bg="teal.100"
                   rounded="md"
                   shadow="md"
                 >
@@ -321,7 +321,7 @@ export default function Conclusion({
                   name="relate"
                   placeholder="Relate"
                   defaultValue={storedRelate ? storedRelate : ""}
-                  borderColor="orange.300"
+                  borderColor="pink.400"
                   borderWidth="0.15rem"
                   mt="2"
                   mb="2"
@@ -345,7 +345,7 @@ export default function Conclusion({
                   color="black"
                   mt="1"
                   mb="2"
-                  bg="orange.200"
+                  bg="pink.200"
                   rounded="md"
                   shadow="md"
                 >
@@ -373,22 +373,22 @@ export default function Conclusion({
             </Heading>
             <Box color="black">
               <UnorderedList styleType="none" mb={5}>
-                <ListItem p={2} background="gray.100">
+                <ListItem p={2} background="pink.100">
                   <strong>Main Argument</strong> - The main argument you believe
                   to be true in your essay – complete with the paragraph topics
                   that make that argument true. This should clearly be very
                   similar to your introduction.
                 </ListItem>
-                <ListItem p={2} background="blue.100">
+                <ListItem p={2} background="yellow.100">
                   <strong>Evidence</strong> - Give the most significant pieces
                   of evidence that make you believe your interpretation of ideas
                   is the most appropriate one.
                 </ListItem>
-                <ListItem p={2} background="yellow.100">
+                <ListItem p={2} background="teal.100">
                   <strong>Prioritised</strong> - give the evidence in a
                   prioritised form..
                 </ListItem>
-                <ListItem p={2} background="orange.200">
+                <ListItem p={2} background="pink.200">
                   <strong>Relate</strong> - State a brief summary that answers
                   the question using the words of the title.
                 </ListItem>
@@ -404,16 +404,16 @@ export default function Conclusion({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <Text as="mark" backgroundColor="gray.100">
+                    <Text as="mark" backgroundColor="pink.100">
                       This essay argued that diets can be made to be successful
                       as long as appropriate steps are followed in making the
                       diet work.{" "}
                     </Text>
-                    <Text as="mark" backgroundColor="blue.100">
+                    <Text as="mark" backgroundColor="yellow.100">
                       Particularly important features include a focus on good
                       quality low fat, lightly processed foods.{" "}
                     </Text>
-                    <Text as="mark" backgroundColor="yellow.100">
+                    <Text as="mark" backgroundColor="teal.100">
                       A range of social support networks is also important. A
                       person seeking the diet would aim to keep their mood as
                       positive as possible and they would aim to stop their
@@ -421,7 +421,7 @@ export default function Conclusion({
                       on the positive features of the healthy food they were
                       eating.
                     </Text>{" "}
-                    <Text as="mark" backgroundColor="orange.200">
+                    <Text as="mark" backgroundColor="pink.200">
                       The person could also balance their diet to work well with
                       their genetic make-up. By reliably following ‘what works’
                       a person would be very likely to achieve a healthy weight.
@@ -440,7 +440,7 @@ export default function Conclusion({
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <VideoComponent src="https://player.vimeo.com/video/469593113?h=2c078b1fb4"></VideoComponent>
+                    <VideoComponent src="https://player.vimeo.com/video/692870402?h=cdbc739303"></VideoComponent>
                   </AccordionPanel>
                 </AccordionItem>
 
