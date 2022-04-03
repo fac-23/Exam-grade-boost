@@ -6,7 +6,10 @@ We are building a visual essay writing application mainly aimed at neurodiverse 
 
 #### Why are you building it?
 
-Oliver's students need a clear, user friendly interface to get the most out his educational method.
++ **Problem**: Neurodiverse students and foreign students sometimes face difficulties planning and structuring written essays.
++ **Solution**: Develop an online app that encourages the adoption of essay writing methods developed by our product owner.
+
+Our product owner's students need a clear, user friendly interface to get the most out his educational method.
 
 #### Project scope
 
@@ -20,31 +23,31 @@ The key features of our MVP will include:
 #### What are you not building?
 
 We are not building a video hosting platform.
-The product owner will provide the resources.
+The product owner will provide the resources such as written copy, guides and third party hosted video recordings.
 
 #### How did you decide what features were important?
 
-User research and consulting and designing alongside the product owner.
+User research and consulting and designing alongside the product owner were key in developing our understanding of the priorities for the project.
 
 ### Project plan
 
 #### How are you going to structure your sprints?
 
-- Design sprint
-- Build sprint 1
-- Build sprint 2
+- Design sprint - 1 week
+- Build sprint 1 - 1 week
+- Build sprint 2 - 1 week
 
 #### How did user research inform your plan?
 
-We had 7 users of varying ages, education experience and background.
+We had 7 users of varying ages, education experience and backgrounds.
 
-Their feedback was:
+Their feedback stressed the importance of:
 
 - Clear instructions around use and navigation.
 - Having resources side by side while writing the essay.
 - Having sections broken down.
 - Having an option to personalise colours.
-- making sure the essay question is always visible.
+- Making sure the essay question is always visible.
 
 ## Requirement analysis
 
@@ -56,17 +59,17 @@ Their feedback was:
 
 #### Are there any legal or regulatory requirements you should consider?
 
-Users will want their essays to remain private, product owner expressed interest in being able to delete essays to prevent malicious behaviours. Users will be able to reset their own password.
+Users will want their essays to remain private, our product owner expressed interest in being able to delete essays to prevent malicious behaviours or mistakes. Users will also be able to reset their own password.
 
 ## Project learnings
 
-- Authentication.
+- Authentication with bycrypt, session cookies and sendGrid email reset
 
 - End to end testing with Cypress.
 
 - Managing database CRUD operations.
 
-  - Supabase
+  - Supabase PostGres database
 
 - Using external libraries:
 
@@ -90,31 +93,33 @@ Users will want their essays to remain private, product owner expressed interest
 
 The team :
 
-- discussed project architecture during the design phase.
-- confirmed or challenged our own assumptions during user testing.
-- worked together on core features and split into role specific tasks, getting continuous feedback from the product owner.
+- Discussed project architecture during the design phase.
+- Confirmed and challenged our own assumptions during user testing.
+- Worked together on core features and split into role specific tasks, getting continuous feedback from the product owner.
 
 #### What would you do differently next time?
 
 Invest more time into researching the Chakra UI library, it proved itself very useful and well documented but at the same time it has been a slight learning curve, especially since we had a limited amount of time to produce an MVP.
 
+Dedicated more time to refactoring repeatable code into general purpose functions and components.
+
 ## Research and findings
 
-the user research phase brought up key aspects of the app we should focus on, very relevant to the target user, like:
+The user research phase brought up key aspects of the app we should focus on, that were very relevant to the target user, such as:
 
-- Theme Toggle Switch to offer alternative colours.
-- Accordion component to serve resorces alongside essey writing section.
+- A Theme Toggle Switch to offer alternative colours.
+- An Accordion component to serve resorces alongside essey writing section.
 - Mobile-first, responsive, accessible design.
 
 #### What did you find out from user testing?
 
 ## Project outcomes
 
-We built an MVP covering the cover user stories. The Product Owner will use the app to present the Essay Boost methodology to teachers, parents and students with the aim of getting feedback and possibly improving it and keep using it to assist students in their learning process.
+We built an MVP covering the core user stories. The Product Owner will use the app to present the Essay Boost methodology to teachers, parents and students with the aim of getting feedback, gathering ideas for improvement and to assist students in their learning process.
 
 #### Were your assumptions right or wrong?
 
-We did a second round of user testing during build sprint 2 to test our assumptions and the users valued being able to delete the essays, being able to edit the essay question and getting visual feedback on completed sections.
+In our second round of user testing during build sprint 2 we found users valued being able to delete the essays, being able to edit the essay question and wanted visual feedback on completed sections.
 
 ## Recommendations and conclusions
 
@@ -124,7 +129,7 @@ An admin dashboard where teachers can access students essays, provide feedback a
 
 #### Was the project a success?
 
-The Product Owner was pleased with the result and satisfied with the MVP.
+The Product Owner was pleased with the result and satisfied with the MVP. We also received positive feedback from our cohort and project mentors.
 
 ## Software Development Lifecycle stages
 
@@ -153,13 +158,13 @@ We conducted code reviews presenting our work to other team members explaning ou
 
 #### What might be the intended and unintended consequences of building this product?
 
-We have taken action to make sure the app is as secure as possible but we recognise the app is not intended to secure personal information; one unintentional consequence is that passwords, emails and possibly other forms of private data could be stolen.
+We have taken action to make sure the app is as secure as possible but we recognise the app is not intended to secure personal information; one unintentional consequence is that passwords, emails and possibly other forms of private data could be stolen by an indiviual experienced in exploiting vulnerabilities. 
 
 ## Design
 
 #### How did you plan a user experience?
 
-An initial user research phase conducted by the product owner has been followed by a Design Sprint week which included the following phases:
+An initial user research phase conducted by the product owner was followed by a Design Sprint week which included the following phases:
 
 - Revisiting and defining the problem statement for the project.
 
@@ -223,15 +228,15 @@ We did focus on the authentication flow before working on the frontend aspect of
 
 ##### Review methods of software design with reference to functional/technical specifications and apply a justified approach to software development (K11, S11, S12)
 
-We went over technical choices like:
+Technical choices we reviewed as a team included:
 
 - How to preserve state between different pages
 
-- Whether to implement authentication with a single dummy account; we then decided to fully implement authentication with multiple users to respond to the Product Owner request.
+- Whether to implement authentication with a single dummy account; we then decided to fully implement authentication with multiple users to respond to our Product Owner's request.
 
 - We discussed how to implement pdf and ms doc conversion.
 
-- We decided to write the database queries ourselves instead of using a service like Prisma or Firebase.
+- We decided to write the database queries ourselves instead of using a service like Prisma or an ORM.
 
 ## Implementation/Build
 
@@ -253,13 +258,17 @@ We went over technical choices like:
 
 ##### Outline and apply the rationale and use of algorithms, logic and data structures. (K9, S16)
 
-- Implementing the
+- The first implementation of the spider diagram initially was stored as TEXT in the postgres database, however our product owner was keen to have sub-branching and therefore we changed the datastructure to JSON to handle the complexity of storing sub branches. 
+
+- Testing made use of looping algorithms to automatically populate text fields across multiple pages.
+
+- We utilised the bycrypt library uses an algorithm to hash and compare passwords.
 
 #### How did you debug issues that arose?
 
 ##### Apply structured techniques to problem solving to identify and resolve issues and debug basic flaws in code (S7)
 
-## Test
+## Testing
 
 #### How did you verify your project worked correctly?
 
@@ -291,8 +300,14 @@ We deployed on Vercel.
 
 #### What problems did you encounter during deployment?
 
+Our `sendResetEmail` function worked instantaneously on the local server, however when deployed on Vercel the function had significant latency (up to 5 minutes) before the user received their email. This prompted the addition of a warning message to our user that the reset email could take time to arrive. 
+
 ## Maintain
 
 #### Is it easy for someone make changes to the codebase?
 
+Any developer with experience in React and Next.js should find our project easy to understand and update. The file structure is logical, we took care in naming our variables and functions, our code has comprehensive tests for core functionality. Future developers should be aware our project is an MVP and built with delivery time as a main priority and so some elements of the code base may require additional context to fully understand.
+
 #### Could a new person quickly be onboarded to contribute?
+
+With a review of the model.js file, the `getServerSideProps` functions and our cypress tests a new developer would be able to start contributing. We have included getting started information in the READ.ME
